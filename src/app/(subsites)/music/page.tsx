@@ -532,6 +532,20 @@ export default function MusicPage() {
                     </div>
                 </div>
             </section>
+
+            {/* ════════════ FOOTER ════════════ */}
+            <footer className="py-12 px-6 border-t border-border/40 bg-background">
+                <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+                    <p className="text-sm text-muted-foreground">
+                        © {new Date().getFullYear()} Alejandro AG. Clases de música.
+                    </p>
+                    <nav className="flex gap-6 text-sm font-medium text-foreground/80">
+                        <a href="/music" className="hover:text-accent transition-colors">Inicio</a>
+                        <a href="/music/politicas" className="hover:text-accent transition-colors">Políticas</a>
+                        <a href="/music/aviso-privacidad" className="hover:text-accent transition-colors">Aviso de Privacidad</a>
+                    </nav>
+                </div>
+            </footer>
         </div>
     )
 }
