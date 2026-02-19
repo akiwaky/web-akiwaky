@@ -1,7 +1,9 @@
 import { Header } from "@/components/layout/header"
 import { Hero } from "@/components/sections/hero"
-import { Work } from "@/components/sections/work"
+import { Services } from "@/components/sections/services"
+import { Packages } from "@/components/sections/packages"
 import { Story } from "@/components/sections/story"
+import { Contact } from "@/components/sections/contact"
 import { Footer } from "@/components/layout/footer"
 
 export const dynamic = "force-static";
@@ -11,8 +13,10 @@ export default function Home() {
     <main className="min-h-screen bg-background relative selection:bg-yellow-400/30">
       <Header />
       <Hero />
-      <Work />
+      <Services />
+      <Packages />
       <Story />
+      <Contact />
       <Footer />
     </main>
   );
