@@ -23,6 +23,7 @@ export function Header() {
     ]
 
     const secondaryLinks = [
+        { name: "Música", href: "/music" },
         { name: "LinkedIn", href: "#" }, // TODO: Add your LinkedIn URL
         { name: "GitHub", href: "#" }, // TODO: Add your GitHub URL
     ]
