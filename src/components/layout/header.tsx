@@ -16,13 +16,15 @@ export function Header() {
     })
 
     const navLinks = [
-        { name: "Work", href: "#work" },
-        { name: "Story", href: "#story" },
+        { name: "Servicios", href: "#servicios" },
+        { name: "Paquetes", href: "#paquetes" },
+        { name: "Historia", href: "#story" },
+        { name: "Contacto", href: "#contacto" },
     ]
 
     const secondaryLinks = [
-        { name: "LinkedIn", href: "#" }, // Placeholder
-        { name: "GitHub", href: "#" }, // Placeholder
+        { name: "LinkedIn", href: "#" }, // TODO: Add your LinkedIn URL
+        { name: "GitHub", href: "#" }, // TODO: Add your GitHub URL
     ]
 
     return (
@@ -43,7 +45,7 @@ export function Header() {
                     <span className="sr-only">Home</span>
                 </Link>
 
-                {/* Cluster 1: Primary Nav */}
+                {/* Primary Nav */}
                 <nav className="hidden md:flex items-center gap-6">
                     {navLinks.map((link) => (
                         <Link
@@ -58,7 +60,7 @@ export function Header() {
             </div>
 
             <div className="flex items-center gap-8">
-                {/* Cluster 2: Secondary Nav */}
+                {/* Secondary Nav */}
                 <nav className="hidden md:flex items-center gap-6">
                     {secondaryLinks.map((link) => (
                         <Link
@@ -71,8 +73,8 @@ export function Header() {
                     ))}
                 </nav>
 
-                <Button variant="default" className="rounded-full px-6 font-medium">
-                    Let's Talk
+                <Button variant="default" className="rounded-full px-6 font-medium" asChild>
+                    <Link href="#contacto">Hablemos</Link>
                 </Button>
             </div>
         </motion.header>
