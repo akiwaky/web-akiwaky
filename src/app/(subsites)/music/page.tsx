@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import type { Metadata } from "next"
-import Image from "next"
+import Image from "next/image"
 import { WhatsAppButton } from "@/components/ui/whatsapp-button"
 import { MUSIC_CONFIG } from "@/config/music"
 import {
@@ -15,7 +15,8 @@ import {
     CheckCircle,
     Clock,
     Calendar,
-    ChevronDown
+    ChevronDown,
+    MessageCircle
 } from "lucide-react"
 
 /* ─────────────────────── Data ─────────────────────── */
@@ -114,9 +115,6 @@ const FAQS = [
     }
 ]
 
-// Local specific import just for the fallback form icon
-import { MessageCircle } from "lucide-react"
-
 /* ─────────────────────── Component Hooks ─────────────────────── */
 
 function LeadForm() {
@@ -139,7 +137,7 @@ function LeadForm() {
             zone: formData.get("zone"),
             times: formData.get("times"),
             timestamp: new Date().toISOString(),
-            source: window.location.href
+            source: typeof window !== 'undefined' ? window.location.href : '/music'
         }
 
         try {
@@ -154,13 +152,13 @@ function LeadForm() {
             if (MUSIC_CONFIG.integrations.n8nWebhookUrl.includes("placeholder")) {
                 await new Promise(r => setTimeout(r, 1000))
                 setStatus("success")
-                window.location.href = "/music/gracias"
+                if (typeof window !== 'undefined') window.location.href = "/music/gracias"
                 return
             }
 
             if (!res.ok) throw new Error("Network response was not ok")
             setStatus("success")
-            window.location.href = "/music/gracias"
+            if (typeof window !== 'undefined') window.location.href = "/music/gracias"
         } catch (error) {
             console.error(error)
             setStatus("error")
@@ -187,17 +185,17 @@ function LeadForm() {
             <div className="space-y-4">
                 <div>
                     <label htmlFor="name" className="block text-sm font-medium text-foreground/80 mb-1">Nombre</label>
-                    <input required id="name" name="name" type="text" className="w-full px-4 py-3 rounded-lg border border-border focus:border-accent outline-none transition-colors" placeholder="Tu nombre" />
+                    <input required id="name" name="name" type="text" className="w-full px-4 py-3 rounded-lg border border-border focus:border-accent outline-none transition-colors font-sans" placeholder="Tu nombre" />
                 </div>
 
                 <div>
                     <label htmlFor="whatsapp" className="block text-sm font-medium text-foreground/80 mb-1">WhatsApp</label>
-                    <input required id="whatsapp" name="whatsapp" type="tel" className="w-full px-4 py-3 rounded-lg border border-border focus:border-accent outline-none transition-colors" placeholder="10 dígitos" />
+                    <input required id="whatsapp" name="whatsapp" type="tel" className="w-full px-4 py-3 rounded-lg border border-border focus:border-accent outline-none transition-colors font-sans" placeholder="10 dígitos" />
                 </div>
 
                 <div>
                     <label htmlFor="zone" className="block text-sm font-medium text-foreground/80 mb-1">Zona</label>
-                    <select required id="zone" name="zone" className="w-full px-4 py-3 rounded-lg border border-border focus:border-accent outline-none bg-white">
+                    <select required id="zone" name="zone" className="w-full px-4 py-3 rounded-lg border border-border focus:border-accent outline-none bg-white font-sans">
                         <option value="">Selecciona tu zona...</option>
                         <option value="Santa Fe">Santa Fe</option>
                         <option value="Huixquilucan">Huixquilucan</option>
@@ -207,22 +205,22 @@ function LeadForm() {
 
                 <div>
                     <label htmlFor="times" className="block text-sm font-medium text-foreground/80 mb-1">Horarios de interés</label>
-                    <input required id="times" name="times" type="text" className="w-full px-4 py-3 rounded-lg border border-border focus:border-accent outline-none transition-colors" placeholder="Ej: Martes por la tarde" />
+                    <input required id="times" name="times" type="text" className="w-full px-4 py-3 rounded-lg border border-border focus:border-accent outline-none transition-colors font-sans" placeholder="Ej: Martes por la tarde" />
                 </div>
 
                 <div className="flex items-start gap-2 pt-2">
                     <input required type="checkbox" id="consent" className="mt-1" />
-                    <label htmlFor="consent" className="text-xs text-muted-foreground">
+                    <label htmlFor="consent" className="text-xs text-muted-foreground font-sans">
                         Acepto compartir estos datos para ser contactado. <a href="/music/aviso-privacidad" className="underline">Aviso de Privacidad</a>.
                     </label>
                 </div>
 
-                {status === "error" && <p className="text-red-500 text-sm">Hubo un error. Por favor intenta por WhatsApp directamente.</p>}
+                {status === "error" && <p className="text-red-500 text-sm font-sans">Hubo un error. Por favor intenta por WhatsApp directamente.</p>}
 
                 <button
                     disabled={status === "loading"}
                     type="submit"
-                    className="w-full bg-foreground text-background py-4 rounded-xl font-bold hover:bg-foreground/90 transition-colors disabled:opacity-50"
+                    className="w-full bg-foreground text-background py-4 rounded-xl font-bold hover:bg-foreground/90 transition-colors disabled:opacity-50 font-sans"
                 >
                     {status === "loading" ? "Enviando..." : "Enviar datos"}
                 </button>
@@ -239,7 +237,7 @@ function FaqItem({ q, a }: { q: string, a: string }) {
                 <span className="font-bold text-lg">{q}</span>
                 <ChevronDown className={`w-5 h-5 text-accent transition-transform ${open ? "rotate-180" : ""}`} />
             </div>
-            {open && <div className="mt-4 text-muted-foreground font-light leading-relaxed">{a}</div>}
+            {open && <div className="mt-4 text-muted-foreground font-light leading-relaxed font-sans">{a}</div>}
         </div>
     )
 }
@@ -253,7 +251,15 @@ export default function MusicPage() {
 
             {/* ════════════ HERO SECTION ════════════ */}
             <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden border-b border-border/40">
-                <div className="max-w-4xl mx-auto px-6 text-center">
+                <div className="absolute inset-0 z-0 opacity-10">
+                    <Image
+                        src="/assets/img/piano-strings.png"
+                        alt="Piano Strings Background"
+                        fill
+                        className="object-cover"
+                    />
+                </div>
+                <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
                     <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold tracking-widest uppercase mb-8 border border-foreground/20 text-foreground/60">
                         <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                         Cupo limitado
@@ -264,20 +270,20 @@ export default function MusicPage() {
                         <span className="italic font-serif font-light text-accent text-4xl md:text-6xl">Santa Fe & Huixquilucan</span>
                     </h1>
 
-                    <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-10 font-light">
+                    <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-10 font-light font-sans">
                         Método práctico para niños y adultos. Aprende a tocar tus canciones favoritas desde el primer día, sin aburrirte con teoría infinita.
                     </p>
 
                     <div className="flex flex-col items-center justify-center gap-4">
-                        <WhatsAppButton variant="primary" className="w-full sm:w-auto px-10 py-5 text-lg shadow-xl shadow-green-500/20">
+                        <WhatsAppButton variant="primary" className="w-full sm:w-auto px-10 py-5 text-lg shadow-xl shadow-green-500/20 font-sans">
                             Agendar clase de prueba
                         </WhatsAppButton>
-                        <p className="text-sm text-muted-foreground/80 mt-2 max-w-sm shrink-0">
+                        <p className="text-sm text-muted-foreground/80 mt-2 max-w-sm shrink-0 font-sans">
                             Respondo por WhatsApp. Te propongo 2–3 horarios y confirmamos en minutos.
                         </p>
                         <a
                             href="#precios"
-                            className="mt-4 text-sm font-medium underline underline-offset-4 text-foreground/80 hover:text-foreground transition-colors"
+                            className="mt-4 text-sm font-medium underline underline-offset-4 text-foreground/80 hover:text-foreground transition-colors font-sans"
                         >
                             Ver precios
                         </a>
@@ -292,7 +298,7 @@ export default function MusicPage() {
                         {TRUST_CHIPS.map((chip) => (
                             <div key={chip.label} className="flex items-center gap-3">
                                 <chip.icon className="w-6 h-6 text-accent" />
-                                <span className="text-sm font-semibold tracking-wide text-foreground">{chip.label}</span>
+                                <span className="text-sm font-semibold tracking-wide text-foreground font-sans">{chip.label}</span>
                             </div>
                         ))}
                     </div>
@@ -304,7 +310,7 @@ export default function MusicPage() {
                 <div className="max-w-6xl mx-auto">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">Lo que dicen los alumnos</h2>
-                        <p className="text-muted-foreground font-light text-lg">Progreso medible. Resultados reales.</p>
+                        <p className="text-muted-foreground font-light text-lg font-sans">Progreso medible. Resultados reales.</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                         {TESTIMONIALS.map((t, i) => (
@@ -316,7 +322,7 @@ export default function MusicPage() {
                                     </div>
                                     <div>
                                         <p className="font-bold">{t.name}</p>
-                                        <p className="text-sm text-muted-foreground">{t.role} • {t.zone}</p>
+                                        <p className="text-sm text-muted-foreground font-sans">{t.role} • {t.zone}</p>
                                     </div>
                                 </div>
                             </div>
@@ -331,7 +337,7 @@ export default function MusicPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
                         <div className="order-2 md:order-1">
                             <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight">Menos teoría.<br /><span className="text-accent font-serif italic font-light">Más música.</span></h2>
-                            <p className="text-lg text-background/70 mb-12 leading-relaxed font-light">
+                            <p className="text-lg text-background/70 mb-12 leading-relaxed font-light font-sans">
                                 Mi enfoque es 100% práctico. No pasaremos meses leyendo partituras antes de tocar.
                                 Desde el día uno, el objetivo es hacer música real.
                             </p>
@@ -348,7 +354,7 @@ export default function MusicPage() {
                                         </div>
                                         <div>
                                             <h3 className="font-bold text-xl mb-2">{item.title}</h3>
-                                            <p className="text-background/60 font-light leading-relaxed">{item.desc}</p>
+                                            <p className="text-background/60 font-light leading-relaxed font-sans">{item.desc}</p>
                                         </div>
                                     </li>
                                 ))}
@@ -356,20 +362,28 @@ export default function MusicPage() {
                         </div>
 
                         <div className="order-1 md:order-2 relative aspect-[4/5] bg-background/5 rounded-2xl overflow-hidden shadow-2xl border border-background/20">
-                            {/* PLACEHOLDER: hands-on-keys.webp */}
-                            <div className="absolute inset-0 flex items-center justify-center flex-col text-background/30 p-8 text-center border-2 border-dashed border-background/20 m-4 rounded-xl">
-                                <Music className="w-16 h-16 mb-4" />
-                                <span className="font-mono text-sm">[PLACEHOLDER: /assets/img/hands-on-keys.webp]</span>
-                                <span className="text-xs mt-2">Editorial close-up of hands playing piano</span>
-                            </div>
+                            <Image
+                                src="/assets/img/hands-on-keys.png"
+                                alt="Hands on piano keys"
+                                fill
+                                className="object-cover"
+                            />
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* ════════════ HOW IT WORKS ════════════ */}
-            <section className="py-24 bg-secondary/10 border-y border-border/40">
-                <div className="max-w-6xl mx-auto px-6">
+            <section className="py-24 bg-secondary/10 border-y border-border/40 relative overflow-hidden">
+                <div className="absolute -right-20 -bottom-20 w-80 h-80 opacity-5 rotate-12 z-0 hidden md:block">
+                    <Image
+                        src="/assets/img/piano-keys-geo.png"
+                        alt="Decorative Piano Keys"
+                        fill
+                        className="object-contain"
+                    />
+                </div>
+                <div className="max-w-6xl mx-auto px-6 relative z-10">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">Cómo funciona</h2>
                     </div>
@@ -383,13 +397,13 @@ export default function MusicPage() {
                                     {step.step}
                                 </div>
                                 <h3 className="text-xl font-bold mb-4">{step.title}</h3>
-                                <p className="text-muted-foreground leading-relaxed font-light">{step.description}</p>
+                                <p className="text-muted-foreground leading-relaxed font-light font-sans">{step.description}</p>
                             </div>
                         ))}
                     </div>
 
                     <div className="mt-16 text-center">
-                        <WhatsAppButton variant="outline" className="px-8 py-4">
+                        <WhatsAppButton variant="outline" className="px-8 py-4 font-sans">
                             Agendar clase de prueba
                         </WhatsAppButton>
                     </div>
@@ -401,25 +415,25 @@ export default function MusicPage() {
                 <div className="max-w-5xl mx-auto">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Modalidades y Costos</h2>
-                        <p className="text-lg text-muted-foreground">Opciones flexibles para todos los niveles y objetivos.</p>
+                        <p className="text-lg text-muted-foreground font-sans">Opciones flexibles para todos los niveles y objetivos.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                         {MODALIDADES.map((mod, i) => (
                             <div key={i} className="bg-card p-8 rounded-2xl border border-border flex flex-col hover:border-accent/50 transition-colors">
                                 <h3 className="text-2xl font-bold mb-2">{mod.title}</h3>
-                                <div className="inline-flex items-center gap-1 text-sm font-medium text-accent bg-accent/10 px-3 py-1 rounded-full mb-6 w-fit">
+                                <div className="inline-flex items-center gap-1 text-sm font-medium text-accent bg-accent/10 px-3 py-1 rounded-full mb-6 w-fit font-sans">
                                     <Clock className="w-4 h-4" /> {mod.duration}
                                 </div>
-                                <p className="text-muted-foreground font-light text-sm mb-8 flex-1">{mod.desc}</p>
-                                <div className="pt-6 border-t border-border">
+                                <p className="text-muted-foreground font-light text-sm mb-8 flex-1 font-sans">{mod.desc}</p>
+                                <div className="pt-6 border-t border-border font-sans">
                                     <p className="text-xl font-bold">{mod.price}</p>
                                 </div>
                             </div>
                         ))}
                     </div>
 
-                    <p className="text-center text-sm text-muted-foreground bg-secondary/30 p-4 rounded-lg">
+                    <p className="text-center text-sm text-muted-foreground bg-secondary/30 p-4 rounded-lg font-sans">
                         <span className="font-semibold text-foreground">Importante sobre precios: </span>
                         {MUSIC_CONFIG.pricing.rangeDisclaimer}
                     </p>
@@ -431,19 +445,18 @@ export default function MusicPage() {
                 <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                     <div>
                         <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">A domicilio en<br />Santa Fe y Huixquilucan</h2>
-                        <p className="text-lg text-muted-foreground mb-8">
+                        <p className="text-lg text-muted-foreground mb-8 font-sans">
                             Disfruta de la comodidad de aprender música en tu propia casa. Llevo el método y la didáctica directamente a tu espacio.
                         </p>
-                        <p className="text-sm bg-background p-4 border border-border rounded-lg inline-flex items-center gap-3">
+                        <p className="text-sm bg-background p-4 border border-border rounded-lg inline-flex items-center gap-3 font-sans">
                             <MapPin className="text-accent shrink-0" />
                             <span>{MUSIC_CONFIG.zones.surchargeLogic} Escríbeme para cotizar tu ubicación exacta.</span>
                         </p>
                     </div>
                     <div className="relative aspect-video bg-background rounded-2xl overflow-hidden shadow-sm border border-border">
-                        {/* PLACEHOLDER: zone-map.webp */}
-                        <div className="absolute inset-0 flex items-center justify-center flex-col text-muted-foreground p-8 text-center border-2 border-dashed border-border m-4 rounded-xl">
+                        <div className="absolute inset-0 flex items-center justify-center flex-col text-muted-foreground p-8 text-center border-2 border-dashed border-border m-4 rounded-xl font-sans">
                             <MapPin className="w-12 h-12 mb-4" />
-                            <span className="font-mono text-sm">[PLACEHOLDER: /assets/img/zone-map.webp]</span>
+                            <span className="font-mono text-sm">[PENDIENTE: Mapa de zona personalizado]</span>
                             <span className="text-xs mt-2">Static image map highlighting Santa Fe / Huixquilucan</span>
                         </div>
                     </div>
@@ -454,17 +467,17 @@ export default function MusicPage() {
             <section className="py-24 px-6">
                 <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-16 items-center">
                     <div className="w-full md:w-1/3 relative aspect-[3/4] bg-secondary/30 rounded-2xl overflow-hidden shadow-sm border border-border shrink-0">
-                        {/* PLACEHOLDER: hero-portrait.webp */}
-                        <div className="absolute inset-0 flex items-center justify-center flex-col text-muted-foreground p-6 text-center border-2 border-dashed border-border m-4 rounded-xl">
-                            <Users className="w-12 h-12 mb-4" />
-                            <span className="font-mono text-sm">[PLACEHOLDER: /assets/img/hero-portrait.webp]</span>
-                            <span className="text-xs mt-2">Clean, friendly professional teacher portrait</span>
-                        </div>
+                        <Image
+                            src="/assets/img/hero-portrait.png"
+                            alt="Alejandro AG - Music Teacher"
+                            fill
+                            className="object-cover"
+                        />
                     </div>
                     <div>
-                        <h2 className="text-3xl md:text-5xl font-bold mb-6">Tu Maestro</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">Tu Maestro</h2>
                         <h3 className="text-xl font-serif italic text-accent mb-8">Alejandro AG</h3>
-                        <div className="space-y-6 text-lg text-muted-foreground font-light leading-relaxed">
+                        <div className="space-y-6 text-lg text-muted-foreground font-light leading-relaxed font-sans">
                             <p>
                                 Con más de 10 años de experiencia tocando y enseñando, he desarrollado un método donde
                                 la frustración musical desaparece. Mi filosofía es simple: la teoría debe estar al servicio de la práctica, no al revés.
@@ -474,7 +487,7 @@ export default function MusicPage() {
                                 es reconectar esa pasión enseñándote a hacer música desde la sesión uno.
                             </p>
                         </div>
-                        <ul className="mt-8 space-y-3 font-medium text-foreground">
+                        <ul className="mt-8 space-y-3 font-medium text-foreground font-sans text-sm">
                             <li className="flex gap-2 items-center"><CheckCircle className="w-5 h-5 text-accent" /> Especialista en enseñanza práctica</li>
                             <li className="flex gap-2 items-center"><CheckCircle className="w-5 h-5 text-accent" /> Pianista y multi-instrumentista</li>
                             <li className="flex gap-2 items-center"><CheckCircle className="w-5 h-5 text-accent" /> Experiencia en pedagogía infantil y adulta</li>
@@ -491,11 +504,11 @@ export default function MusicPage() {
                         {POLICIES_SNAPSHOT.map((p, i) => (
                             <div key={i} className="bg-background/10 p-4 rounded-lg flex items-start gap-3">
                                 <span className="text-accent shrink-0 mt-0.5">•</span>
-                                <span className="text-sm font-light text-background/90">{p}</span>
+                                <span className="text-sm font-light text-background/90 font-sans">{p}</span>
                             </div>
                         ))}
                     </div>
-                    <a href="/music/politicas" className="text-sm font-medium underline underline-offset-4 hover:text-accent transition-colors">
+                    <a href="/music/politicas" className="text-sm font-medium underline underline-offset-4 hover:text-accent transition-colors font-sans">
                         Ver Políticas Completas
                     </a>
                 </div>
@@ -523,7 +536,7 @@ export default function MusicPage() {
                 <div className="max-w-5xl mx-auto relative z-10 text-center">
                     <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter">¿Listo para hacer música?</h2>
 
-                    <WhatsAppButton variant="primary" className="!bg-accent !text-white hover:!bg-accent/90 px-12 py-6 text-xl shadow-xl shadow-accent/20 mb-16">
+                    <WhatsAppButton variant="primary" className="!bg-accent !text-white hover:!bg-accent/90 px-12 py-6 text-xl shadow-xl shadow-accent/20 mb-16 font-sans">
                         Agendar clase de prueba
                     </WhatsAppButton>
 
@@ -534,7 +547,7 @@ export default function MusicPage() {
             </section>
 
             {/* ════════════ FOOTER ════════════ */}
-            <footer className="py-12 px-6 border-t border-border/40 bg-background">
+            <footer className="py-12 px-6 border-t border-border/40 bg-background font-sans">
                 <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
                     <p className="text-sm text-muted-foreground">
                         © {new Date().getFullYear()} Alejandro AG. Clases de música.
@@ -549,3 +562,4 @@ export default function MusicPage() {
         </div>
     )
 }
+
