@@ -167,10 +167,10 @@ function LeadForm() {
 
     if (status === "success") {
         return (
-            <div className="p-8 text-center bg-green-50 rounded-xl border border-green-200">
+            <div className="p-8 text-center bg-green-950/20 rounded-xl border border-green-900/50">
                 <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-green-900 mb-2">¡Gracias!</h3>
-                <p className="text-green-800">Tus datos han sido enviados. Te contactaré a la brevedad por WhatsApp.</p>
+                <h3 className="text-xl font-bold text-green-400 mb-2">¡Gracias!</h3>
+                <p className="text-green-300">Tus datos han sido enviados. Te contactaré a la brevedad por WhatsApp.</p>
             </div>
         )
     }
@@ -275,10 +275,10 @@ export default function MusicPage() {
                     </p>
 
                     <div className="flex flex-col items-center justify-center gap-4">
-                        <WhatsAppButton variant="primary" className="w-full sm:w-auto px-10 py-5 text-lg shadow-xl shadow-green-500/20 font-sans">
+                        <WhatsAppButton variant="primary" className="w-full sm:w-auto px-10 py-5 text-lg shadow-xl shadow-primary/20 font-sans">
                             Agendar clase de prueba
                         </WhatsAppButton>
-                        <p className="text-sm text-muted-foreground/80 mt-2 max-w-sm shrink-0 font-sans">
+                        <p className="text-sm text-muted-foreground mt-2 max-w-sm shrink-0 font-sans">
                             Respondo por WhatsApp. Te propongo 2–3 horarios y confirmamos en minutos.
                         </p>
                         <a
@@ -536,7 +536,7 @@ export default function MusicPage() {
                 <div className="max-w-5xl mx-auto relative z-10 text-center">
                     <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter">¿Listo para hacer música?</h2>
 
-                    <WhatsAppButton variant="primary" className="!bg-accent !text-white hover:!bg-accent/90 px-12 py-6 text-xl shadow-xl shadow-accent/20 mb-16 font-sans">
+                    <WhatsAppButton variant="accent" className="px-12 py-6 text-xl shadow-xl shadow-accent/20 mb-16 font-sans">
                         Agendar clase de prueba
                     </WhatsAppButton>
 
