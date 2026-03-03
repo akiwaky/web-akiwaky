@@ -51,6 +51,24 @@ const PILLARS = [
         ctaText: "Ver quick wins",
         ctaHref: "#paquetes",
     },
+    {
+        stepNumber: 3,
+        icon: Users,
+        title: "Scale",
+        subtitle: "Orquestación custom + IA conversacional",
+        positioning:
+            "Cuando ya hay señal de ROI y volumen, escalamos con orquestación robusta e integraciones a medida — y, si aplica, un AI agent en web/WhatsApp/helpdesk con handoff humano.",
+        deliverables: [
+            "Workflows multi-paso con lógica avanzada (webhooks/APIs cuando aplique)",
+            "Conectores custom donde no existe integración estándar",
+            "Confiabilidad + seguridad: roles, secretos, backups, alertas, hardening y control de accesos",
+            "AI Agent / Chatbot (Helpdesk o Web/WhatsApp conectado a tu base de conocimiento y CRM)",
+            "Retainer: mejoras mensuales + soporte + governance (roadmap trimestral)",
+        ],
+        bestFor: "Organizaciones que ya validaron valor con no-code y quieren escalar confiabilidad, canales y personalización.",
+        ctaText: "Hablemos de un retainer",
+        ctaHref: "#contacto",
+    },
 ]
 
 const PROCESS_STEPS = ["Descubrimiento", "Diseño", "Build", "Pilot", "Handoff"]
@@ -82,7 +100,7 @@ export function Services() {
                 </motion.div>
 
                 {/* Pillar Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-16 max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-16">
                     {PILLARS.map((pillar, index) => (
                         <ServiceCard key={pillar.title} {...pillar} index={index} />
                     ))}
