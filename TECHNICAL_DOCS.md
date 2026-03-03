@@ -49,7 +49,10 @@ Specifically engineered as a conversion-first MVP (Minimum Viable Product).
   - `/music/gracias`: Form submission success page.
 
 ### 4.2 Design System
-- **Color Palette**: Minimalist charcoal (#111111) text on warm off-white backgrounds, with gold/accent highlights for CTA elements.
+- **Color Palette (Luxury Dark Mode)**: 
+  - Background/Text: Deep Onyx (#131515) background with Pastel Petal (#fecee9) foreground to establish a bespoke, luxurious feel.
+  - Brand Colors: Plum (#eb9fef) as Primary, Verdigris (#339989) as Secondary.
+  - Accents/UI: Champagne Gold (#D4AF37) for highlights, borders, and rings. Midnight Obsidian (#0a0b0b) for nested cards to add 3D depth.
 - **Typography**: Optimized font hierarchy (Sans-serif for body/ui, Serif for quotes and editorial emphasizes).
 - **Responsive Philosophy**: Mobile-first grid layouts with generous whitespace.
 
@@ -79,3 +82,4 @@ Local images are stored in `public/assets/img/`.
 
 ---
 *Created on 2026-02-21* 
+*Last updated on 2026-03-02*

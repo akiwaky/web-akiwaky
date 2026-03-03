@@ -24,8 +24,8 @@ export const MUSIC_CONFIG = {
         reschedulingLimit: "1 por mes",
     },
 
-    // n8n Integrations (MVP Placeholders)
+    // n8n Integrations
     integrations: {
-        n8nWebhookUrl: "https://hook.us1.make.com/placeholder-webhook-url",
+        n8nWebhookUrl: "https://n8n.akiwaky.cloud/webhook-test/music/test-lead",
     }
 }
