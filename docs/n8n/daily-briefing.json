@@ -1,0 +1,456 @@
+{
+    "name": "Daily Briefing (On-Demand)",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "GET",
+                "path": "daily-briefing",
+                "responseMode": "responseNode",
+                "options": {
+                    "allowOptions": true
+                }
+            },
+            "name": "Webhook Trigger",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                0,
+                200
+            ]
+        },
+        {
+            "parameters": {
+                "values": {
+                    "string": [
+                        {
+                            "name": "weather",
+                            "value": ""
+                        },
+                        {
+                            "name": "reddit_popular",
+                            "value": ""
+                        },
+                        {
+                            "name": "reddit_worldnews",
+                            "value": ""
+                        },
+                        {
+                            "name": "f1_update",
+                            "value": ""
+                        },
+                        {
+                            "name": "ligamx_scores",
+                            "value": ""
+                        },
+                        {
+                            "name": "nfl_scores",
+                            "value": ""
+                        },
+                        {
+                            "name": "nba_scores",
+                            "value": ""
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "name": "Initialize Variables",
+            "type": "n8n-nodes-base.set",
+            "typeVersion": 1,
+            "position": [
+                200,
+                200
+            ]
+        },
+        {
+            "parameters": {
+                "jsCode": "return { ...$input.item.json, triggerEpochMs: Date.now(), generatedAtISO: new Date().toISOString() };"
+            },
+            "name": "Add Timestamps",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                400,
+                200
+            ]
+        },
+        {
+            "parameters": {},
+            "name": "Splitter",
+            "type": "n8n-nodes-base.noOp",
+            "typeVersion": 1,
+            "position": [
+                600,
+                200
+            ]
+        },
+        {
+            "parameters": {
+                "url": "https://api.openweathermap.org/data/2.5/weather?zip=06470,MX&units=metric",
+                "options": {
+                    "allowUnauthorizedCerts": false
+                }
+            },
+            "name": "Weather HTTP",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4,
+            "position": [
+                800,
+                0
+            ],
+            "credentials": {
+                "httpQueryAuth": {
+                    "id": "OPENWEATHER_API_KEY",
+                    "name": "OpenWeather API Key (Example Name)"
+                }
+            },
+            "continueOnFail": true
+        },
+        {
+            "parameters": {
+                "jsCode": "if (!$input.item.json || $input.item.json.cod !== 200) return { weather: '' };\nconst data = $input.item.json;\nconst temp = Math.round(data.main.temp);\nconst desc = data.weather[0].main;\nreturn { weather: `${temp}°C · ${desc}` };"
+            },
+            "name": "Format Weather",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                1000,
+                0
+            ],
+            "continueOnFail": true
+        },
+        {
+            "parameters": {
+                "url": "https://www.reddit.com/r/popular/top.json?t=day&limit=15",
+                "options": {
+                    "headers": {
+                        "User-Agent": "Mozilla/5.0 (Daily Briefing Bot)"
+                    }
+                }
+            },
+            "name": "Reddit Popular HTTP",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4,
+            "position": [
+                800,
+                200
+            ],
+            "continueOnFail": true
+        },
+        {
+            "parameters": {
+                "url": "https://www.reddit.com/r/worldnews/top.json?t=day&limit=15",
+                "options": {
+                    "headers": {
+                        "User-Agent": "Mozilla/5.0 (Daily Briefing Bot)"
+                    }
+                }
+            },
+            "name": "Reddit Worldnews HTTP",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4,
+            "position": [
+                800,
+                400
+            ],
+            "continueOnFail": true
+        },
+        {
+            "parameters": {
+                "mode": "combine",
+                "combineBy": "multiplex"
+            },
+            "name": "Merge Reddit",
+            "type": "n8n-nodes-base.merge",
+            "typeVersion": 2,
+            "position": [
+                1000,
+                300
+            ],
+            "continueOnFail": true
+        },
+        {
+            "parameters": {
+                "jsCode": "function escapeHtml(str) { return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/'/g, '&#39;'); }\nlet popular = '', world = '';\nif ($input.item.json.data) {\n  const nowSec = Date.now() / 1000;\n  const posts = $input.item.json.data.children.map(c => c.data).filter(p => (nowSec - p.created_utc) <= 36000);\n  const popularHtml = posts.slice(0,3).map(p => `<li><a href=\"https://reddit.com${escapeHtml(p.permalink)}\" target=\"_blank\">${escapeHtml(p.title)}</a></li>`).join('');\n  popular = popularHtml;\n}\nreturn { reddit_popular_html: popular, reddit_worldnews_html: world };"
+            },
+            "name": "Format Reddit",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                1200,
+                300
+            ],
+            "continueOnFail": true
+        },
+        {
+            "parameters": {
+                "url": "https://www.thesportsdb.com/api/v1/json/123/eventspastleague.php?id=4350"
+            },
+            "name": "LigaMX HTTP",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4,
+            "position": [
+                800,
+                600
+            ],
+            "continueOnFail": true
+        },
+        {
+            "parameters": {
+                "url": "https://www.thesportsdb.com/api/v1/json/123/eventspastleague.php?id=4391"
+            },
+            "name": "NFL HTTP",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4,
+            "position": [
+                800,
+                800
+            ],
+            "continueOnFail": true
+        },
+        {
+            "parameters": {
+                "url": "https://www.thesportsdb.com/api/v1/json/123/eventspastleague.php?id=4387"
+            },
+            "name": "NBA HTTP",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4,
+            "position": [
+                800,
+                1000
+            ],
+            "continueOnFail": true
+        },
+        {
+            "parameters": {
+                "jsCode": "let html = '';\nif ($input.item.json.events) {\n  let events = $input.item.json.events.slice(0, 5);\n  html = events.map(e => `<li><div class=\"sport-score\"><span>${e.strHomeTeam}</span><span>${e.intHomeScore} - ${e.intAwayScore}</span><span>${e.strAwayTeam}</span></div></li>`).join('');\n}\nreturn { ligamx_scores_html: html, nfl_scores_html: '', nba_scores_html: '' };"
+            },
+            "name": "League Formatter",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                1200,
+                800
+            ],
+            "continueOnFail": true
+        },
+        {
+            "parameters": {
+                "mode": "combine",
+                "combineBy": "multiplex"
+            },
+            "name": "Merge All",
+            "type": "n8n-nodes-base.merge",
+            "typeVersion": 2,
+            "position": [
+                1600,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "jsCode": "const data = $input.item.json;\nlet html = '<div class=\"briefing\">';\n\nif (data.weather) html += `<div class=\"briefing-card weather-card\"><h2>Weather</h2><p class=\"weather-text\">${data.weather}</p></div>`;\n\nif (data.reddit_popular_html || data.reddit_worldnews_html) {\n  html += '<div class=\"briefing-card\"><h2>News</h2><ul>';\n  if (data.reddit_popular_html) html += data.reddit_popular_html;\n  if (data.reddit_worldnews_html) html += data.reddit_worldnews_html;\n  html += '</ul></div>';\n}\n\nif (data.ligamx_scores_html || data.nfl_scores_html || data.nba_scores_html) {\n  html += '<div class=\"briefing-card\"><h2>Sports</h2><ul>';\n  if (data.ligamx_scores_html) html += data.ligamx_scores_html;\n  html += '</ul></div>';\n}\n\nhtml += '</div>';\nreturn { html };"
+            },
+            "name": "Consolidate HTML",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                1800,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "respondWith": "text",
+                "responseBody": "={{ $json.html }}",
+                "options": {
+                    "responseHeaders": {
+                        "entries": [
+                            {
+                                "name": "Content-Type",
+                                "value": "text/html; charset=utf-8"
+                            },
+                            {
+                                "name": "Access-Control-Allow-Origin",
+                                "value": "https://akiwaky.cloud"
+                            },
+                            {
+                                "name": "Access-Control-Allow-Methods",
+                                "value": "GET, OPTIONS"
+                            },
+                            {
+                                "name": "Cache-Control",
+                                "value": "no-store"
+                            }
+                        ]
+                    }
+                }
+            },
+            "name": "Respond to Webhook",
+            "type": "n8n-nodes-base.webhookResponse",
+            "typeVersion": 1,
+            "position": [
+                2000,
+                300
+            ]
+        }
+    ],
+    "connections": {
+        "Webhook Trigger": {
+            "main": [
+                [
+                    {
+                        "node": "Initialize Variables",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Initialize Variables": {
+            "main": [
+                [
+                    {
+                        "node": "Add Timestamps",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Add Timestamps": {
+            "main": [
+                [
+                    {
+                        "node": "Splitter",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Splitter": {
+            "main": [
+                [
+                    {
+                        "node": "Weather HTTP",
+                        "type": "main",
+                        "index": 0
+                    },
+                    {
+                        "node": "Reddit Popular HTTP",
+                        "type": "main",
+                        "index": 0
+                    },
+                    {
+                        "node": "LigaMX HTTP",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Weather HTTP": {
+            "main": [
+                [
+                    {
+                        "node": "Format Weather",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Reddit Popular HTTP": {
+            "main": [
+                [
+                    {
+                        "node": "Merge Reddit",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "LigaMX HTTP": {
+            "main": [
+                [
+                    {
+                        "node": "League Formatter",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "League Formatter": {
+            "main": [
+                [
+                    {
+                        "node": "Merge All",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Format Weather": {
+            "main": [
+                [
+                    {
+                        "node": "Merge All",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Merge Reddit": {
+            "main": [
+                [
+                    {
+                        "node": "Format Reddit",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Format Reddit": {
+            "main": [
+                [
+                    {
+                        "node": "Merge All",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Merge All": {
+            "main": [
+                [
+                    {
+                        "node": "Consolidate HTML",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Consolidate HTML": {
+            "main": [
+                [
+                    {
+                        "node": "Respond to Webhook",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {
+        "executionOrder": "v1"
+    }
+}

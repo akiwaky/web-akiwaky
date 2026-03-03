@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "n8n": {
+      "command": "n8n-mcp",
+      "env": {
+        "N8N_HOST": "https://n8n.akiwaky.cloud/",
+        "N8N_API_KEY": "YOUR_API_KEY_HERE"
+      }
+    }
+  }
+}

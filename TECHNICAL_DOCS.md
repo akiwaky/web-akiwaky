@@ -70,6 +70,11 @@ The project uses a configuration-driven approach. Most business logic variables 
   - `npm run build`: Perform a production build (optimizes images, minifies code, generates static pages).
   - `npm run lint`: Run ESLint for code quality checks.
 
+### 5.4 n8n Infrastructure
+- **Server URL**: `https://n8n.akiwaky.cloud/`
+- **Webhook Base URL**: `https://webhooks.akiwaky.cloud/`
+- **Integration**: Model Context Protocol (MCP) server for live workflow interaction.
+
 ### 5.3 Static Site Generation (SSG)
 All pages utilize Next.js Static Generation where possible to ensure near-instant load times and optimized SEO performance.
 
@@ -79,6 +84,23 @@ Local images are stored in `public/assets/img/`.
 - `hands-on-keys.png`: Contextual landing image.
 - `piano-strings.png`: Decorative background texture.
 - `piano-keys-geo.png`: Geometric decorative element.
+
+## 7. Available AI Skills
+This repository incorporates specialized AI agent skills to accelerate development, automation, and marketing. These are located in `.agent/skills/`.
+
+### 7.1 Development & Workflows
+- **Agents**: `backend-agent`, `frontend-agent`, `mobile-agent`, `qa-agent`, `pm-agent`
+- **Workflows & Infra**: `commit`, `debug-agent`, `developer-workflow`, `multi-agent-workflow`, `orchestrator`, `terraform-infra-engineer`
+
+### 7.2 n8n Automation Mastery
+- **Node & Config**: `n8n-node-configuration`, `n8n-expression-syntax`, `n8n-mcp-tools-expert`
+- **Logic & Patterns**: `n8n-workflow-patterns`, `n8n-validation-expert`, `n8n-code-javascript`, `n8n-code-python`
+
+### 7.3 Marketing, CRO & Strategy
+- **Copy & Content**: `copywriting`, `copy-editing`, `content-strategy`, `social-content`, `email-sequence`, `cold-email`, `ad-creative`
+- **CRO & UX**: `page-cro`, `form-cro`, `popup-cro`, `onboarding-cro`, `signup-flow-cro`, `paywall-upgrade-cro`, `ab-test-setup`
+- **Search & Structure**: `seo-audit`, `ai-seo`, `schema-markup`, `programmatic-seo`, `site-architecture`
+- **Strategy & Growth**: `marketing-ideas`, `marketing-psychology`, `product-marketing-context`, `free-tool-strategy`, `launch-strategy`, `pricing-strategy`, `competitor-alternatives`, `sales-enablement`, `referral-program`, `revops`, `analytics-tracking`, `paid-ads`, `churn-prevention`
 
 ---
 *Created on 2026-02-21* 

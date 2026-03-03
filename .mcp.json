@@ -1,0 +1,11 @@
+{
+    "mcpServers": {
+        "n8n": {
+            "command": "n8n-mcp",
+            "env": {
+                "N8N_HOST": "https://n8n.akiwaky.cloud/",
+                "N8N_API_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYzc4MDVjYi04Y2JmLTQzNjUtYTViYi0xZGMzYTE1OWUyNDkiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiZWY5ZjMxZDUtMzJkNy00MmYzLTkxYjItNzQ0MzEzNmQyOGY2IiwiaWF0IjoxNzcyNTA5OTg5LCJleHAiOjE3NzUwMjMyMDB9.k5cdl3zbOgpb3_VjYTUojrY6tm2qzH2YN-GYjtK_wGM"
+            }
+        }
+    }
+}
