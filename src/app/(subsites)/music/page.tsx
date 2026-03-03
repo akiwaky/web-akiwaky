@@ -253,7 +253,7 @@ export default function MusicPage() {
             <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden border-b border-border/40">
                 <div className="absolute inset-0 z-0 opacity-10">
                     <Image
-                        src="/assets/img/piano-strings.png"
+                        src="/music-assets/piano-strings.png"
                         alt="Piano Strings Background"
                         fill
                         className="object-cover"
@@ -363,7 +363,7 @@ export default function MusicPage() {
 
                         <div className="order-1 md:order-2 relative aspect-[4/5] bg-background/5 rounded-2xl overflow-hidden shadow-2xl border border-background/20">
                             <Image
-                                src="/assets/img/hands-on-keys.png"
+                                src="/music-assets/hands-on-keys.png"
                                 alt="Hands on piano keys"
                                 fill
                                 className="object-cover"
@@ -377,8 +377,8 @@ export default function MusicPage() {
             <section className="py-24 bg-secondary/10 border-y border-border/40 relative overflow-hidden">
                 <div className="absolute -right-20 -bottom-20 w-80 h-80 opacity-5 rotate-12 z-0 hidden md:block">
                     <Image
-                        src="/assets/img/piano-keys-geo.png"
-                        alt="Decorative Piano Keys"
+                        src="/music-assets/piano-keys-geo.png"
+                        alt=""
                         fill
                         className="object-contain"
                     />
@@ -468,7 +468,7 @@ export default function MusicPage() {
                 <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-16 items-center">
                     <div className="w-full md:w-1/3 relative aspect-[3/4] bg-secondary/30 rounded-2xl overflow-hidden shadow-sm border border-border shrink-0">
                         <Image
-                            src="/assets/img/hero-portrait.png"
+                            src="/music-assets/hero-portrait.png"
                             alt="Alejandro AG - Music Teacher"
                             fill
                             className="object-cover"

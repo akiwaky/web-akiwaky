@@ -13,9 +13,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Alejandro AG — Integraciones & Automatización con IA",
+  metadataBase: new URL("https://akiwaky.cloud"),
+  title: "Alejandro AG — Herramientas Internas y Automatizaciones",
   description:
-    "De ideas de IA a sistemas que sí se usan. Diagnóstico, integraciones robustas y enablement para tu equipo. akiwaky.cloud",
+    "De ideas de IA a sistemas que sí se usan. Diagnóstico, integraciones robustas y enablement (n8n, APIs, Retool, Claude/OpenAI) para tu equipo.",
+  openGraph: {
+    title: "Alejandro AG — Herramientas Internas y Automatizaciones",
+    description: "Diagnóstico, integraciones robustas y enablement para tu equipo.",
+    url: "https://akiwaky.cloud",
+    siteName: "Alejandro AG",
+    locale: "es_MX",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Alejandro AG — Automatización con IA",
+    description: "Diagnóstico, integraciones robustas y enablement para tu equipo.",
+  },
 };
 
 export default function RootLayout({

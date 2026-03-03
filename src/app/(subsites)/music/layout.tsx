@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import { SubsiteHeader } from "@/components/layout/subsite-header";
 import { SubsiteFooter } from "@/components/layout/subsite-footer";
+
+export const metadata: Metadata = {
+    robots: { index: false, follow: false }
+};
 
 export default function SubsiteLayout({
     children,
