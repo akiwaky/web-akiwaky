@@ -9,55 +9,47 @@ const PILLARS = [
         stepNumber: 1,
         icon: Search,
         title: "Identify",
-        subtitle: "Diagnóstico & ROI",
+        subtitle: "Diagnóstico + Caso de negocio (ROI)",
         positioning:
-            "Encuentro dónde tu operación pierde horas y dinero — y calculo exactamente cuánto puedes recuperar con automatización.",
+            "Encuentro dónde tu operación pierde horas y dinero — y lo convierto en un plan accionable con retorno estimado.",
         deliverables: [
-            "Mapa de procesos actuales y pain points",
-            "Backlog priorizado de oportunidades",
-            "3 iniciativas con estimación de ROI",
-            "Benchmark vs. mejores prácticas del sector",
-            "Reporte ejecutivo con próximos pasos",
+            "Mapa “as-is” (2 procesos) + tiempos/costos (dónde se van las horas)",
+            "Pain points priorizados por impacto y facilidad (80/20)",
+            "1–2 iniciativas propuestas con estimación de ROI (ahorro, riesgo, calidad, velocidad)",
+            "Benchmark vs. buenas prácticas del sector (lo mínimo que “debería existir”)",
+            "Reporte ejecutivo + próximos pasos (qué hacer primero, con quién, y cuándo)",
         ],
-        bestFor: "Equipos que saben que hay oportunidad pero no saben por dónde empezar.",
+        bestFor: "Equipos que saben que hay oportunidad, pero necesitan claridad y números para decidir.",
         ctaText: "Agenda un diagnóstico",
         ctaHref: "#contacto",
     },
     {
         stepNumber: 2,
         icon: Cog,
-        title: "Develop",
-        subtitle: "Integraciones & Automatización",
+        title: "Deploy",
+        subtitle: "Quick wins no-code + AI (sin proyectos pesados)",
         positioning:
-            "Convierto tu backlog en integraciones funcionando — conectando APIs, automatizando flujos y eliminando trabajo manual.",
+            "Activo automatizaciones ligeras con herramientas listas para usar (no-code) y AI out-of-the-box para que el equipo vea valor rápido.",
         deliverables: [
-            "1–2 automatizaciones en producción (n8n + APIs)",
-            "Conexión entre silos de datos",
-            "Observabilidad básica: logs y alertas",
-            "Tests y documentación técnica",
-            "Handoff limpio a tu equipo",
+            "Stack mínimo viable: una “fuente de verdad” + reglas básicas de datos",
+            "3–6 automatizaciones no-code con triggers, notificaciones y manejo de errores básico",
+            "Captura de demanda: landing + formulario + agenda + follow-ups (si aplica)",
+            "Triage con AI: clasificación, resumen y routing de leads/tickets (sin custom code)",
+            "Documentación operativa + ownership (quién opera qué)",
         ],
-        bestFor: "Empresas con procesos manuales listos para escalar.",
-        ctaText: "Ver paquetes",
+        tools: [
+            "Zapier / Make",
+            "Typeform / Tally",
+            "Calendly",
+            "HubSpot / Pipedrive",
+            "Airtable / Notion",
+            "Mailchimp / Brevo",
+            "Webflow / Framer",
+            "Google Workspace"
+        ],
+        bestFor: "Equipos que quieren resultados rápidos y medibles sin meter ingeniería pesada.",
+        ctaText: "Ver quick wins",
         ctaHref: "#paquetes",
-    },
-    {
-        stepNumber: 3,
-        icon: Users,
-        title: "Adopt",
-        subtitle: "Enablement & Mejora continua",
-        positioning:
-            "Me aseguro de que tu equipo adopte las herramientas, no solo las tenga. Entrenamiento, soporte y optimización mensual.",
-        deliverables: [
-            "Entrenamiento hands-on para tu equipo",
-            "Documentación operativa paso a paso",
-            "Roadmap trimestral de mejoras",
-            "Soporte reactivo y proactivo",
-            "Nuevas integraciones cada ciclo",
-        ],
-        bestFor: "Organizaciones que quieren un partner de automatización, no un proveedor one-shot.",
-        ctaText: "Hablemos de un retainer",
-        ctaHref: "#contacto",
     },
 ]
 
@@ -90,7 +82,7 @@ export function Services() {
                 </motion.div>
 
                 {/* Pillar Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-16 max-w-4xl mx-auto">
                     {PILLARS.map((pillar, index) => (
                         <ServiceCard key={pillar.title} {...pillar} index={index} />
                     ))}

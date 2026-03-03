@@ -12,6 +12,7 @@ interface ServiceCardProps {
     subtitle: string
     positioning: string
     deliverables: string[]
+    tools?: string[]
     bestFor: string
     ctaText: string
     ctaHref: string
@@ -25,6 +26,7 @@ export function ServiceCard({
     subtitle,
     positioning,
     deliverables,
+    tools,
     bestFor,
     ctaText,
     ctaHref,
@@ -64,7 +66,7 @@ export function ServiceCard({
                 <p className="text-sm text-foreground/80 leading-relaxed mb-6">{positioning}</p>
 
                 {/* Deliverables */}
-                <div className="mb-6 flex-1">
+                <div className="mb-6">
                     <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
                         Qué entrego
                     </p>
@@ -78,9 +80,24 @@ export function ServiceCard({
                     </ul>
                 </div>
 
+                {/* Tools */}
+                {tools && tools.length > 0 && (
+                    <div className="mb-6 flex-1">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+                            Tools posibles a implementar
+                        </p>
+                        <div className="flex flex-wrap gap-2 text-xs font-medium text-foreground/80">
+                            {tools.map((t, i) => (
+                                <span key={i} className="bg-secondary/50 border border-border px-2 py-1 rounded-md">{t}</span>
+                            ))}
+                        </div>
+                    </div>
+                )}
+                {(!tools || tools.length === 0) && <div className="flex-1" />}
+
                 {/* Best for */}
-                <p className="text-xs text-muted-foreground italic mb-6">
-                    <span className="font-semibold not-italic">Best for:</span> {bestFor}
+                <p className="text-sm text-foreground/80 italic mb-6">
+                    <span className="font-semibold not-italic">Ideal para:</span> {bestFor}
                 </p>
 
                 {/* CTA */}
