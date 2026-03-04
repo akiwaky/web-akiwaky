@@ -74,6 +74,7 @@ The project uses a configuration-driven approach. Most business logic variables 
 - **Server URL**: `https://n8n.akiwaky.cloud/`
 - **Webhook Base URL**: `https://webhooks.akiwaky.cloud/`
 - **Integration**: Model Context Protocol (MCP) server for live workflow interaction.
+- **Security Notice**: Do NOT commit `.mcp.json` or `deploy_n8n.py` to the repository. These files contain sensitive `N8N_API_KEY` and `CF-Access-Client-Secret` headers required to bypass Cloudflare Zero Trust during local CLI automation. All such tools are securely configured in `~/.gemini/antigravity/mcp_config.json` outside of source control.
 
 ### 5.3 Static Site Generation (SSG)
 All pages utilize Next.js Static Generation where possible to ensure near-instant load times and optimized SEO performance.

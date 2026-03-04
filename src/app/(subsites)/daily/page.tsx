@@ -31,7 +31,8 @@ export default function DailyBriefingPage() {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            const html = await response.text();
+            const data = await response.json();
+            const html = data.html || data[0]?.html || '';
             setBriefingHtml(html);
 
             // Format time nicely

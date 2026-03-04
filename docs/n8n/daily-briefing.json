@@ -5,10 +5,8 @@
             "parameters": {
                 "httpMethod": "GET",
                 "path": "daily-briefing",
-                "responseMode": "responseNode",
-                "options": {
-                    "allowOptions": true
-                }
+                "responseMode": "lastNode",
+                "options": {}
             },
             "name": "Webhook Trigger",
             "type": "n8n-nodes-base.webhook",
@@ -158,7 +156,7 @@
         {
             "parameters": {
                 "mode": "combine",
-                "combineBy": "multiplex"
+                "combineBy": "combineAll"
             },
             "name": "Merge Reddit",
             "type": "n8n-nodes-base.merge",
@@ -237,7 +235,7 @@
         {
             "parameters": {
                 "mode": "combine",
-                "combineBy": "multiplex"
+                "combineBy": "combineAll"
             },
             "name": "Merge All",
             "type": "n8n-nodes-base.merge",
@@ -256,41 +254,6 @@
             "typeVersion": 2,
             "position": [
                 1800,
-                300
-            ]
-        },
-        {
-            "parameters": {
-                "respondWith": "text",
-                "responseBody": "={{ $json.html }}",
-                "options": {
-                    "responseHeaders": {
-                        "entries": [
-                            {
-                                "name": "Content-Type",
-                                "value": "text/html; charset=utf-8"
-                            },
-                            {
-                                "name": "Access-Control-Allow-Origin",
-                                "value": "https://akiwaky.cloud"
-                            },
-                            {
-                                "name": "Access-Control-Allow-Methods",
-                                "value": "GET, OPTIONS"
-                            },
-                            {
-                                "name": "Cache-Control",
-                                "value": "no-store"
-                            }
-                        ]
-                    }
-                }
-            },
-            "name": "Respond to Webhook",
-            "type": "n8n-nodes-base.webhookResponse",
-            "typeVersion": 1,
-            "position": [
-                2000,
                 300
             ]
         }
@@ -432,17 +395,6 @@
                 [
                     {
                         "node": "Consolidate HTML",
-                        "type": "main",
-                        "index": 0
-                    }
-                ]
-            ]
-        },
-        "Consolidate HTML": {
-            "main": [
-                [
-                    {
-                        "node": "Respond to Webhook",
                         "type": "main",
                         "index": 0
                     }
