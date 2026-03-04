@@ -315,7 +315,7 @@ export default function MusicPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                         {TESTIMONIALS.map((t, i) => (
                             <div key={i} className="bg-secondary/20 p-8 rounded-2xl border border-border/40">
-                                <p className="text-lg font-serif italic mb-6 leading-relaxed">"{t.quote}"</p>
+                                <p className="text-lg font-serif italic mb-6 leading-relaxed">&quot;{t.quote}&quot;</p>
                                 <div className="flex items-center gap-4">
                                     <div className="w-12 h-12 bg-foreground/10 rounded-full flex items-center justify-center text-foreground font-bold">
                                         {t.name.charAt(0)}

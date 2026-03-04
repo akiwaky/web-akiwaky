@@ -21,12 +21,12 @@ export function Story() {
                         </h2>
                         <div className="prose prose-lg dark:prose-invert">
                             <p className="text-xl md:text-2xl leading-relaxed font-light text-foreground/90">
-                                I'm a senior backend engineer specializing in
+                                I&apos;m a senior backend engineer specializing in
                                 <span className="font-semibold text-foreground"> integrations and automation</span>.
                             </p>
                             <p className="text-muted-foreground mt-6">
                                 With deep experience in APIs, webhooks, and tools like n8n, I bridge the gap between
-                                industrial data systems (PI historians) and modern web applications. I've led global
+                                industrial data systems (PI historians) and modern web applications. I&apos;ve led global
                                 projects that transform disjointed data into actionable insights.
                             </p>
                         </div>

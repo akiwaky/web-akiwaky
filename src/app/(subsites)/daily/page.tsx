@@ -28,12 +28,19 @@ export default function DailyBriefingPage() {
             clearTimeout(timeoutId);
 
             if (!response.ok) {
+                if (response.status === 404) throw new Error("Webhook not found (Workflow may be inactive).");
+                if (response.status === 522 || response.status === 502) throw new Error("n8n Server is currently offline or unreachable.");
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
             const data = await response.json();
             const html = data.html || data[0]?.html || '';
-            setBriefingHtml(html);
+
+            if (!html) {
+                setError("Webhook executed successfully, but no content was returned. Please check the n8n flow.");
+            } else {
+                setBriefingHtml(html);
+            }
 
             // Format time nicely
             const now = new Date();
@@ -44,6 +51,8 @@ export default function DailyBriefingPage() {
             // Check if it was an abort/timeout
             if (err instanceof Error && err.name === 'AbortError') {
                 setError("Request timed out. The server might be busy.");
+            } else if (err instanceof Error && err.message) {
+                setError(`Connection failed: ${err.message}`);
             } else {
                 setError(DAILY_CONFIG.ui.errorFallback);
             }

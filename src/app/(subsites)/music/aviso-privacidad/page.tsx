@@ -18,7 +18,7 @@ export default function AvisoPrivacidadPage() {
 
                 <div className="prose prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-12 prose-h2:mb-4 prose-p:text-muted-foreground prose-p:leading-relaxed max-w-none">
                     <p>
-                        En cumplimiento con lo establecido por la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (en adelante la "Ley"), te informamos sobre el tratamiento que se le dará a tus datos.
+                        En cumplimiento con lo establecido por la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (en adelante la &quot;Ley&quot;), te informamos sobre el tratamiento que se le dará a tus datos.
                     </p>
 
                     <h2>1. Identidad y domicilio del responsable</h2>

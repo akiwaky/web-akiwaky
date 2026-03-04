@@ -5,7 +5,7 @@
             "parameters": {
                 "httpMethod": "GET",
                 "path": "daily-briefing",
-                "responseMode": "lastNode",
+                "responseMode": "responseNode",
                 "options": {}
             },
             "name": "Webhook Trigger",
@@ -256,6 +256,28 @@
                 1800,
                 300
             ]
+        },
+        {
+            "parameters": {
+                "respondWith": "allIncomingItems",
+                "options": {
+                    "responseHeaders": {
+                        "entries": [
+                            {
+                                "name": "Access-Control-Allow-Origin",
+                                "value": "*"
+                            }
+                        ]
+                    }
+                }
+            },
+            "name": "Respond to Webhook",
+            "type": "n8n-nodes-base.respondToWebhook",
+            "typeVersion": 1,
+            "position": [
+                2000,
+                300
+            ]
         }
     ],
     "connections": {
@@ -395,6 +417,17 @@
                 [
                     {
                         "node": "Consolidate HTML",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Consolidate HTML": {
+            "main": [
+                [
+                    {
+                        "node": "Respond to Webhook",
                         "type": "main",
                         "index": 0
                     }
