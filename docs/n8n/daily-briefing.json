@@ -234,20 +234,7 @@
         },
         {
             "parameters": {
-                "mode": "combine",
-                "combineBy": "combineAll"
-            },
-            "name": "Merge All",
-            "type": "n8n-nodes-base.merge",
-            "typeVersion": 2,
-            "position": [
-                1600,
-                300
-            ]
-        },
-        {
-            "parameters": {
-                "jsCode": "const data = $input.item.json;\nlet html = '<div class=\"briefing\">';\n\nif (data.weather) html += `<div class=\"briefing-card weather-card\"><h2>Weather</h2><p class=\"weather-text\">${data.weather}</p></div>`;\n\nif (data.reddit_popular_html || data.reddit_worldnews_html) {\n  html += '<div class=\"briefing-card\"><h2>News</h2><ul>';\n  if (data.reddit_popular_html) html += data.reddit_popular_html;\n  if (data.reddit_worldnews_html) html += data.reddit_worldnews_html;\n  html += '</ul></div>';\n}\n\nif (data.ligamx_scores_html || data.nfl_scores_html || data.nba_scores_html) {\n  html += '<div class=\"briefing-card\"><h2>Sports</h2><ul>';\n  if (data.ligamx_scores_html) html += data.ligamx_scores_html;\n  html += '</ul></div>';\n}\n\nhtml += '</div>';\nreturn { html };"
+                "jsCode": "const weatherData = $items(\"Format Weather\")[0]?.json || {};\nconst redditData = $items(\"Format Reddit\")[0]?.json || {};\nconst sportsData = $items(\"League Formatter\")[0]?.json || {};\n\nlet html = '<div class=\"briefing\">';\n\nif (weatherData.weather) html += `<div class=\"briefing-card weather-card\"><h2>Weather</h2><p class=\"weather-text\">${weatherData.weather}</p></div>`;\n\nif (redditData.reddit_popular_html || redditData.reddit_worldnews_html) {\n  html += '<div class=\"briefing-card\"><h2>News</h2><ul>';\n  if (redditData.reddit_popular_html) html += redditData.reddit_popular_html;\n  if (redditData.reddit_worldnews_html) html += redditData.reddit_worldnews_html;\n  html += '</ul></div>';\n}\n\nif (sportsData.ligamx_scores_html || sportsData.nfl_scores_html || sportsData.nba_scores_html) {\n  html += '<div class=\"briefing-card\"><h2>Sports</h2><ul>';\n  if (sportsData.ligamx_scores_html) html += sportsData.ligamx_scores_html;\n  html += '</ul></div>';\n}\n\nhtml += '</div>';\nreturn { html };"
             },
             "name": "Consolidate HTML",
             "type": "n8n-nodes-base.code",
@@ -372,7 +359,7 @@
             "main": [
                 [
                     {
-                        "node": "Merge All",
+                        "node": "Consolidate HTML",
                         "type": "main",
                         "index": 0
                     }
@@ -383,18 +370,7 @@
             "main": [
                 [
                     {
-                        "node": "Merge All",
-                        "type": "main",
-                        "index": 0
-                    }
-                ]
-            ]
-        },
-        "Merge Reddit": {
-            "main": [
-                [
-                    {
-                        "node": "Format Reddit",
+                        "node": "Consolidate HTML",
                         "type": "main",
                         "index": 0
                     }
@@ -402,17 +378,6 @@
             ]
         },
         "Format Reddit": {
-            "main": [
-                [
-                    {
-                        "node": "Merge All",
-                        "type": "main",
-                        "index": 0
-                    }
-                ]
-            ]
-        },
-        "Merge All": {
             "main": [
                 [
                     {
