@@ -11,6 +11,7 @@ This repository contains the source code for Alejandro AG's personal website and
 - **Icons**: Lucide React
 - **UI Components**: Radix UI + Custom components
 - **Utilities**: `clsx`, `tailwind-merge` (for dynamic class management)
+- **Testing (QA)**: Vitest (Unit testing), Playwright (E2E/Smoke testing)
 
 ## 3. Asset Management
 Local images are stored in `public/assets/img/`.
