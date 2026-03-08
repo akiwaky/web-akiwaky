@@ -1,0 +1,45 @@
+{
+    "name": "PalNorte - SW - CMD Lost",
+    "nodes": [
+        {
+            "parameters": {},
+            "name": "When Executed by Another Workflow",
+            "type": "n8n-nodes-base.executeWorkflowTrigger",
+            "typeVersion": 1.1,
+            "position": [
+                240,
+                300
+            ],
+            "id": "trigger-lost"
+        },
+        {
+            "parameters": {
+                "jsCode": "const reply = 'Vamos a ubicarte.\\n\\nQue ves cerca de ti? Responde *uno*:\\n\\n- stage\\n- food\\n- entrance\\n- VIP\\n- no idea';\nreturn [{ json: { reply } }];"
+            },
+            "name": "Ask Location",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                460,
+                300
+            ],
+            "id": "code-lost-ask"
+        }
+    ],
+    "connections": {
+        "When Executed by Another Workflow": {
+            "main": [
+                [
+                    {
+                        "node": "Ask Location",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {
+        "executionOrder": "v1"
+    }
+}

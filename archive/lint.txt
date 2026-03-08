@@ -1,0 +1,26 @@
+﻿
+C:\Antigravity\Repo-Web\src\app\(subsites)\music\aviso-privacidad\page.tsx
+  21:161  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  21:165  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\Antigravity\Repo-Web\src\app\(subsites)\music\page.tsx
+    4:15   warning  'Metadata' is defined but never used                             @typescript-eslint/no-unused-vars
+   12:5    warning  'ArrowRight' is defined but never used                           @typescript-eslint/no-unused-vars
+  318:95   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  318:105  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\Antigravity\Repo-Web\src\components\gallery\gallery-manager.tsx
+  4:15  warning  'GalleryItem' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Antigravity\Repo-Web\src\components\gallery\lightbox.tsx
+  5:40  warning  'Info' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Antigravity\Repo-Web\src\components\gallery\masonry-grid.tsx
+  3:10  warning  'useState' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Antigravity\Repo-Web\src\components\sections\story.tsx
+  24:34   error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  29:103  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+Γ£û 11 problems (6 errors, 5 warnings)
+

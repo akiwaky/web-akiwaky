@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { DAILY_CONFIG } from "@/config/daily";
+import { getDailyBriefing } from "@/integrations/n8n/webhooks";
 import { Loader2, Sparkles, AlertCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -20,21 +21,9 @@ export default function DailyBriefingPage() {
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), DAILY_CONFIG.fetchTimeoutMs);
 
-            const response = await fetch(DAILY_CONFIG.n8nWebhookUrl, {
-                method: "GET",
-                signal: controller.signal,
-            });
+            const html = await getDailyBriefing(controller.signal);
 
             clearTimeout(timeoutId);
-
-            if (!response.ok) {
-                if (response.status === 404) throw new Error("Webhook not found (Workflow may be inactive).");
-                if (response.status === 522 || response.status === 502) throw new Error("n8n Server is currently offline or unreachable.");
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const data = await response.json();
-            const html = data.html || data[0]?.html || '';
 
             if (!html) {
                 setError("Webhook executed successfully, but no content was returned. Please check the n8n flow.");

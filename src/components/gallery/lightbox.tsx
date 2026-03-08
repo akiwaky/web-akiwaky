@@ -3,7 +3,7 @@
 import { useEffect, useCallback } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, Info, Camera, Aperture, Timer, Zap } from "lucide-react";
-import { type GalleryItem } from "@/lib/mock-gallery-data";
+import { type GalleryItem } from "@/data/mock-gallery-data";
 
 interface LightboxProps {
     item: GalleryItem;

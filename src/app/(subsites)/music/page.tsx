@@ -5,6 +5,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import { WhatsAppButton } from "@/components/ui/whatsapp-button"
 import { MUSIC_CONFIG } from "@/config/music"
+import { submitMusicLead } from "@/integrations/n8n/webhooks"
 import {
     Music,
     Star,
@@ -132,31 +133,18 @@ function LeadForm() {
         }
 
         const data = {
-            name: formData.get("name"),
-            whatsapp: formData.get("whatsapp"),
-            zone: formData.get("zone"),
-            times: formData.get("times"),
+            name: formData.get("name") as string | null,
+            whatsapp: formData.get("whatsapp") as string | null,
+            zone: formData.get("zone") as string | null,
+            times: formData.get("times") as string | null,
             timestamp: new Date().toISOString(),
             source: typeof window !== 'undefined' ? window.location.href : '/music'
         }
 
         try {
-            // MVP POST logic to n8n Webhook Placeholder
-            const res = await fetch(MUSIC_CONFIG.integrations.n8nWebhookUrl, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data)
-            })
+            // Call the extracted API wrapper
+            await submitMusicLead(data)
 
-            // For MVP placeholder, we just mock success if URL is placeholder
-            if (MUSIC_CONFIG.integrations.n8nWebhookUrl.includes("placeholder")) {
-                await new Promise(r => setTimeout(r, 1000))
-                setStatus("success")
-                if (typeof window !== 'undefined') window.location.href = "/music/gracias"
-                return
-            }
-
-            if (!res.ok) throw new Error("Network response was not ok")
             setStatus("success")
             if (typeof window !== 'undefined') window.location.href = "/music/gracias"
         } catch (error) {

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { type GalleryItem } from "@/lib/mock-gallery-data";
+import { type GalleryItem } from "@/data/mock-gallery-data";
 
 interface MasonryGridProps {
     items: GalleryItem[];

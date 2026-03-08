@@ -1,6 +1,6 @@
 "use client";
 
-import { type Category } from "@/lib/mock-gallery-data";
+import { type Category } from "@/data/mock-gallery-data";
 
 interface FilterBarProps {
     categories: Category[];
@@ -20,8 +20,8 @@ export function FilterBar({
                     <button
                         onClick={() => onFilterChange("All")}
                         className={`text-xs font-bold uppercase tracking-widest px-4 py-2 transition-colors rounded-full ${activeCategory === "All"
-                                ? "bg-foreground text-background"
-                                : "text-muted-foreground hover:text-foreground"
+                            ? "bg-foreground text-background"
+                            : "text-muted-foreground hover:text-foreground"
                             }`}
                     >
                         All
@@ -31,8 +31,8 @@ export function FilterBar({
                             key={cat}
                             onClick={() => onFilterChange(cat)}
                             className={`text-xs font-bold uppercase tracking-widest px-4 py-2 transition-colors rounded-full ${activeCategory === cat
-                                    ? "bg-foreground text-background"
-                                    : "text-muted-foreground hover:text-foreground"
+                                ? "bg-foreground text-background"
+                                : "text-muted-foreground hover:text-foreground"
                                 }`}
                         >
                             {cat}

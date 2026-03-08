@@ -41,5 +41,7 @@ yarn-error.log*
 next-env.d.ts
 
 # local AI/MCP
+mcp.json
 .mcp.json
+.agent/mcp.json
 deploy_n8n.py

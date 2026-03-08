@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { type GalleryItem, type Category, GALLERY_ITEMS } from "@/lib/mock-gallery-data";
+import { type GalleryItem, type Category, GALLERY_ITEMS } from "@/data/mock-gallery-data";
 import { FilterBar } from "./filter-bar";
 import { MasonryGrid } from "./masonry-grid";
 import { Lightbox } from "./lightbox";

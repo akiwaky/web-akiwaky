@@ -1,0 +1,69 @@
+{
+    "name": "PalNorte - SW - CMD Benefits",
+    "nodes": [
+        {
+            "parameters": {},
+            "name": "When Executed by Another Workflow",
+            "type": "n8n-nodes-base.executeWorkflowTrigger",
+            "typeVersion": 1.1,
+            "position": [
+                240,
+                300
+            ],
+            "id": "trigger-benefits"
+        },
+        {
+            "parameters": {
+                "jsCode": "const dbId = '31cf1ccf-f3d3-8077-8c12-e0621556790e';\nreturn [{ json: { dbId } }];"
+            },
+            "name": "Placeholder Benefits DB",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                460,
+                300
+            ],
+            "id": "code-ph-benefits"
+        },
+        {
+            "parameters": {
+                "jsCode": "const items = $input.all();\nif (!items || items.length === 0) { return [{ json: { reply: 'No tengo informacion de beneficios. Prueba: status' } }]; }\nconst bullets = items.slice(0,5).map(item => {\n  const name = item.json.properties?.Name?.title?.[0]?.plain_text || 'Beneficio';\n  const desc = item.json.properties?.Description?.rich_text?.[0]?.plain_text || '';\n  const loc = item.json.properties?.Location?.rich_text?.[0]?.plain_text || '';\n  return '- *' + name + '*' + (loc ? '\\n  ' + loc : '') + (desc ? '\\n  ' + desc : '');\n}).join('\\n\\n');\nconst reply = '*Beneficios VIP:*\\n\\n' + bullets + '\\n\\nPrueba: *status*';\nreturn [{ json: { reply } }];"
+            },
+            "name": "Format Benefits",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                680,
+                300
+            ],
+            "id": "code-fmt-benefits"
+        }
+    ],
+    "connections": {
+        "When Executed by Another Workflow": {
+            "main": [
+                [
+                    {
+                        "node": "Placeholder Benefits DB",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Placeholder Benefits DB": {
+            "main": [
+                [
+                    {
+                        "node": "Format Benefits",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {
+        "executionOrder": "v1"
+    }
+}

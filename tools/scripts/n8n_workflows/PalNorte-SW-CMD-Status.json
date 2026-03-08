@@ -1,0 +1,69 @@
+{
+    "name": "PalNorte - SW - CMD Status",
+    "nodes": [
+        {
+            "parameters": {},
+            "name": "When Executed by Another Workflow",
+            "type": "n8n-nodes-base.executeWorkflowTrigger",
+            "typeVersion": 1.1,
+            "position": [
+                240,
+                300
+            ],
+            "id": "trigger-status"
+        },
+        {
+            "parameters": {
+                "jsCode": "const dbId = '31cf1ccf-f3d3-8077-a8b2-c2619aedc1c5';\nreturn [{ json: { dbId } }];"
+            },
+            "name": "Placeholder Status DB",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                460,
+                300
+            ],
+            "id": "code-ph-status"
+        },
+        {
+            "parameters": {
+                "jsCode": "const items = $input.all();\nif (!items || items.length === 0) { return [{ json: { reply: 'No tengo el status del grupo ahora. Escribe: lost' } }]; }\nconst props = items[0].json.properties;\nconst meetup = props?.Meetup_Point?.rich_text?.[0]?.plain_text || 'No disponible';\nconst fallback = props?.Fallback_Point?.rich_text?.[0]?.plain_text || 'No disponible';\nconst plan = props?.Plan_Summary?.rich_text?.[0]?.plain_text || 'Sin plan';\nconst updatedBy = props?.Updated_By?.rich_text?.[0]?.plain_text || '';\nconst reply = 'Punto principal: ' + meetup + '\\nRespaldo: ' + fallback + '\\nPlan: ' + plan + (updatedBy ? '\\n\\nActualizado por ' + updatedBy : '') + '\\n\\nEscribe: *lost* si no ubicas el punto';\nreturn [{ json: { reply } }];"
+            },
+            "name": "Format Status",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                680,
+                300
+            ],
+            "id": "code-fmt-status"
+        }
+    ],
+    "connections": {
+        "When Executed by Another Workflow": {
+            "main": [
+                [
+                    {
+                        "node": "Placeholder Status DB",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Placeholder Status DB": {
+            "main": [
+                [
+                    {
+                        "node": "Format Status",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {
+        "executionOrder": "v1"
+    }
+}
