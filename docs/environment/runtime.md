@@ -3,7 +3,7 @@
 ## 1. Local Environment Configuration
 The project uses a configuration-driven approach. Most business logic variables are stored natively in TypeScript objects:
 - `src/config/music.ts`: Contains WhatsApp numbers, regular price anchors, n8n webhook URLs, and other settings.
-- `src/config/norte.ts`: Configuration for the PalNorte bot UI commands.
+- `src/config/chaty.ts`: Multi-assistant WhatsApp hub config (Aki-Chaty, Minerva, CompaBot).
 
 ## 2. Build & Deployment
 - **Commands**:
