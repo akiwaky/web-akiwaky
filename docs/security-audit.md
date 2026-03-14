@@ -90,7 +90,7 @@ n8nWebhookUrl: process.env.NEXT_PUBLIC_N8N_WEBHOOK_DAILY ?? 'https://webhooks.ak
 
 ### MEDIUM — Notion database IDs in frontend bundle
 
-**Status: Open**
+**Status: Fixed**
 
 **File:** `src/config/chaty.ts`
 
@@ -136,9 +136,9 @@ Phone numbers in `src/config/music.ts` and `src/config/norte.ts` are intentional
 | P0 | Rotate n8n API key | Repo owner | **Open — do immediately** |
 | P0 | Revoke Cloudflare JWT | Repo owner | **Open — do immediately** |
 | P0 | Scripts use `$env:` vars | Claude Code | **Done** |
-| P1 | Add DOMPurify to daily page | Dev | Open |
-| P2 | Migrate webhook URLs to env vars | Dev | Open |
-| P2 | Migrate Notion DB IDs to env vars | Dev | Open |
+| P1 | Add DOMPurify to daily page | Dev | Done |
+| P2 | Migrate webhook URLs to env vars | Dev | Done |
+| P2 | Migrate Notion DB IDs to env vars | Dev | Done |
 | P3 | Set security headers in Cloudflare | Infra | Open |
 
 ---
