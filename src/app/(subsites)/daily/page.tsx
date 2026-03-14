@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import DOMPurify from "dompurify";
 import { DAILY_CONFIG } from "@/config/daily";
 import { getDailyBriefing } from "@/integrations/n8n/webhooks";
 import { Loader2, Sparkles, AlertCircle } from "lucide-react";
@@ -190,7 +191,7 @@ export default function DailyBriefingPage() {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 className="html-injection-wrapper glass-cards-container space-y-6"
-                                dangerouslySetInnerHTML={{ __html: briefingHtml }}
+                                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(briefingHtml) }}
                             />
                         )}
 

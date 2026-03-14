@@ -15,8 +15,10 @@ export const chatyConfig = {
         "Curated picks for coffee, brunch, dinner, and drinks — sent straight to your WhatsApp. No apps, no noise.",
 
     // --- Notion DB IDs ---
-    notionPlacesDbId: "31cf1ccf-f3d3-8191-9b49-c03faa9864dc",
-    notionLogDbId: "31cf1ccf-f3d3-81e4-ad0b-fa852f3d7cbd",
+    // These are consumed by n8n at runtime; stored here for reference only.
+    // Override via NEXT_PUBLIC_CHATY_NOTION_PLACES_DB_ID / NEXT_PUBLIC_CHATY_NOTION_LOG_DB_ID in .env.local
+    notionPlacesDbId: process.env.NEXT_PUBLIC_CHATY_NOTION_PLACES_DB_ID ?? "31cf1ccf-f3d3-8191-9b49-c03faa9864dc",
+    notionLogDbId: process.env.NEXT_PUBLIC_CHATY_NOTION_LOG_DB_ID ?? "31cf1ccf-f3d3-81e4-ad0b-fa852f3d7cbd",
 
     // --- Example prompts shown on landing page ---
     examplePrompts: [

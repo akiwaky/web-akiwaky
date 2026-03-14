@@ -45,3 +45,8 @@ mcp.json
 .mcp.json
 .agent/mcp.json
 deploy_n8n.py
+
+# ops scripts — local credential overrides must never be committed
+tools/scripts/*.local.ps1
+tools/scripts/.env
+tools/scripts/secrets.*
