@@ -15,8 +15,9 @@ test.describe('Smoke tests for essential routes', () => {
         await expect(page.locator('text=Clases de piano')).toBeVisible();
     });
 
-    test('Norte bot page loads correctly', async ({ page }) => {
-        const response = await page.goto('/norte');
+    test('Chaty hub page loads correctly', async ({ page }) => {
+        const response = await page.goto('/chaty');
         expect(response?.ok()).toBeTruthy();
+        await expect(page.locator('text=WhatsApp')).toBeVisible();
     });
 });

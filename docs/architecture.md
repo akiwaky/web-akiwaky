@@ -21,11 +21,11 @@ Specifically engineered as a conversion-first MVP (Minimum Viable Product).
 - **Form Handling**: Submits via `fetch` to an n8n webhook.
 - **Logic**: Decoupled configuration in `src/config/music.ts` allows updates to pricing, WhatsApp numbers, etc.
 
-### 3. Pal Norte WhatsApp Bot (`/norte`)
-Engineered as a lightweight, low-bandwidth text companion for the Pal Norte music festival, connected directly to WhatsApp via n8n and Notion.
-- **Landing Page (`/norte`)**: A pure text-first, mobile-first design leveraging `src/config/norte.ts`. Built with maximum contrast and zero heavy assets for fast loading on congested cell towers.
-- **n8n Workflow Architecture**: Powered by a 7-node microservice architecture on n8n.
-- **Notion Knowledge Base**: Stores `Event_metadata`, `VIP Benefits`, `group_status`, and `Users`.
-
-### 4. General Chat-Bots
-Any general-purpose conversational logic is handled through n8n HTTP Request nodes bridging to OpenAI/Anthropic APIs, with context retrieved from Notion. The UI provides only the interface layer.
+### 3. WhatsApp AI Hub (`/chaty`)
+A multi-assistant WhatsApp gateway powered by the **MyWAtest** n8n workflow (ID: `Qx5heVRqQ0n2aAxU`).
+- **Landing Page (`/chaty`)**: Dark-themed hub showcasing three hashtag-routed assistants on one WhatsApp number.
+- **Assistants**:
+  - **Aki-Chaty** (default) — CDMX place guide, curated KB via Notion.
+  - **#Minerva** — Music admin assistant (lesson scheduling, student inquiries).
+  - **#Norte / CompaBot** — Pal Norte festival companion (meetups, VIP benefits, lost & found).
+- **Architecture**: All routing, intent classification, and KB queries are handled server-side by n8n. The frontend is a pure landing page with WhatsApp deep links — no fetch calls.

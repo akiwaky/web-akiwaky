@@ -1,18 +1,72 @@
-// Aki-Chaty configuration — CDMX place discovery bot
-// DB IDs are read by n8n workflows at runtime — also kept here for reference
+// Aki WhatsApp Hub — multi-assistant config
+// All assistants share one WhatsApp number; hashtags route to the right bot.
+// Main n8n workflow: MyWAtest
 
 export const chatyConfig = {
-    // --- WhatsApp ---
-    whatsappNumber: "15551943682", // Meta Test Number (shared with PalNorte for MVP)
+    // --- Shared WhatsApp ---
+    whatsappNumber: "15551943682", // Meta Test Number
     whatsappDisplay: "+1 (555) 194-3682",
-    whatsappPrefilledMessage: "Hola Aki-Chaty, recomiéndame un lugar en CDMX",
 
-    // --- Bot Identity ---
-    botName: "Aki-Chaty",
-    tagline: "Your CDMX place guide, straight in WhatsApp.",
-    heroHeadline: "Ask where to go in CDMX.",
+    // --- Hub identity ---
+    hubName: "Aki WhatsApp Hub",
+    tagline: "Three AI assistants. One WhatsApp number.",
+    heroHeadline: "Your WhatsApp-native AI assistants.",
     heroSubheadline:
-        "Curated picks for coffee, brunch, dinner, and drinks — sent straight to your WhatsApp. No apps, no noise.",
+        "Text one number, pick an assistant with a hashtag. No apps, no noise.",
+
+    // --- Assistants ---
+    assistants: [
+        {
+            id: "aki-chaty",
+            name: "Aki-Chaty",
+            hashtag: null, // default — no hashtag needed
+            tagline: "Your CDMX place guide",
+            description:
+                "Curated picks for coffee, brunch, dinner, and drinks. Grounded in a real knowledge base — no made-up facts.",
+            color: "#FF5733",
+            icon: "MapPin",
+            prefilledMessage: "Hola Aki-Chaty, recomiéndame un lugar en CDMX",
+            examplePrompts: [
+                { label: "Coffee right now", text: "Recomiéndame un café ahorita" },
+                { label: "Chill brunch spot", text: "Dame un brunch tranquilo" },
+                { label: "Dinner in Roma", text: "Quiero cenar en Roma" },
+                { label: "About Café Nin", text: "Dime sobre Café Nin" },
+            ],
+            image: null,
+        },
+        {
+            id: "minerva",
+            name: "Minerva",
+            hashtag: "#Minerva",
+            tagline: "Music admin assistant",
+            description:
+                "Helps with piano lesson scheduling, student inquiries, and music teaching logistics. Your backstage admin for music operations.",
+            color: "#8B5CF6",
+            icon: "Music",
+            prefilledMessage: "#Minerva Hola, necesito ayuda con una clase",
+            examplePrompts: [
+                { label: "Schedule a lesson", text: "#Minerva Quiero agendar una clase de prueba" },
+                { label: "Check availability", text: "#Minerva ¿Hay disponibilidad esta semana?" },
+            ],
+            image: "/music-assets/hands-on-keys.png",
+        },
+        {
+            id: "norte",
+            name: "CompaBot",
+            hashtag: "#Norte",
+            tagline: "Pal Norte festival companion",
+            description:
+                "AI assistant for Pal Norte festival activities — group meetups, VIP benefits, lost & found. Text-only, low bandwidth.",
+            color: "#25D366",
+            icon: "Ticket",
+            prefilledMessage: "#Norte help",
+            examplePrompts: [
+                { label: "VIP benefits", text: "#Norte benefits" },
+                { label: "Find my group", text: "#Norte status" },
+            ],
+            image: null,
+        },
+    ],
 
     // --- Notion DB IDs ---
     // These are consumed by n8n at runtime; stored here for reference only.
@@ -20,70 +74,63 @@ export const chatyConfig = {
     notionPlacesDbId: process.env.NEXT_PUBLIC_CHATY_NOTION_PLACES_DB_ID ?? "31cf1ccf-f3d3-8191-9b49-c03faa9864dc",
     notionLogDbId: process.env.NEXT_PUBLIC_CHATY_NOTION_LOG_DB_ID ?? "31cf1ccf-f3d3-81e4-ad0b-fa852f3d7cbd",
 
-    // --- Example prompts shown on landing page ---
-    examplePrompts: [
-        { label: "Coffee right now", text: "Recomiéndame un café ahorita" },
-        { label: "Chill brunch spot", text: "Dame un brunch tranquilo" },
-        { label: "Dinner in Roma", text: "Quiero cenar en Roma" },
-        { label: "About Café Nin", text: "Dime sobre Café Nin" },
-    ],
-
     // --- How It Works steps ---
     steps: [
         {
             number: "01",
-            title: "Open chat",
-            description: "Tap the button below to open WhatsApp with Aki-Chaty.",
+            title: "Open WhatsApp",
+            description: "Tap the button to open a chat with our shared number.",
         },
         {
             number: "02",
-            title: "Ask anything",
-            description: 'Ask for a vibe, a plan, or "tell me about [place name]".',
+            title: "Pick your assistant",
+            description:
+                "Start with a hashtag (#Minerva, #Norte) or just chat for Aki-Chaty — the default.",
         },
         {
             number: "03",
-            title: "Get a curated pick",
+            title: "Get a reply",
             description:
-                "One grounded recommendation from a hand-curated CDMX knowledge base.",
+                "Each assistant draws from its own curated knowledge base. No hallucinations.",
         },
     ],
 
-    // --- Design colors (Aki-Chaty palette) ---
+    // --- Design colors ---
     colors: {
-        primary: "#FF5733",   // Coral-orange — energy, CDMX warmth
-        secondary: "#C70039", // Deep red — richness
-        accent: "#FFC300",    // Amber-gold — warmth
-        waGreen: "#25D366",   // WhatsApp canonical green
+        primary: "#FF5733",
+        secondary: "#C70039",
+        accent: "#FFC300",
+        waGreen: "#25D366",
     },
 
-    // --- Trust / scope block ---
+    // --- Trust / scope ---
     scope: [
-        "🗺️ CDMX only — no other cities",
-        "📚 Curated KB — not real-time internet",
-        "🤔 Place not in the list? The bot says so and logs it",
+        "All assistants run on the same WhatsApp number",
+        "Each has a separate knowledge base — no cross-contamination",
+        "Use a hashtag to switch. No hashtag = Aki-Chaty (CDMX guide)",
     ],
 
     // --- FAQ ---
     faqs: [
         {
-            q: "What can I ask?",
-            a: 'Two things: ask for a place recommendation ("recommend me coffee right now") or ask about a specific place ("tell me about Rosetta Bakery").',
+            q: "How do I switch between assistants?",
+            a: "Start your message with a hashtag: #Minerva for music admin, #Norte for Pal Norte. Without a hashtag, you talk to Aki-Chaty (CDMX guide).",
         },
         {
-            q: "Does it know all places in CDMX?",
-            a: "No — it draws from a curated knowledge base. We add places regularly, but it's not exhaustive.",
+            q: "Is this the same phone number for all three?",
+            a: "Yes — one number, three assistants. The hashtag routes your message to the right one.",
+        },
+        {
+            q: "What can Aki-Chaty do?",
+            a: 'Two things: recommend a place ("recommend me coffee right now") or tell you about a specific place ("tell me about Rosetta Bakery"). CDMX only.',
         },
         {
             q: "Does it use live internet search?",
-            a: "Never. All answers come from the curated KB. That's what keeps it reliable and hallucination-free.",
-        },
-        {
-            q: "What if my place isn't in there?",
-            a: "The bot will tell you clearly that it doesn't have that place yet, and the request gets logged so we can add it.",
+            a: "Never. All answers come from curated knowledge bases. That keeps it reliable and hallucination-free.",
         },
     ],
 
     // --- Disclaimer ---
     disclaimer:
-        "Aki-Chaty only covers CDMX and uses a curated knowledge base. Info may not reflect the latest changes at each venue.",
+        "All assistants use curated knowledge bases. Information may not reflect the latest real-world changes.",
 };
