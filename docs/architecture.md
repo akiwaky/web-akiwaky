@@ -43,9 +43,14 @@ Specifically engineered as a conversion-first MVP (Minimum Viable Product).
 Engineered as a lightweight, low-bandwidth text companion connected directly to WhatsApp via n8n and Notion.
 - **Data Flow:** Landing Page (`/norte`) loads config from `src/config/norte.ts`. User clicks WhatsApp link. All further interaction is handled via WhatsApp → n8n Webhook → Notion Read (for event metadata) → WhatsApp response.
 
-### C. Aki-Chaty CDMX Guide (`/chaty`)
-A headless recommendation engine for CDMX, designed completely around WhatsApp interaction.
-- **Data Flow:** Landing page loads `src/config/chaty.ts`. WhatsApp message triggers n8n → n8n queries Notion Places DB (ID `31cf1ccf-f3d3-8191-9b49-c03faa9864dc`) → LLM formats response based on context → n8n returns WhatsApp message.
+### C. WhatsApp AI Hub (`/chaty`)
+A multi-assistant WhatsApp gateway powered by the **MyWAtest** n8n workflow (ID: `Qx5heVRqQ0n2aAxU`).
+- **Landing Page (`/chaty`)**: Dark-themed hub showcasing three hashtag-routed assistants on one WhatsApp number.
+- **Assistants**:
+  - **Aki-Chaty** (default) — CDMX place guide, curated KB via Notion.
+  - **#Minerva** — Music admin assistant (lesson scheduling, student inquiries).
+  - **#Norte / CompaBot** — Pal Norte festival companion (meetups, VIP benefits, lost & found).
+- **Architecture**: All routing, intent classification, and KB queries are handled server-side by n8n. The frontend is a pure landing page with WhatsApp deep links — no fetch calls.
 
 ### D. Daily Briefing (`/daily`)
 An internal aggregation tool.

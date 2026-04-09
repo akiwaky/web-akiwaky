@@ -3,26 +3,33 @@
 import { chatyConfig } from '@/config/chaty';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
     MessageCircle,
     ChevronDown,
     ArrowRight,
     Sparkles,
     MapPin,
-    Clock,
+    Music,
+    Ticket,
 } from 'lucide-react';
 
 // ─────────────────────────────────────────────────────────────
 // Analytics helper
 // ─────────────────────────────────────────────────────────────
 function trackEvent(name: string, data?: Record<string, string>) {
-    if (typeof window !== 'undefined' && (window as unknown as { gtag?: Function }).gtag) {
-        (window as unknown as { gtag: Function }).gtag('event', name, data ?? {});
+    if (typeof window !== 'undefined' && (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag) {
+        (window as unknown as { gtag: (...args: unknown[]) => void }).gtag('event', name, data ?? {});
     }
 }
 
 // ─────────────────────────────────────────────────────────────
-// QR Code — desktop only, uses qrcode.react via CDN-safe approach
+// Icon resolver
+// ─────────────────────────────────────────────────────────────
+const iconMap: Record<string, typeof MapPin> = { MapPin, Music, Ticket };
+
+// ─────────────────────────────────────────────────────────────
+// QR Code — desktop only
 // ─────────────────────────────────────────────────────────────
 function QRBlock({ url }: { url: string }) {
     const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(url)}&color=1a1a2e&bgcolor=ffffff&margin=10`;
@@ -31,7 +38,7 @@ function QRBlock({ url }: { url: string }) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
                 src={qrApiUrl}
-                alt="Scan to open Aki-Chaty in WhatsApp"
+                alt="Scan to open WhatsApp Hub"
                 width={160}
                 height={160}
                 className="rounded-2xl border border-white/10 shadow-xl"
@@ -81,18 +88,122 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
 }
 
 // ─────────────────────────────────────────────────────────────
+// Assistant Card
+// ─────────────────────────────────────────────────────────────
+function AssistantCard({ assistant }: { assistant: (typeof chatyConfig.assistants)[number] }) {
+    const Icon = iconMap[assistant.icon] ?? MapPin;
+    const waBase = `https://wa.me/${chatyConfig.whatsappNumber}`;
+
+    return (
+        <div
+            className="rounded-2xl border border-white/8 bg-white/3 backdrop-blur-sm overflow-hidden"
+            style={{ borderLeftColor: assistant.color, borderLeftWidth: 4 }}
+        >
+            <div className="p-6 space-y-4">
+                {/* Header */}
+                <div className="flex items-start gap-4">
+                    {assistant.image ? (
+                        <div className="shrink-0 w-12 h-12 rounded-xl overflow-hidden">
+                            <Image
+                                src={assistant.image}
+                                alt={assistant.name}
+                                width={48}
+                                height={48}
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                    ) : (
+                        <div
+                            className="shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
+                            style={{ backgroundColor: `${assistant.color}20` }}
+                        >
+                            <Icon className="w-5 h-5" style={{ color: assistant.color }} />
+                        </div>
+                    )}
+                    <div className="min-w-0">
+                        <div className="flex items-center gap-2 flex-wrap">
+                            <h3 className="font-semibold text-white">{assistant.name}</h3>
+                            {assistant.hashtag && (
+                                <span
+                                    className="text-xs font-mono px-2 py-0.5 rounded-full"
+                                    style={{
+                                        backgroundColor: `${assistant.color}20`,
+                                        color: assistant.color,
+                                    }}
+                                >
+                                    {assistant.hashtag}
+                                </span>
+                            )}
+                            {!assistant.hashtag && (
+                                <span className="text-xs text-slate-500 italic">default</span>
+                            )}
+                        </div>
+                        <p className="text-xs text-slate-400 mt-0.5">{assistant.tagline}</p>
+                    </div>
+                </div>
+
+                {/* Description */}
+                <p className="text-sm text-slate-300 leading-relaxed">{assistant.description}</p>
+
+                {/* Example prompts */}
+                <div className="flex flex-wrap gap-2">
+                    {assistant.examplePrompts.map((prompt) => {
+                        const promptUrl = `${waBase}?text=${encodeURIComponent(prompt.text)}`;
+                        return (
+                            <Link
+                                href={promptUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                key={prompt.label}
+                                onClick={() =>
+                                    trackEvent('prompt_chip_click', {
+                                        assistant: assistant.id,
+                                        label: prompt.label,
+                                    })
+                                }
+                                className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 px-3 py-1.5 text-xs text-slate-300 hover:text-white transition-all duration-200"
+                            >
+                                <ArrowRight className="w-2.5 h-2.5" style={{ color: assistant.color }} />
+                                {prompt.label}
+                            </Link>
+                        );
+                    })}
+                </div>
+
+                {/* CTA */}
+                <Link
+                    href={`${waBase}?text=${encodeURIComponent(assistant.prefilledMessage)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() =>
+                        trackEvent('assistant_card_click', { assistant: assistant.id })
+                    }
+                    className="inline-flex items-center gap-2 text-sm font-medium transition-colors hover:underline hover:underline-offset-4"
+                    style={{ color: assistant.color }}
+                >
+                    <MessageCircle className="w-3.5 h-3.5" />
+                    Try {assistant.name}
+                    <ArrowRight className="w-3 h-3" />
+                </Link>
+            </div>
+        </div>
+    );
+}
+
+// ─────────────────────────────────────────────────────────────
 // Main Page
 // ─────────────────────────────────────────────────────────────
 export default function ChatyPage() {
-    const waUrl = `https://wa.me/${chatyConfig.whatsappNumber}?text=${encodeURIComponent(chatyConfig.whatsappPrefilledMessage)}`;
+    const defaultAssistant = chatyConfig.assistants[0];
+    const waUrl = `https://wa.me/${chatyConfig.whatsappNumber}?text=${encodeURIComponent(defaultAssistant.prefilledMessage)}`;
 
     return (
         <div className="min-h-screen bg-[#0f0e17] text-white overflow-x-hidden">
             {/* ── Gradient blobs background ────────────────────────── */}
             <div aria-hidden="true" className="pointer-events-none fixed inset-0 overflow-hidden">
                 <div className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full bg-[#FF5733]/10 blur-[120px]" />
-                <div className="absolute top-1/2 -right-40 w-[500px] h-[500px] rounded-full bg-[#C70039]/8 blur-[120px]" />
-                <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] rounded-full bg-[#FFC300]/6 blur-[120px]" />
+                <div className="absolute top-1/2 -right-40 w-[500px] h-[500px] rounded-full bg-[#8B5CF6]/8 blur-[120px]" />
+                <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] rounded-full bg-[#25D366]/6 blur-[120px]" />
             </div>
 
             <main className="relative max-w-2xl mx-auto px-6 py-16 md:py-24 space-y-28">
@@ -102,19 +213,19 @@ export default function ChatyPage() {
                     {/* Badge */}
                     <div className="inline-flex items-center gap-2 rounded-full border border-[#FF5733]/30 bg-[#FF5733]/10 px-4 py-1.5 text-xs font-medium text-[#FF773D] tracking-wide">
                         <Sparkles className="w-3.5 h-3.5" />
-                        CDMX Place Guide · WhatsApp
+                        WhatsApp AI Hub
                     </div>
 
                     <div className="space-y-4">
                         <h1 className="text-5xl md:text-6xl font-bold tracking-tighter leading-[1.05]">
-                            Ask where<br />
-                            <span className="bg-gradient-to-r from-[#FF5733] via-[#FFC300] to-[#FF773D] bg-clip-text text-transparent">
-                                to go in CDMX.
+                            {chatyConfig.heroHeadline.split('.')[0]}
+                            <br />
+                            <span className="bg-gradient-to-r from-[#FF5733] via-[#8B5CF6] to-[#25D366] bg-clip-text text-transparent">
+                                {chatyConfig.tagline}
                             </span>
                         </h1>
                         <p className="text-lg text-slate-300 leading-relaxed max-w-md">
-                            Curated picks for coffee, brunch, dinner, and drinks — sent straight
-                            to your WhatsApp. Grounded in a real knowledge base. No made-up facts.
+                            {chatyConfig.heroSubheadline}
                         </p>
                     </div>
 
@@ -132,13 +243,28 @@ export default function ChatyPage() {
                             Open in WhatsApp
                         </Link>
                         <p className="text-xs text-slate-500">
-                            Works best for coffee, brunch, dinner &amp; drinks
+                            One number · Three assistants · Zero apps
                         </p>
                     </div>
 
                     {/* Desktop QR */}
                     <QRBlock url={waUrl} />
                 </header>
+
+                {/* ── MEET THE ASSISTANTS ─────────────────────────────── */}
+                <section aria-labelledby="assistants-heading" className="space-y-8">
+                    <h2
+                        id="assistants-heading"
+                        className="text-xs font-semibold text-slate-500 uppercase tracking-widest"
+                    >
+                        Meet the assistants
+                    </h2>
+                    <div className="grid gap-5">
+                        {chatyConfig.assistants.map((assistant) => (
+                            <AssistantCard key={assistant.id} assistant={assistant} />
+                        ))}
+                    </div>
+                </section>
 
                 {/* ── HOW IT WORKS ─────────────────────────────────────── */}
                 <section aria-labelledby="how-it-works-heading" className="space-y-8">
@@ -151,7 +277,7 @@ export default function ChatyPage() {
                     <div className="grid gap-6">
                         {chatyConfig.steps.map((step) => (
                             <div key={step.number} className="flex gap-5 group">
-                                <div className="shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-[#FF5733] to-[#C70039] flex items-center justify-center text-xs font-bold text-white shadow-md shadow-[#FF5733]/20">
+                                <div className="shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-[#FF5733] to-[#8B5CF6] flex items-center justify-center text-xs font-bold text-white shadow-md shadow-[#FF5733]/20">
                                     {step.number}
                                 </div>
                                 <div className="pt-1.5">
@@ -161,38 +287,6 @@ export default function ChatyPage() {
                             </div>
                         ))}
                     </div>
-                </section>
-
-                {/* ── EXAMPLE PROMPTS ──────────────────────────────────── */}
-                <section aria-labelledby="prompts-heading" className="space-y-6">
-                    <h2
-                        id="prompts-heading"
-                        className="text-xs font-semibold text-slate-500 uppercase tracking-widest"
-                    >
-                        Try asking
-                    </h2>
-                    <div className="flex flex-wrap gap-2.5">
-                        {chatyConfig.examplePrompts.map((prompt) => {
-                            const promptUrl = `https://wa.me/${chatyConfig.whatsappNumber}?text=${encodeURIComponent(prompt.text)}`;
-                            return (
-                                <Link
-                                    href={promptUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    key={prompt.label}
-                                    onClick={() => trackEvent('prompt_chip_click', { label: prompt.label })}
-                                    className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 hover:border-[#FF5733]/40 px-4 py-2 text-sm text-slate-300 hover:text-white transition-all duration-200 cursor-pointer"
-                                    id={`prompt-${prompt.label.replace(/\s+/g, '-').toLowerCase()}`}
-                                >
-                                    <ArrowRight className="w-3 h-3 text-[#FF5733]" />
-                                    {prompt.label}
-                                </Link>
-                            );
-                        })}
-                    </div>
-                    <p className="text-xs text-slate-600 italic pl-1">
-                        Tapping a prompt opens WhatsApp with the message prefilled.
-                    </p>
                 </section>
 
                 {/* ── TRUST / SCOPE ────────────────────────────────────── */}
@@ -233,7 +327,7 @@ export default function ChatyPage() {
                 {/* ── FOOTER CTA ───────────────────────────────────────── */}
                 <footer className="pb-8 flex flex-col items-center text-center space-y-6">
                     <div className="space-y-2">
-                        <p className="text-slate-400 text-sm">Ready to find your next spot?</p>
+                        <p className="text-slate-400 text-sm">Ready to try an assistant?</p>
                         <p className="text-xs text-slate-600">{chatyConfig.disclaimer}</p>
                     </div>
                     <Link
@@ -245,7 +339,7 @@ export default function ChatyPage() {
                         id="footer-wa-cta"
                     >
                         <MessageCircle className="w-4 h-4" />
-                        Start chatting with Aki-Chaty
+                        Start chatting
                         <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                 </footer>

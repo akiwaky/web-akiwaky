@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Aki-Chaty — CDMX Place Guide on WhatsApp',
+    title: 'Aki WhatsApp Hub — AI Assistants on WhatsApp',
     description:
-        'Ask Aki-Chaty for curated CDMX place picks — coffee, brunch, dinner, drinks — straight in WhatsApp. No apps. No noise.',
+        'Three AI assistants on one WhatsApp number: Aki-Chaty (CDMX guide), Minerva (music admin), CompaBot (Pal Norte festival companion).',
     openGraph: {
-        title: 'Aki-Chaty — CDMX Place Guide on WhatsApp',
-        description: 'Curated CDMX place recommendations, straight to your WhatsApp.',
+        title: 'Aki WhatsApp Hub — AI Assistants on WhatsApp',
+        description:
+            'Three AI assistants on one WhatsApp number. Text a hashtag to pick your assistant.',
         type: 'website',
     },
 };

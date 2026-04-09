@@ -1,4 +1,7 @@
-$apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYzc4MDVjYi04Y2JmLTQzNjUtYTViYi0xZGMzYTE1OWUyNDkiLCJpc3MiOiJuOG4iLCJhdWQiOiJtY3Atc2VydmVyLWFwaSIsImp0aSI6ImRjZDUzOTA3LWY3ODEtNGFjMy1hMGE5LTI3ZGMyMTA2OTcxMiIsImlhdCI6MTc3MjY3NDgxMn0.axmNGg_STrBL518UPb2icHYekhHLJwa9Tw8ZgesdBcY"
+# Credentials loaded from environment variables — never hardcode here.
+# Set before running: $env:N8N_API_KEY="<your-n8n-key>"
+$apiKey = $env:N8N_API_KEY
+if (-not $apiKey) { Write-Error "N8N_API_KEY must be set as an environment variable."; exit 1 }
 $baseUrl = "https://n8n.akiwaky.cloud/api/v1"
 $headers = @{ "X-N8N-API-KEY" = $apiKey; "Content-Type" = "application/json" }
 

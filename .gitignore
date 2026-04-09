@@ -50,3 +50,7 @@ deploy_n8n.py
 tools/scripts/*.txt
 tools/scripts/*.json
 tools/scripts/debug/
+# ops scripts — local credential overrides must never be committed
+tools/scripts/*.local.ps1
+tools/scripts/.env
+tools/scripts/secrets.*

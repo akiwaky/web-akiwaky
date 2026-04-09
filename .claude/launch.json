@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Next.js Dev Server",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "npm", "run", "dev"],
+      "port": 3000
+    },
+    {
+      "name": "Next.js Production Preview",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "npx", "serve", "out", "-l", "3001"],
+      "port": 3001
+    }
+  ]
+}

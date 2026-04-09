@@ -1,11 +1,21 @@
-$cfCookie = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjIwNjAzMDFmZjQ0OWE5YWJhMjMwNDQyYzdhOGU4ODE5M2UzODVjN2I4YjkyZTZlOThiZjhkZTIxYmM5OGU4NjAifQ.eyJhdWQiOlsiOGU2ODhkMzQzNmQxOWU4ZDk0ZjdlNGU1YWYyZmQ4NDdhNDI5NzVlNmUwNjIwMjM3YWNiOTU2ZWNjNDdjNWU5MiJdLCJlbWFpbCI6ImFraXdha3lAZ21haWwuY29tIiwiZXhwIjoxNzcyOTg4ODg2LCJpYXQiOjE3NzI5MDI0ODYsIm5iZiI6MTc3MjkwMjQ4NiwiaXNzIjoiaHR0cHM6Ly9ha2l3YWt5LmNsb3VkZmxhcmVhY2Nlc3MuY29tIiwidHlwZSI6ImFwcCIsImlkZW50aXR5X25vbmNlIjoiZ1hEMUhtSlZpRVVadjlIMyIsInN1YiI6IjgxMTIzMTdmLTQ2YTUtNTc5Mi05MDhhLWExYTUwM2QyNzU4ZCIsImNvdW50cnkiOiJNWCIsInBvbGljeV9pZCI6ImZkY2MyNDRjLTM1NGQtNGJmZS1iNjljLTg1NmExYWU1ZWUyMSJ9.tY9-vCOiR5bMP7fbedRXY_hGOkX-ph5yi4vKCgYLCo-N0M51ZC23Fa8YYmWDG2EvDwQcNTE3UA8L6di3QCP7JWBxIE4Yjl8vIVLXIpLIrz1bZLit8UfIIPqww5uY7K_D-chrUM5T5msZMeSexLZ8ay8NipuGPL18khrfb0Y4IdVOQRyOlhmUxIIAYJiTpTHYcjtwFiB9pnCi_A3G1Iy9ZggKKvbXTR7Tr1Q_k8Y_e3Z31IVy9kR8tbIrG_rJo378826SkpFp6Yr6UstvskvsgERFXCPTdZhKksl1Q6bTtIAMWQHk_sK_ZZJFrRwVlZ87FZGXMP079x9pwHFXxLrQpA"
-$n8nKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYzc4MDVjYi04Y2JmLTQzNjUtYTViYi0xZGMzYTE1OWUyNDkiLCJpc3MiOiJuOG4iLCJhdWQiOiJtY3Atc2VydmVyLWFwaSIsImp0aSI6ImRjZDUzOTA3LWY3ODEtNGFjMy1hMGE5LTI3ZGMyMTA2OTcxMiIsImlhdCI6MTc3MjY3NDgxMn0.axmNGg_STrBL518UPb2icHYekhHLJwa9Tw8ZgesdBcY"
+# Credentials loaded from environment variables — never hardcode here.
+# Set before running:
+#   $env:N8N_API_KEY       = "<your-n8n-key>"
+#   $env:CF_CLIENT_ID      = "<CF-Access-Client-Id>"
+#   $env:CF_CLIENT_SECRET  = "<CF-Access-Client-Secret>"
+$n8nKey   = $env:N8N_API_KEY
+$cfId     = $env:CF_CLIENT_ID
+$cfSecret = $env:CF_CLIENT_SECRET
+if (-not $n8nKey -or -not $cfId -or -not $cfSecret) {
+    Write-Error "N8N_API_KEY, CF_CLIENT_ID, and CF_CLIENT_SECRET must be set as environment variables."
+    exit 1
+}
 $baseUrl = "https://n8n.akiwaky.cloud/api/v1"
 
-$headers = @{
-    "X-N8N-API-KEY" = $n8nKey
-    "Cookie"        = "CF_Authorization=$cfCookie"
-}
+$headers = @{}
+$headers["X-N8N-API-KEY"]           = $n8nKey
+$headers["CF-Access-Client-Id"]     = $cfId
+$headers["CF-Access-Client-Secret"] = $cfSecret
 
 try {
     $resp = Invoke-RestMethod -Uri "$baseUrl/workflows" -Method GET -Headers $headers

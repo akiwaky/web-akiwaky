@@ -25,7 +25,8 @@ export const MUSIC_CONFIG = {
     },
 
     // n8n Integrations
+    // Override via NEXT_PUBLIC_N8N_WEBHOOK_MUSIC in .env.local
     integrations: {
-        n8nWebhookUrl: "https://n8n.akiwaky.cloud/webhook-test/music/test-lead",
+        n8nWebhookUrl: process.env.NEXT_PUBLIC_N8N_WEBHOOK_MUSIC ?? "https://n8n.akiwaky.cloud/webhook/music/lead",
     }
 }
