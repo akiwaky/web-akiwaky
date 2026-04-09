@@ -3,8 +3,8 @@ import { ArrowLeft } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-    title: "Políticas de Clase — Alejandro AG",
-    description: "Términos, condiciones y lineamientos para las clases de música.",
+    title: `Reglamento de Clases — ${MUSIC_CONFIG.teacher.name}`,
+    description: "Reglamento, términos y lineamientos para las clases de piano.",
 }
 
 export default function PoliticasPage() {
@@ -15,39 +15,102 @@ export default function PoliticasPage() {
                     <ArrowLeft className="w-4 h-4" /> Volver a inicio
                 </a>
 
-                <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-12">Políticas y Lineamientos</h1>
+                <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-12">Reglamento de Clases</h1>
 
                 <div className="space-y-12">
                     <section>
                         <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
                             <span className="w-8 h-8 rounded-full bg-accent/10 text-accent flex items-center justify-center text-sm">1</span>
-                            Pagos y Facturación
+                            Pago de mensualidad
                         </h2>
                         <div className="prose prose-p:text-muted-foreground prose-p:leading-relaxed">
-                            <p>Todos los pagos deben realizarse y confirmarse <strong>antes del inicio de la sesión</strong>. Sin confirmación de pago, la clase no se llevará a cabo.</p>
-                            <p>Acepto transferencias interbancarias y pago en efectivo exacto al momento de la clase. Los planes mensuales deben cubrirse en los primeros 5 días del mes o al inicio de su ciclo de 4 semanas.</p>
+                            <p>
+                                El pago correspondiente a la mensualidad deberá ser cubierto a más tardar el <strong>día {MUSIC_CONFIG.policies.paymentDeadlineDay} de cada mes</strong> o en la primera clase del mes, en caso de que el ciclo de clases no haya iniciado en la primera semana.
+                            </p>
+                            <p>
+                                De no realizarse el pago en la fecha estipulada, se aplicará un <strong>cargo por mora de ${MUSIC_CONFIG.policies.lateFee} MXN</strong> por mensualidad.
+                            </p>
                         </div>
                     </section>
 
                     <section>
                         <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
                             <span className="w-8 h-8 rounded-full bg-accent/10 text-accent flex items-center justify-center text-sm">2</span>
-                            Cancelaciones y Reprogramaciones
+                            Cancelaciones y reprogramaciones
                         </h2>
                         <div className="prose prose-p:text-muted-foreground prose-p:leading-relaxed">
-                            <p>Para cancelar sin penalización, debes avisar con al menos <strong>{MUSIC_CONFIG.policies.cancellationHours} horas de anticipación</strong>. Si cancelas con menos tiempo, la clase se considerará impartida y se descontará de tu paquete.</p>
-                            <p>Permito <strong>{MUSIC_CONFIG.policies.reschedulingLimit} reprogramaciones al mes</strong> dentro de la misma semana de la clase original, sujeta a mi disponibilidad de agenda.</p>
+                            <p>
+                                El alumno(a) deberá notificar cualquier cancelación con al menos <strong>{MUSIC_CONFIG.policies.cancellationHours} horas de anticipación</strong>.
+                            </p>
+                            <p>
+                                Será responsabilidad del alumno(a) solicitar la reprogramación de la clase cancelada.
+                            </p>
                         </div>
                     </section>
 
                     <section>
                         <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
                             <span className="w-8 h-8 rounded-full bg-accent/10 text-accent flex items-center justify-center text-sm">3</span>
-                            Puntualidad
+                            Política de reposición de clases
                         </h2>
                         <div className="prose prose-p:text-muted-foreground prose-p:leading-relaxed">
-                            <p>El tiempo cuenta a partir de la hora agendada. Existe una tolerancia de espera de <strong>15 minutos</strong>. Si llegas (o estoy esperándote en domicilio) pasado ese tiempo sin previo aviso, la clase se cancela y se cobra con normalidad.</p>
-                            <p>El tiempo de retraso por parte del alumno no se repone al final de la sesión por respeto a la agenda de los siguientes alumnos.</p>
+                            <p>
+                                Si una clase reprogramada es posteriormente cancelada, <strong>se considerará como impartida</strong> y no podrá ser reagendada nuevamente.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                            <span className="w-8 h-8 rounded-full bg-accent/10 text-accent flex items-center justify-center text-sm">4</span>
+                            Clases no asistidas
+                        </h2>
+                        <div className="prose prose-p:text-muted-foreground prose-p:leading-relaxed">
+                            <p>
+                                Las clases <strong>no serán descontadas bajo ninguna circunstancia</strong> en caso de inasistencia. En su lugar, deberán ser reprogramadas dentro del mismo mes.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                            <span className="w-8 h-8 rounded-full bg-accent/10 text-accent flex items-center justify-center text-sm">5</span>
+                            Clases en días feriados
+                        </h2>
+                        <div className="prose prose-p:text-muted-foreground prose-p:leading-relaxed">
+                            <p>
+                                Las clases que coincidan con días festivos deberán ser <strong>agendadas con antelación</strong>, de común acuerdo entre ambas partes.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                            <span className="w-8 h-8 rounded-full bg-accent/10 text-accent flex items-center justify-center text-sm">6</span>
+                            Clases en caso de enfermedad
+                        </h2>
+                        <div className="prose prose-p:text-muted-foreground prose-p:leading-relaxed">
+                            <p>
+                                Si un alumno(a) presenta alguna enfermedad, especialmente de carácter contagioso, deberá <strong>notificarlo con anticipación</strong> para reprogramar la clase. No se impartirán clases a alumnos enfermos.
+                            </p>
+                            <p>
+                                En caso de que la instructora llegue al domicilio y encuentre al alumno(a) enfermo(a), la clase será <strong>cancelada sin posibilidad de reposición</strong>.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                            <span className="w-8 h-8 rounded-full bg-accent/10 text-accent flex items-center justify-center text-sm">7</span>
+                            Clases en meses con cinco semanas
+                        </h2>
+                        <div className="prose prose-p:text-muted-foreground prose-p:leading-relaxed">
+                            <p>
+                                En los meses que cuenten con cinco semanas, si el alumno(a) ha cumplido satisfactoriamente con las cuatro clases correspondientes, podrá optar por <strong>tomar la quinta clase con el costo adicional correspondiente</strong> o tomarla como un periodo de descanso.
+                            </p>
+                            <p>
+                                Si el alumno(a) ha cancelado alguna de las primeras cuatro clases, podrá utilizar la quinta semana para <strong>reponer la sesión perdida</strong>.
+                            </p>
                         </div>
                     </section>
                 </div>

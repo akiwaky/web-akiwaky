@@ -1,27 +1,36 @@
 export const MUSIC_CONFIG = {
     // WhatsApp click-to-chat setup
     contact: {
-        whatsappNumber: "525500000000", // E.164 without '+'
-        defaultMessage: "Hola, me interesa una clase de prueba. Zona: ___. ¿Hay disponibilidad esta semana?",
+        whatsappNumber: "52XXXXXXXXXX", // [TBD] Arlet's number
+        defaultMessage: "Me contacto desde la página web, me gustaría información sobre:",
     },
 
     // Text configuration for the Landing Page
     pricing: {
-        trialPriceAnchor: 500, // MXN
-        regularPriceAnchor: 800, // MXN
-        rangeDisclaimer: "Varía por duración, zona y horario (te confirmo antes de reservar).",
+        trialPriceAnchor: null as number | null, // [TBD]
+        regularPriceAnchor: null as number | null, // [TBD]
+        rangeDisclaimer: "Los precios varían según modalidad y horario. Contáctame para una cotización personalizada.",
     },
 
     // Zone Information
     zones: {
-        primary: "Santa Fe y Huixquilucan",
-        surchargeLogic: "Aplican cargos por distancia fuera de la zona primaria.",
+        primary: "Zona por confirmar",
+        surchargeLogic: "",
     },
 
     // Policies variables
     policies: {
-        cancellationHours: 24, // 24 or 48 based on preference
-        reschedulingLimit: "1 por mes",
+        cancellationHours: 24,
+        lateFee: 200, // $200 MXN late payment fee
+        paymentDeadlineDay: 6, // Day of month for payment deadline
+    },
+
+    // Teacher info (centralized)
+    teacher: {
+        name: "Arlet",
+        fullName: "Arlet", // [TBD: last name]
+        yearsExperience: 17,
+        school: "Escuela Superior de Música",
     },
 
     // n8n Integrations

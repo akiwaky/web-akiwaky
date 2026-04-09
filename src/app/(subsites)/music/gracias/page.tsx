@@ -3,7 +3,7 @@ import { WhatsAppButton } from "@/components/ui/whatsapp-button"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-    title: "¡Gracias! — Alejandro AG",
+    title: "¡Gracias! — Arlet",
     description: "Tus datos han sido enviados correctamente.",
 }
 

@@ -2,7 +2,7 @@ import { ArrowLeft } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-    title: "Aviso de Privacidad — Alejandro AG",
+    title: "Aviso de Privacidad — Arlet",
     description: "Aviso de privacidad sobre el tratamiento de datos personales.",
 }
 
@@ -23,7 +23,7 @@ export default function AvisoPrivacidadPage() {
 
                     <h2>1. Identidad y domicilio del responsable</h2>
                     <p>
-                        Alejandro AG, con operaciones principales en la zona de Santa Fe y Huixquilucan, CDMX y Estado de México, es responsable del tratamiento de los datos personales que nos proporciones a través de este sitio web.
+                        Arlet, con operaciones en la Ciudad de México y zona metropolitana, es responsable del tratamiento de los datos personales que nos proporciones a través de este sitio web.
                     </p>
 
                     <h2>2. Datos que recabamos</h2>
