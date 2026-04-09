@@ -15,27 +15,27 @@ export default function SubsiteLayout({
         <div
             className="min-h-screen bg-background text-foreground selection:bg-accent/30"
             style={{
-                '--background': '#131515', // Onyx
-                '--foreground': '#fecee9', // Pastel Petal
-                '--primary': '#eb9fef', // Plum (Switched to Primary)
-                '--primary-foreground': '#131515',
-                '--secondary': '#339989', // Verdigris (Switched to Secondary)
-                '--secondary-foreground': '#131515',
-                '--muted': '#2b2c28', // Graphite
-                '--muted-foreground': '#D4AF37', // Champagne Gold for elegant muted text
-                '--accent': '#D4AF37', // Champagne Gold
-                '--accent-foreground': '#131515',
-                '--border': '#2b2c28', // Graphite
-                '--input': '#2b2c28',
-                '--ring': '#D4AF37', // Champagne Gold
-                '--card': '#0a0b0b', // Midnight Obsidian for deeper 3D depth
-                '--card-foreground': '#fecee9',
-                '--radius': '0.5rem',
+                '--background': '#FAF5F0', // Off-White Linen (desaturated F7E1D7)
+                '--foreground': '#4A5759', // Feldgrau / Dark Slate
+                '--primary': '#EDAFB8', // Dusty Rose / Cameo Pink
+                '--primary-foreground': '#4A5759',
+                '--secondary': '#B0C4B1', // Sage / Ash Gray
+                '--secondary-foreground': '#4A5759',
+                '--muted': '#DEDBD2', // Timberwolf / Greige
+                '--muted-foreground': '#7A8285', // Mid-slate neutral
+                '--accent': '#EDAFB8', // Dusty Rose (matches primary)
+                '--accent-foreground': '#4A5759',
+                '--border': '#DEDBD2', // Timberwolf
+                '--input': '#DEDBD2',
+                '--ring': '#EDAFB8', // Dusty Rose
+                '--card': '#FFFFFF', // White cards on cream bg
+                '--card-foreground': '#4A5759',
+                '--radius': '0.625rem',
             } as React.CSSProperties}
         >
             <SubsiteHeader />
             <main className="pt-20">{children}</main>
-            <SubsiteFooter />
+            <SubsiteFooter name="Arlet" />
         </div>
     );
 }
