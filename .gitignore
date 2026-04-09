@@ -45,3 +45,8 @@ mcp.json
 .mcp.json
 .agent/mcp.json
 deploy_n8n.py
+
+# Sensitive debug/API output files — NEVER commit these
+tools/scripts/*.txt
+tools/scripts/*.json
+tools/scripts/debug/

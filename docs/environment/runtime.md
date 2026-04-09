@@ -1,21 +1,32 @@
-# Runtime Environment Configuration
+# Runtime Environment & Configuration
 
-## 1. Local Environment Configuration
-The project uses a configuration-driven approach. Most business logic variables are stored natively in TypeScript objects:
-- `src/config/music.ts`: Contains WhatsApp numbers, regular price anchors, n8n webhook URLs, and other settings.
-- `src/config/norte.ts`: Configuration for the PalNorte bot UI commands.
+## 1. Local Development (`.env.local`)
+The Next.js application is designed to run almost entirely without local environment variables.
+However, API keys or analytics tokens for client-side tracking should be placed in `.env.local`.
 
-## 2. Build & Deployment
-- **Commands**:
-  - `npm run dev`: Start local development server.
-  - `npm run build`: Perform a production build (optimizes images, minifies code, generates static pages).
-  - `npm run lint`: Run ESLint for code quality checks.
+Currently required for frontend builds: **None.**
 
-## 3. n8n Infrastructure
-- **Server URL**: `https://n8n.akiwaky.cloud/`
-- **Webhook Base URL**: `https://webhooks.akiwaky.cloud/`
-- **Integration**: Model Context Protocol (MCP) server for live workflow interaction.
-- **Security Notice**: Do NOT commit `.mcp.json`, `mcp.json`, `.agent/mcp.json`, or script files like Python or PowerShell that container MCP configuration secrets. These files contain sensitive `N8N_API_KEY` and `CF-Access-Client-Secret` headers required to bypass Cloudflare Zero Trust.
+## 2. CI/CD Environment (Vercel)
+Variables must be declared in the Vercel Dashboard under **Project Settings > Environment Variables**.
+- Avoid configuring variables here unless necessary for server-side rendering (SSR). Since we rely heavily on static logic and webhooks, Vercel envs are kept to a strict minimum.
 
-## 4. Static Site Generation (SSG)
-All pages utilize Next.js Static Generation where possible to ensure near-instant load times and optimized SEO performance.
+## 3. Automation Layer Environment (n8n VPS)
+This is where the actual sensitive secrets live. The n8n VPS `docker-compose.yml` mounts a dedicated `.env` file that handles the backend configuration.
+
+### Critical Secrets Catalog (VPS only)
+| Variable | Owner | Purpose | Risk |
+|---|---|---|---|
+| `POSTGRES_PASSWORD` | DB Admin | n8n internal database credential. | Critical |
+| `N8N_ENCRYPTION_KEY` | Admin | Decrypts Notion/OpenAI API keys stored in the n8n DB. | Critical |
+| `N8N_HOST` | DNS Admin | Hostname binding for webhook generation. | Low |
+| `WEBHOOK_URL` | DNS Admin | Cloudflare assigned reverse proxy URL for external API callbacks. | Moderate |
+
+## 4. Local AI Environment (`.mcp.json`)
+For autonomous agents operating in this repository, access to the n8n instance is provided via the MCP server configuration.
+- File: `.mcp.json` (Gitignored)
+- Required Keys:
+  - `N8N_API_KEY`: Scoped token from n8n Users dashboard.
+  - `CF_ACCESS_CLIENT_ID`: Cloudflare Service Token ID.
+  - `CF_ACCESS_CLIENT_SECRET`: Cloudflare Service Token Secret.
+
+*Never commit `.mcp.json` or any `.env` files to git.*
