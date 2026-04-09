@@ -1,0 +1,294 @@
+{
+  "id": "817",
+  "finished": true,
+  "mode": "integrated",
+  "retryOf": null,
+  "retrySuccessId": null,
+  "status": "success",
+  "createdAt": "2026-03-10T14:16:10.837Z",
+  "startedAt": "2026-03-10T14:16:10.846Z",
+  "stoppedAt": "2026-03-10T14:16:11.291Z",
+  "deletedAt": null,
+  "workflowId": "XPCLmNSQesXST5gU",
+  "waitTill": null,
+  "storedAt": "db",
+  "data": {
+    "version": 1,
+    "startData": {},
+    "resultData": {
+      "runData": {
+        "When Executed by Another Workflow": [
+          {
+            "startTime": 1773152170849,
+            "executionIndex": 0,
+            "source": [],
+            "hints": [],
+            "executionTime": 0,
+            "metadata": {
+              "parentExecution": {
+                "executionId": "816",
+                "workflowId": "a5bg3l7kj0BDqVBV",
+                "shouldResume": true,
+                "executionContext": {
+                  "version": 1,
+                  "establishedAt": 1773152170833,
+                  "source": "integrated",
+                  "triggerNode": {
+                    "name": "Webhook Trigger",
+                    "type": "n8n-nodes-base.webhook"
+                  },
+                  "parentExecutionId": "815"
+                }
+              }
+            },
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "name": "unknown_unclear",
+                      "phone": "+5215555555508",
+                      "display_name": "Fernanda Unclear",
+                      "message_text": "asdfghjkl 123",
+                      "message_type": "text",
+                      "received_at": "2026-03-10T14:16:10.793Z",
+                      "raw_input": "{}",
+                      "_fixture_name": "unknown_unclear"
+                    },
+                    "index": 0,
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Lookup Session": [
+          {
+            "startTime": 1773152170849,
+            "executionIndex": 1,
+            "source": [
+              {
+                "previousNode": "When Executed by Another Workflow",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 436,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {},
+                    "pairedItem": [
+                      {
+                        "item": 0,
+                        "input": 0
+                      }
+                    ]
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Compute Session State": [
+          {
+            "startTime": 1773152171285,
+            "executionIndex": 2,
+            "source": [
+              {
+                "previousNode": "Lookup Session",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 6,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "phone": "+5215555555508",
+                      "display_name": "Fernanda Unclear",
+                      "session_status": "active",
+                      "short_memory": "",
+                      "last_intent": "",
+                      "last_user_message": "",
+                      "last_bot_message": "",
+                      "last_seen_at": "",
+                      "message_count": 0,
+                      "needs_human": false,
+                      "is_new_session": true,
+                      "is_stale_session": false
+                    },
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "lastNodeExecuted": "Compute Session State"
+    },
+    "executionData": {
+      "contextData": {},
+      "nodeExecutionStack": [],
+      "metadata": {},
+      "waitingExecution": {},
+      "waitingExecutionSource": {},
+      "runtimeData": {
+        "version": 1,
+        "establishedAt": 1773152170849,
+        "source": "integrated",
+        "triggerNode": {
+          "name": "Webhook Trigger",
+          "type": "n8n-nodes-base.webhook"
+        },
+        "parentExecutionId": "816"
+      }
+    },
+    "parentExecution": {
+      "executionId": "816",
+      "workflowId": "a5bg3l7kj0BDqVBV",
+      "shouldResume": true,
+      "executionContext": {
+        "version": 1,
+        "establishedAt": 1773152170833,
+        "source": "integrated",
+        "triggerNode": {
+          "name": "Webhook Trigger",
+          "type": "n8n-nodes-base.webhook"
+        },
+        "parentExecutionId": "815"
+      }
+    }
+  },
+  "workflowData": {
+    "id": "XPCLmNSQesXST5gU",
+    "name": "AkiBot - Load Session",
+    "active": true,
+    "activeVersionId": "94b78917-e559-41a5-ae47-addc988a4427",
+    "isArchived": false,
+    "createdAt": "2026-03-10T07:04:23.687Z",
+    "updatedAt": "2026-03-10T14:02:08.970Z",
+    "nodes": [
+      {
+        "parameters": {
+          "events": "worklfow_call",
+          "inputSource": "passthrough"
+        },
+        "name": "When Executed by Another Workflow",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          0,
+          0
+        ],
+        "id": "akibot-load-trigger"
+      },
+      {
+        "parameters": {
+          "authentication": "oAuth2",
+          "resource": "sheet",
+          "operation": "read",
+          "documentId": {
+            "__rl": true,
+            "value": "1cbnDSwdxZlJe0s8J4FQSU_ccPZIIts-GhjxXrOEdYzg",
+            "mode": "list"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "sessions",
+            "mode": "name"
+          },
+          "filtersUI": {
+            "values": [
+              {
+                "lookupColumn": "phone",
+                "lookupValue": "={{ $json.phone }}"
+              }
+            ]
+          },
+          "combineFilters": "AND",
+          "options": {}
+        },
+        "name": "Lookup Session",
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.5,
+        "position": [
+          220,
+          0
+        ],
+        "id": "akibot-load-lookup",
+        "alwaysOutputData": true,
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "d0W0zJQCpRSpQaZN",
+            "name": "Google Sheets account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "const input = $('When Executed by Another Workflow').first().json;\nconst results = $input.all();\nconst found = results.length > 0 && results[0].json.phone;\nconst row = found ? results[0].json : {};\n\nconst is_new_session = !found;\n\n// Stale check: >3 hours since last_seen_at\nlet is_stale_session = false;\nif (found && row.last_seen_at) {\n  const lastSeen = new Date(row.last_seen_at).getTime();\n  const receivedAt = new Date(input.received_at || Date.now()).getTime();\n  const threeHoursMs = 3 * 60 * 60 * 1000;\n  is_stale_session = (receivedAt - lastSeen) > threeHoursMs;\n}\n\nreturn [{\n  json: {\n    phone: input.phone,\n    display_name: found ? (row.display_name || input.display_name) : (input.display_name || ''),\n    session_status: found ? (row.session_status || 'active') : 'active',\n    short_memory: found ? (row.short_memory || '') : '',\n    last_intent: found ? (row.last_intent || '') : '',\n    last_user_message: found ? (row.last_user_message || '') : '',\n    last_bot_message: found ? (row.last_bot_message || '') : '',\n    last_seen_at: found ? (row.last_seen_at || '') : '',\n    message_count: found ? (parseInt(row.message_count) || 0) : 0,\n    needs_human: found ? (row.needs_human === 'true' || row.needs_human === true) : false,\n    is_new_session: is_new_session,\n    is_stale_session: is_stale_session\n  }\n}];",
+          "notice": ""
+        },
+        "name": "Compute Session State",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          440,
+          0
+        ],
+        "id": "akibot-load-compute",
+        "notesInFlow": true,
+        "notes": "Computes is_new_session and is_stale_session (>3h inactivity). Returns defaults if no row found."
+      }
+    ],
+    "connections": {
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "Lookup Session",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Lookup Session": {
+        "main": [
+          [
+            {
+              "node": "Compute Session State",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1",
+      "callerPolicy": "workflowsFromSameOwner",
+      "availableInMCP": false
+    },
+    "staticData": null,
+    "pinData": null
+  },
+  "customData": {}
+}

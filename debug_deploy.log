@@ -1,0 +1,102 @@
+============================================================
+AkiBot Sprint 1 -- Deploying workflows to n8n
+============================================================
+
+--- AkiBot-Log-Event.json ---
+  Updating existing workflow: AkiBot - Log Event (ID: fmQHFCWceVZVbWa9)
+  [OK] Updated: AkiBot - Log Event -> fmQHFCWceVZVbWa9
+
+--- AkiBot-Human-Handoff.json ---
+  Updating existing workflow: AkiBot - Human Handoff (ID: 84CvFle3GYikUaYl)
+  [OK] Updated: AkiBot - Human Handoff -> 84CvFle3GYikUaYl
+
+--- AkiBot-Save-Session.json ---
+  Updating existing workflow: AkiBot - Save Session (ID: zunMD9MoicuorrgQ)
+  [OK] Updated: AkiBot - Save Session -> zunMD9MoicuorrgQ
+
+--- AkiBot-Load-Session.json ---
+  Updating existing workflow: AkiBot - Load Session (ID: XPCLmNSQesXST5gU)
+  [OK] Updated: AkiBot - Load Session -> XPCLmNSQesXST5gU
+
+--- AkiBot-Classify-Intent.json ---
+  Updating existing workflow: AkiBot - Classify Intent (ID: eoGvxHk5GmGIn8yY)
+  [OK] Updated: AkiBot - Classify Intent -> eoGvxHk5GmGIn8yY
+
+--- AkiBot-Query-KB.json ---
+  Updating existing workflow: AkiBot - Query KB (ID: M7lcvxrXEX7fAzcc)
+  [OK] Updated: AkiBot - Query KB -> M7lcvxrXEX7fAzcc
+
+--- AkiBot-Generate-Reply.json ---
+  Updating existing workflow: AkiBot - Generate Reply (ID: hSX52DPbX770OHF3)
+  [OK] Updated: AkiBot - Generate Reply -> hSX52DPbX770OHF3
+
+--- AkiBot-Error-Handler.json ---
+  Updating existing workflow: AkiBot - Error Handler (ID: gXzRgIx6S1cKwRL8)
+  [OK] Updated: AkiBot - Error Handler -> gXzRgIx6S1cKwRL8
+
+--- AkiBot-Main-Inbound-Core.json ---
+  Updating existing workflow: AkiBot - Main Inbound Core (ID: a5bg3l7kj0BDqVBV)
+  [OK] Updated: AkiBot - Main Inbound Core -> a5bg3l7kj0BDqVBV
+
+--- AkiBot-WhatsApp-Inbound.json ---
+  Updating existing workflow: AkiBot - WhatsApp Inbound (ID: HYPs2XUDHr1hrqPU)
+  [OK] Updated: AkiBot - WhatsApp Inbound -> HYPs2XUDHr1hrqPU
+
+--- AkiBot-Test-Harness.json ---
+  Updating existing workflow: AkiBot - Test Harness (ID: nPOH8UqT0pCiEQan)
+  [OK] Updated: AkiBot - Test Harness -> nPOH8UqT0pCiEQan
+
+============================================================
+Deployment Summary
+============================================================
+  AkiBot - Log Event: fmQHFCWceVZVbWa9
+  AkiBot - Human Handoff: 84CvFle3GYikUaYl
+  AkiBot - Save Session: zunMD9MoicuorrgQ
+  AkiBot - Load Session: XPCLmNSQesXST5gU
+  AkiBot - Classify Intent: eoGvxHk5GmGIn8yY
+  AkiBot - Query KB: M7lcvxrXEX7fAzcc
+  AkiBot - Generate Reply: hSX52DPbX770OHF3
+  AkiBot - Error Handler: gXzRgIx6S1cKwRL8
+  AkiBot - Main Inbound Core: a5bg3l7kj0BDqVBV
+  AkiBot - WhatsApp Inbound: HYPs2XUDHr1hrqPU
+  AkiBot - Test Harness: nPOH8UqT0pCiEQan
+
+--- Wiring sub-workflow IDs into orchestrators ---
+
+  Re-deploying AkiBot - Main Inbound Core with real IDs...
+  [OK] Wired: AkiBot - Main Inbound Core
+
+  Re-deploying AkiBot - WhatsApp Inbound with real IDs...
+  [OK] Wired: AkiBot - WhatsApp Inbound
+
+  Re-deploying AkiBot - Test Harness with real IDs...
+  [OK] Wired: AkiBot - Test Harness
+
+--- Activating workflows ---
+  [OK] Activated: fmQHFCWceVZVbWa9
+  [OK] Activated: 84CvFle3GYikUaYl
+  [OK] Activated: zunMD9MoicuorrgQ
+  [OK] Activated: XPCLmNSQesXST5gU
+  [OK] Activated: eoGvxHk5GmGIn8yY
+  [OK] Activated: M7lcvxrXEX7fAzcc
+  [OK] Activated: hSX52DPbX770OHF3
+  Skipping activation: AkiBot - Error Handler (manual only)
+  [OK] Activated: a5bg3l7kj0BDqVBV
+  [OK] Activated: HYPs2XUDHr1hrqPU
+  [OK] Activated: nPOH8UqT0pCiEQan
+
+============================================================
+DONE. Final workflow IDs:
+{
+  "AkiBot - Log Event": "fmQHFCWceVZVbWa9",
+  "AkiBot - Human Handoff": "84CvFle3GYikUaYl",
+  "AkiBot - Save Session": "zunMD9MoicuorrgQ",
+  "AkiBot - Load Session": "XPCLmNSQesXST5gU",
+  "AkiBot - Classify Intent": "eoGvxHk5GmGIn8yY",
+  "AkiBot - Query KB": "M7lcvxrXEX7fAzcc",
+  "AkiBot - Generate Reply": "hSX52DPbX770OHF3",
+  "AkiBot - Error Handler": "gXzRgIx6S1cKwRL8",
+  "AkiBot - Main Inbound Core": "a5bg3l7kj0BDqVBV",
+  "AkiBot - WhatsApp Inbound": "HYPs2XUDHr1hrqPU",
+  "AkiBot - Test Harness": "nPOH8UqT0pCiEQan"
+}

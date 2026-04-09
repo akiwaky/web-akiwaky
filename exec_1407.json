@@ -1,0 +1,1305 @@
+{
+  "id": "1407",
+  "finished": false,
+  "mode": "integrated",
+  "retryOf": null,
+  "retrySuccessId": null,
+  "status": "error",
+  "createdAt": "2026-03-11T03:02:02.522Z",
+  "startedAt": "2026-03-11T03:02:02.528Z",
+  "stoppedAt": "2026-03-11T03:02:03.451Z",
+  "deletedAt": null,
+  "workflowId": "zunMD9MoicuorrgQ",
+  "waitTill": null,
+  "storedAt": "db",
+  "data": {
+    "version": 1,
+    "startData": {},
+    "resultData": {
+      "error": {
+        "level": "warning",
+        "tags": {},
+        "description": "Invalid data[0]: Unable to parse range: sessions!A",
+        "timestamp": 1773198123450,
+        "context": {},
+        "functionality": "regular",
+        "name": "NodeApiError",
+        "node": {
+          "parameters": {
+            "authentication": "oAuth2",
+            "resource": "sheet",
+            "operation": "update",
+            "documentId": {
+              "__rl": true,
+              "value": "1cbnDSwdxZlJe0s8J4FQSU_ccPZIIts-GhjxXrOEdYzg",
+              "mode": "list"
+            },
+            "sheetName": {
+              "__rl": true,
+              "value": "sessions",
+              "mode": "name"
+            },
+            "columns": {
+              "mappingMode": "defineBelow",
+              "value": {
+                "phone": "={{ $json.phone }}",
+                "display_name": "={{ $json.display_name }}",
+                "session_status": "={{ $json.session_status }}",
+                "short_memory": "={{ $json.short_memory }}",
+                "last_intent": "={{ $json.last_intent }}",
+                "last_user_message": "={{ $json.last_user_message }}",
+                "last_bot_message": "={{ $json.last_bot_message }}",
+                "last_seen_at": "={{ $json.last_seen_at }}",
+                "message_count": "={{ $json.message_count }}",
+                "needs_human": "={{ $json.needs_human }}",
+                "row_number": "={{ $json.row_number }}"
+              },
+              "schema": [
+                {
+                  "id": "phone",
+                  "displayName": "phone",
+                  "required": false,
+                  "defaultMatch": false,
+                  "display": true,
+                  "type": "string",
+                  "canBeUsedToMatch": true,
+                  "removed": false
+                },
+                {
+                  "id": "display_name",
+                  "displayName": "display_name",
+                  "required": false,
+                  "defaultMatch": false,
+                  "display": true,
+                  "type": "string",
+                  "canBeUsedToMatch": true,
+                  "removed": false
+                },
+                {
+                  "id": "session_status",
+                  "displayName": "session_status",
+                  "required": false,
+                  "defaultMatch": false,
+                  "display": true,
+                  "type": "string",
+                  "canBeUsedToMatch": true,
+                  "removed": false
+                },
+                {
+                  "id": "short_memory",
+                  "displayName": "short_memory",
+                  "required": false,
+                  "defaultMatch": false,
+                  "display": true,
+                  "type": "string",
+                  "canBeUsedToMatch": true,
+                  "removed": false
+                },
+                {
+                  "id": "last_intent",
+                  "displayName": "last_intent",
+                  "required": false,
+                  "defaultMatch": false,
+                  "display": true,
+                  "type": "string",
+                  "canBeUsedToMatch": true,
+                  "removed": false
+                },
+                {
+                  "id": "last_user_message",
+                  "displayName": "last_user_message",
+                  "required": false,
+                  "defaultMatch": false,
+                  "display": true,
+                  "type": "string",
+                  "canBeUsedToMatch": true,
+                  "removed": false
+                },
+                {
+                  "id": "last_bot_message",
+                  "displayName": "last_bot_message",
+                  "required": false,
+                  "defaultMatch": false,
+                  "display": true,
+                  "type": "string",
+                  "canBeUsedToMatch": true,
+                  "removed": false
+                },
+                {
+                  "id": "last_seen_at",
+                  "displayName": "last_seen_at",
+                  "required": false,
+                  "defaultMatch": false,
+                  "display": true,
+                  "type": "string",
+                  "canBeUsedToMatch": true,
+                  "removed": false
+                },
+                {
+                  "id": "message_count",
+                  "displayName": "message_count",
+                  "required": false,
+                  "defaultMatch": false,
+                  "display": true,
+                  "type": "string",
+                  "canBeUsedToMatch": true,
+                  "removed": false
+                },
+                {
+                  "id": "needs_human",
+                  "displayName": "needs_human",
+                  "required": false,
+                  "defaultMatch": false,
+                  "display": true,
+                  "type": "string",
+                  "canBeUsedToMatch": true,
+                  "removed": false
+                },
+                {
+                  "id": "row_number",
+                  "displayName": "row_number",
+                  "required": false,
+                  "defaultMatch": true,
+                  "display": true,
+                  "type": "string",
+                  "canBeUsedToMatch": true,
+                  "removed": false
+                }
+              ],
+              "matchingColumns": [
+                "row_number"
+              ]
+            },
+            "options": {
+              "cellFormat": "USER_ENTERED"
+            }
+          },
+          "name": "Update Session Row",
+          "type": "n8n-nodes-base.googleSheets",
+          "typeVersion": 4.5,
+          "position": [
+            880,
+            -100
+          ],
+          "id": "akibot-save-update",
+          "credentials": {
+            "googleSheetsOAuth2Api": {
+              "id": "d0W0zJQCpRSpQaZN",
+              "name": "Google Sheets account"
+            }
+          }
+        },
+        "messages": [
+          "400 - {\"error\":{\"code\":400,\"message\":\"Invalid data[0]: Unable to parse range: sessions!A\",\"status\":\"INVALID_ARGUMENT\"}}"
+        ],
+        "httpCode": "400",
+        "message": "Bad request - please check your parameters",
+        "stack": "NodeApiError: Bad request - please check your parameters\n    at ExecuteContext.apiRequest (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Google/Sheet/v2/transport/index.ts:78:9)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at GoogleSheet.batchUpdate (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Google/Sheet/v2/helpers/GoogleSheet.ts:198:20)\n    at ExecuteContext.execute (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Google/Sheet/v2/actions/sheet/update.operation.ts:468:3)\n    at ExecuteContext.router (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Google/Sheet/v2/actions/router.ts:64:14)\n    at ExecuteContext.execute (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Google/Sheet/v2/GoogleSheetsV2.node.ts:30:10)\n    at WorkflowExecute.executeNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1039:8)\n    at WorkflowExecute.runNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1218:11)\n    at /usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1653:27\n    at /usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:2296:11"
+      },
+      "runData": {
+        "When Executed by Another Workflow": [
+          {
+            "startTime": 1773198122530,
+            "executionIndex": 0,
+            "source": [],
+            "hints": [],
+            "executionTime": 0,
+            "metadata": {
+              "parentExecution": {
+                "executionId": "1403",
+                "workflowId": "a5bg3l7kj0BDqVBV",
+                "shouldResume": true,
+                "executionContext": {
+                  "version": 1,
+                  "establishedAt": 1773198119998,
+                  "source": "integrated",
+                  "triggerNode": {
+                    "name": "Webhook Trigger",
+                    "type": "n8n-nodes-base.webhook"
+                  },
+                  "parentExecutionId": "1402"
+                }
+              }
+            },
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "response_text": "Entendido. Lo paso con una persona.",
+                      "intent": "unknown",
+                      "kb_hit": false,
+                      "updated_short_memory": "Escalado a humano por #humano. \u00daltimo mensaje: undefined",
+                      "needs_human": false,
+                      "status": "ok",
+                      "phone": "+5215550000102",
+                      "display_name": "",
+                      "message_type": "text",
+                      "_save_payload": {
+                        "phone": "+5215550000102",
+                        "display_name": "",
+                        "session_status": "active",
+                        "short_memory": "Escalado a humano por #humano. \u00daltimo mensaje: undefined",
+                        "last_intent": "unknown",
+                        "last_bot_message": "Entendido. Lo paso con una persona.",
+                        "needs_human": false
+                      },
+                      "_log_payload": {
+                        "timestamp": "2026-03-11T03:02:02.519Z",
+                        "phone": "+5215550000102",
+                        "display_name": "",
+                        "intent": "unknown",
+                        "response_sent": "Entendido. Lo paso con una persona.",
+                        "kb_hit": false,
+                        "failed": false,
+                        "failure_reason": ""
+                      },
+                      "session_status": "active",
+                      "short_memory": "Escalado a humano por #humano. \u00daltimo mensaje: undefined",
+                      "last_intent": "unknown",
+                      "last_bot_message": "Entendido. Lo paso con una persona."
+                    },
+                    "index": 0,
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Lookup Session": [
+          {
+            "startTime": 1773198122530,
+            "executionIndex": 1,
+            "source": [
+              {
+                "previousNode": "When Executed by Another Workflow",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 348,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {},
+                    "pairedItem": [
+                      {
+                        "item": 0,
+                        "input": 0
+                      }
+                    ]
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Prepare Upsert Data": [
+          {
+            "startTime": 1773198122878,
+            "executionIndex": 2,
+            "source": [
+              {
+                "previousNode": "Lookup Session",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 7,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "is_existing": false,
+                      "phone": "+5215550000102",
+                      "display_name": "",
+                      "session_status": "active",
+                      "short_memory": "Escalado a humano por #humano. \u00daltimo mensaje: undefined",
+                      "last_intent": "unknown",
+                      "last_user_message": "",
+                      "last_bot_message": "Entendido. Lo paso con una persona.",
+                      "last_seen_at": "2026-03-11T03:02:02.884Z",
+                      "message_count": 1,
+                      "needs_human": false
+                    },
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Session Exists?": [
+          {
+            "startTime": 1773198122885,
+            "executionIndex": 3,
+            "source": [
+              {
+                "previousNode": "Prepare Upsert Data",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 0,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "is_existing": false,
+                      "phone": "+5215550000102",
+                      "display_name": "",
+                      "session_status": "active",
+                      "short_memory": "Escalado a humano por #humano. \u00daltimo mensaje: undefined",
+                      "last_intent": "unknown",
+                      "last_user_message": "",
+                      "last_bot_message": "Entendido. Lo paso con una persona.",
+                      "last_seen_at": "2026-03-11T03:02:02.884Z",
+                      "message_count": 1,
+                      "needs_human": false
+                    },
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ],
+                []
+              ]
+            }
+          }
+        ],
+        "Update Session Row": [
+          {
+            "startTime": 1773198122886,
+            "executionIndex": 4,
+            "source": [
+              {
+                "previousNode": "Session Exists?",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 564,
+            "executionStatus": "error",
+            "error": {
+              "level": "warning",
+              "tags": {},
+              "description": "Invalid data[0]: Unable to parse range: sessions!A",
+              "timestamp": 1773198123450,
+              "context": {},
+              "functionality": "regular",
+              "name": "NodeApiError",
+              "node": {
+                "parameters": {
+                  "authentication": "oAuth2",
+                  "resource": "sheet",
+                  "operation": "update",
+                  "documentId": {
+                    "__rl": true,
+                    "value": "1cbnDSwdxZlJe0s8J4FQSU_ccPZIIts-GhjxXrOEdYzg",
+                    "mode": "list"
+                  },
+                  "sheetName": {
+                    "__rl": true,
+                    "value": "sessions",
+                    "mode": "name"
+                  },
+                  "columns": {
+                    "mappingMode": "defineBelow",
+                    "value": {
+                      "phone": "={{ $json.phone }}",
+                      "display_name": "={{ $json.display_name }}",
+                      "session_status": "={{ $json.session_status }}",
+                      "short_memory": "={{ $json.short_memory }}",
+                      "last_intent": "={{ $json.last_intent }}",
+                      "last_user_message": "={{ $json.last_user_message }}",
+                      "last_bot_message": "={{ $json.last_bot_message }}",
+                      "last_seen_at": "={{ $json.last_seen_at }}",
+                      "message_count": "={{ $json.message_count }}",
+                      "needs_human": "={{ $json.needs_human }}",
+                      "row_number": "={{ $json.row_number }}"
+                    },
+                    "schema": [
+                      {
+                        "id": "phone",
+                        "displayName": "phone",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true,
+                        "removed": false
+                      },
+                      {
+                        "id": "display_name",
+                        "displayName": "display_name",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true,
+                        "removed": false
+                      },
+                      {
+                        "id": "session_status",
+                        "displayName": "session_status",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true,
+                        "removed": false
+                      },
+                      {
+                        "id": "short_memory",
+                        "displayName": "short_memory",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true,
+                        "removed": false
+                      },
+                      {
+                        "id": "last_intent",
+                        "displayName": "last_intent",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true,
+                        "removed": false
+                      },
+                      {
+                        "id": "last_user_message",
+                        "displayName": "last_user_message",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true,
+                        "removed": false
+                      },
+                      {
+                        "id": "last_bot_message",
+                        "displayName": "last_bot_message",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true,
+                        "removed": false
+                      },
+                      {
+                        "id": "last_seen_at",
+                        "displayName": "last_seen_at",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true,
+                        "removed": false
+                      },
+                      {
+                        "id": "message_count",
+                        "displayName": "message_count",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true,
+                        "removed": false
+                      },
+                      {
+                        "id": "needs_human",
+                        "displayName": "needs_human",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true,
+                        "removed": false
+                      },
+                      {
+                        "id": "row_number",
+                        "displayName": "row_number",
+                        "required": false,
+                        "defaultMatch": true,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true,
+                        "removed": false
+                      }
+                    ],
+                    "matchingColumns": [
+                      "row_number"
+                    ]
+                  },
+                  "options": {
+                    "cellFormat": "USER_ENTERED"
+                  }
+                },
+                "name": "Update Session Row",
+                "type": "n8n-nodes-base.googleSheets",
+                "typeVersion": 4.5,
+                "position": [
+                  880,
+                  -100
+                ],
+                "id": "akibot-save-update",
+                "credentials": {
+                  "googleSheetsOAuth2Api": {
+                    "id": "d0W0zJQCpRSpQaZN",
+                    "name": "Google Sheets account"
+                  }
+                }
+              },
+              "messages": [
+                "400 - {\"error\":{\"code\":400,\"message\":\"Invalid data[0]: Unable to parse range: sessions!A\",\"status\":\"INVALID_ARGUMENT\"}}"
+              ],
+              "httpCode": "400",
+              "message": "Bad request - please check your parameters",
+              "stack": "NodeApiError: Bad request - please check your parameters\n    at ExecuteContext.apiRequest (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Google/Sheet/v2/transport/index.ts:78:9)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at GoogleSheet.batchUpdate (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Google/Sheet/v2/helpers/GoogleSheet.ts:198:20)\n    at ExecuteContext.execute (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Google/Sheet/v2/actions/sheet/update.operation.ts:468:3)\n    at ExecuteContext.router (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Google/Sheet/v2/actions/router.ts:64:14)\n    at ExecuteContext.execute (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Google/Sheet/v2/GoogleSheetsV2.node.ts:30:10)\n    at WorkflowExecute.executeNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1039:8)\n    at WorkflowExecute.runNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1218:11)\n    at /usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1653:27\n    at /usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:2296:11"
+            }
+          }
+        ]
+      },
+      "lastNodeExecuted": "Update Session Row"
+    },
+    "executionData": {
+      "contextData": {},
+      "nodeExecutionStack": [
+        {
+          "node": {
+            "parameters": {
+              "authentication": "oAuth2",
+              "resource": "sheet",
+              "operation": "update",
+              "documentId": {
+                "__rl": true,
+                "value": "1cbnDSwdxZlJe0s8J4FQSU_ccPZIIts-GhjxXrOEdYzg",
+                "mode": "list"
+              },
+              "sheetName": {
+                "__rl": true,
+                "value": "sessions",
+                "mode": "name"
+              },
+              "columns": {
+                "mappingMode": "defineBelow",
+                "value": {
+                  "phone": "={{ $json.phone }}",
+                  "display_name": "={{ $json.display_name }}",
+                  "session_status": "={{ $json.session_status }}",
+                  "short_memory": "={{ $json.short_memory }}",
+                  "last_intent": "={{ $json.last_intent }}",
+                  "last_user_message": "={{ $json.last_user_message }}",
+                  "last_bot_message": "={{ $json.last_bot_message }}",
+                  "last_seen_at": "={{ $json.last_seen_at }}",
+                  "message_count": "={{ $json.message_count }}",
+                  "needs_human": "={{ $json.needs_human }}",
+                  "row_number": "={{ $json.row_number }}"
+                },
+                "schema": [
+                  {
+                    "id": "phone",
+                    "displayName": "phone",
+                    "required": false,
+                    "defaultMatch": false,
+                    "display": true,
+                    "type": "string",
+                    "canBeUsedToMatch": true,
+                    "removed": false
+                  },
+                  {
+                    "id": "display_name",
+                    "displayName": "display_name",
+                    "required": false,
+                    "defaultMatch": false,
+                    "display": true,
+                    "type": "string",
+                    "canBeUsedToMatch": true,
+                    "removed": false
+                  },
+                  {
+                    "id": "session_status",
+                    "displayName": "session_status",
+                    "required": false,
+                    "defaultMatch": false,
+                    "display": true,
+                    "type": "string",
+                    "canBeUsedToMatch": true,
+                    "removed": false
+                  },
+                  {
+                    "id": "short_memory",
+                    "displayName": "short_memory",
+                    "required": false,
+                    "defaultMatch": false,
+                    "display": true,
+                    "type": "string",
+                    "canBeUsedToMatch": true,
+                    "removed": false
+                  },
+                  {
+                    "id": "last_intent",
+                    "displayName": "last_intent",
+                    "required": false,
+                    "defaultMatch": false,
+                    "display": true,
+                    "type": "string",
+                    "canBeUsedToMatch": true,
+                    "removed": false
+                  },
+                  {
+                    "id": "last_user_message",
+                    "displayName": "last_user_message",
+                    "required": false,
+                    "defaultMatch": false,
+                    "display": true,
+                    "type": "string",
+                    "canBeUsedToMatch": true,
+                    "removed": false
+                  },
+                  {
+                    "id": "last_bot_message",
+                    "displayName": "last_bot_message",
+                    "required": false,
+                    "defaultMatch": false,
+                    "display": true,
+                    "type": "string",
+                    "canBeUsedToMatch": true,
+                    "removed": false
+                  },
+                  {
+                    "id": "last_seen_at",
+                    "displayName": "last_seen_at",
+                    "required": false,
+                    "defaultMatch": false,
+                    "display": true,
+                    "type": "string",
+                    "canBeUsedToMatch": true,
+                    "removed": false
+                  },
+                  {
+                    "id": "message_count",
+                    "displayName": "message_count",
+                    "required": false,
+                    "defaultMatch": false,
+                    "display": true,
+                    "type": "string",
+                    "canBeUsedToMatch": true,
+                    "removed": false
+                  },
+                  {
+                    "id": "needs_human",
+                    "displayName": "needs_human",
+                    "required": false,
+                    "defaultMatch": false,
+                    "display": true,
+                    "type": "string",
+                    "canBeUsedToMatch": true,
+                    "removed": false
+                  },
+                  {
+                    "id": "row_number",
+                    "displayName": "row_number",
+                    "required": false,
+                    "defaultMatch": true,
+                    "display": true,
+                    "type": "string",
+                    "canBeUsedToMatch": true,
+                    "removed": false
+                  }
+                ],
+                "matchingColumns": [
+                  "row_number"
+                ]
+              },
+              "options": {
+                "cellFormat": "USER_ENTERED"
+              }
+            },
+            "name": "Update Session Row",
+            "type": "n8n-nodes-base.googleSheets",
+            "typeVersion": 4.5,
+            "position": [
+              880,
+              -100
+            ],
+            "id": "akibot-save-update",
+            "credentials": {
+              "googleSheetsOAuth2Api": {
+                "id": "d0W0zJQCpRSpQaZN",
+                "name": "Google Sheets account"
+              }
+            }
+          },
+          "data": {
+            "main": [
+              [
+                {
+                  "json": {
+                    "is_existing": false,
+                    "phone": "+5215550000102",
+                    "display_name": "",
+                    "session_status": "active",
+                    "short_memory": "Escalado a humano por #humano. \u00daltimo mensaje: undefined",
+                    "last_intent": "unknown",
+                    "last_user_message": "",
+                    "last_bot_message": "Entendido. Lo paso con una persona.",
+                    "last_seen_at": "2026-03-11T03:02:02.884Z",
+                    "message_count": 1,
+                    "needs_human": false
+                  },
+                  "pairedItem": {
+                    "item": 0
+                  }
+                }
+              ]
+            ]
+          },
+          "source": {
+            "main": [
+              {
+                "previousNode": "Session Exists?",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ]
+          }
+        }
+      ],
+      "metadata": {},
+      "waitingExecution": {},
+      "waitingExecutionSource": {},
+      "runtimeData": {
+        "version": 1,
+        "establishedAt": 1773198122530,
+        "source": "integrated",
+        "triggerNode": {
+          "name": "Webhook Trigger",
+          "type": "n8n-nodes-base.webhook"
+        },
+        "parentExecutionId": "1403"
+      }
+    },
+    "parentExecution": {
+      "executionId": "1403",
+      "workflowId": "a5bg3l7kj0BDqVBV",
+      "shouldResume": true,
+      "executionContext": {
+        "version": 1,
+        "establishedAt": 1773198119998,
+        "source": "integrated",
+        "triggerNode": {
+          "name": "Webhook Trigger",
+          "type": "n8n-nodes-base.webhook"
+        },
+        "parentExecutionId": "1402"
+      }
+    }
+  },
+  "workflowData": {
+    "id": "zunMD9MoicuorrgQ",
+    "name": "AkiBot - Save Session",
+    "active": true,
+    "activeVersionId": "3d72e2c1-601e-4656-b282-95be3c1bd521",
+    "isArchived": false,
+    "createdAt": "2026-03-10T07:04:22.444Z",
+    "updatedAt": "2026-03-11T03:01:08.689Z",
+    "nodes": [
+      {
+        "parameters": {
+          "events": "worklfow_call",
+          "inputSource": "passthrough"
+        },
+        "name": "When Executed by Another Workflow",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          0,
+          0
+        ],
+        "id": "akibot-save-trigger"
+      },
+      {
+        "parameters": {
+          "authentication": "oAuth2",
+          "resource": "sheet",
+          "operation": "read",
+          "documentId": {
+            "__rl": true,
+            "value": "1cbnDSwdxZlJe0s8J4FQSU_ccPZIIts-GhjxXrOEdYzg",
+            "mode": "list"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "sessions",
+            "mode": "name"
+          },
+          "filtersUI": {
+            "values": [
+              {
+                "lookupColumn": "phone",
+                "lookupValue": "={{ $json.phone }}"
+              }
+            ]
+          },
+          "combineFilters": "AND",
+          "options": {}
+        },
+        "name": "Lookup Session",
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.5,
+        "position": [
+          220,
+          0
+        ],
+        "id": "akibot-save-lookup",
+        "alwaysOutputData": true,
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "d0W0zJQCpRSpQaZN",
+            "name": "Google Sheets account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "const input = $('When Executed by Another Workflow').first().json;\nconst lookupResults = $input.all();\nconst hasExisting = Boolean(lookupResults.length > 0 && lookupResults[0].json && lookupResults[0].json.phone);\nconst oldCount = hasExisting ? (parseInt(lookupResults[0].json.message_count) || 0) : 0;\nconst rowNumber = hasExisting ? lookupResults[0].json.row_number : undefined;\n\nreturn [{\n  json: {\n    is_existing: hasExisting,\n    row_number: rowNumber,\n    phone: input.phone,\n    display_name: input.display_name || '',\n    session_status: input.session_status || 'active',\n    short_memory: input.short_memory || '',\n    last_intent: input.last_intent || '',\n    last_user_message: input.last_user_message || '',\n    last_bot_message: input.last_bot_message || '',\n    last_seen_at: new Date().toISOString(),\n    message_count: oldCount + 1,\n    needs_human: input.needs_human || false\n  }\n}];",
+          "notice": ""
+        },
+        "name": "Prepare Upsert Data",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          440,
+          0
+        ],
+        "id": "akibot-save-prepare"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": false
+            },
+            "conditions": [
+              {
+                "id": "exists-check",
+                "leftValue": "={{ $json.is_existing }}",
+                "rightValue": true,
+                "operator": {
+                  "type": "boolean",
+                  "operation": "equals"
+                }
+              }
+            ]
+          },
+          "options": {}
+        },
+        "name": "Session Exists?",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2,
+        "position": [
+          660,
+          0
+        ],
+        "id": "akibot-save-if"
+      },
+      {
+        "parameters": {
+          "authentication": "oAuth2",
+          "resource": "sheet",
+          "operation": "update",
+          "documentId": {
+            "__rl": true,
+            "value": "1cbnDSwdxZlJe0s8J4FQSU_ccPZIIts-GhjxXrOEdYzg",
+            "mode": "list"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "sessions",
+            "mode": "name"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "phone": "={{ $json.phone }}",
+              "display_name": "={{ $json.display_name }}",
+              "session_status": "={{ $json.session_status }}",
+              "short_memory": "={{ $json.short_memory }}",
+              "last_intent": "={{ $json.last_intent }}",
+              "last_user_message": "={{ $json.last_user_message }}",
+              "last_bot_message": "={{ $json.last_bot_message }}",
+              "last_seen_at": "={{ $json.last_seen_at }}",
+              "message_count": "={{ $json.message_count }}",
+              "needs_human": "={{ $json.needs_human }}",
+              "row_number": "={{ $json.row_number }}"
+            },
+            "schema": [
+              {
+                "id": "phone",
+                "displayName": "phone",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "display_name",
+                "displayName": "display_name",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "session_status",
+                "displayName": "session_status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "short_memory",
+                "displayName": "short_memory",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "last_intent",
+                "displayName": "last_intent",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "last_user_message",
+                "displayName": "last_user_message",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "last_bot_message",
+                "displayName": "last_bot_message",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "last_seen_at",
+                "displayName": "last_seen_at",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "message_count",
+                "displayName": "message_count",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "needs_human",
+                "displayName": "needs_human",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "row_number",
+                "displayName": "row_number",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "matchingColumns": [
+              "row_number"
+            ]
+          },
+          "options": {
+            "cellFormat": "USER_ENTERED"
+          }
+        },
+        "name": "Update Session Row",
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.5,
+        "position": [
+          880,
+          -100
+        ],
+        "id": "akibot-save-update",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "d0W0zJQCpRSpQaZN",
+            "name": "Google Sheets account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "authentication": "oAuth2",
+          "resource": "sheet",
+          "operation": "append",
+          "documentId": {
+            "__rl": true,
+            "value": "1cbnDSwdxZlJe0s8J4FQSU_ccPZIIts-GhjxXrOEdYzg",
+            "mode": "list"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "sessions",
+            "mode": "name"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "phone": "={{ $json.phone }}",
+              "display_name": "={{ $json.display_name }}",
+              "session_status": "={{ $json.session_status }}",
+              "short_memory": "={{ $json.short_memory }}",
+              "last_intent": "={{ $json.last_intent }}",
+              "last_user_message": "={{ $json.last_user_message }}",
+              "last_bot_message": "={{ $json.last_bot_message }}",
+              "last_seen_at": "={{ $json.last_seen_at }}",
+              "message_count": "={{ $json.message_count }}",
+              "needs_human": "={{ $json.needs_human }}"
+            },
+            "schema": [
+              {
+                "id": "phone",
+                "displayName": "phone",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "display_name",
+                "displayName": "display_name",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "session_status",
+                "displayName": "session_status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "short_memory",
+                "displayName": "short_memory",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "last_intent",
+                "displayName": "last_intent",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "last_user_message",
+                "displayName": "last_user_message",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "last_bot_message",
+                "displayName": "last_bot_message",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "last_seen_at",
+                "displayName": "last_seen_at",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "message_count",
+                "displayName": "message_count",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "needs_human",
+                "displayName": "needs_human",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ]
+          },
+          "options": {}
+        },
+        "name": "Insert Session Row",
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.5,
+        "position": [
+          880,
+          100
+        ],
+        "id": "akibot-save-insert",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "d0W0zJQCpRSpQaZN",
+            "name": "Google Sheets account"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "Lookup Session",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Lookup Session": {
+        "main": [
+          [
+            {
+              "node": "Prepare Upsert Data",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Prepare Upsert Data": {
+        "main": [
+          [
+            {
+              "node": "Session Exists?",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Session Exists?": {
+        "main": [
+          [
+            {
+              "node": "Update Session Row",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Insert Session Row",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1",
+      "callerPolicy": "workflowsFromSameOwner",
+      "availableInMCP": false
+    },
+    "staticData": null,
+    "pinData": null
+  },
+  "customData": {}
+}

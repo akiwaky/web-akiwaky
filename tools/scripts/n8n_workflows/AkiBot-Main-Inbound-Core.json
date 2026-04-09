@@ -1,0 +1,1005 @@
+{
+  "name": "AkiBot - Main Inbound Core",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "akibot-core-trigger"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "outputKey": "text",
+              "conditions": {
+                "conditions": [
+                  {
+                    "value1": "={{ $json.message_type }}",
+                    "value2": "text",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "name": "Message Type",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "akibot-core-msgtype"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "rt",
+              "name": "response_text",
+              "value": "Por ahora solo puedo ayudarte con mensajes de texto.",
+              "type": "string"
+            },
+            {
+              "id": "int",
+              "name": "intent",
+              "value": "unsupported",
+              "type": "string"
+            },
+            {
+              "id": "kb",
+              "name": "kb_hit",
+              "value": false,
+              "type": "boolean"
+            },
+            {
+              "id": "mem",
+              "name": "updated_short_memory",
+              "value": "Envió contenido no soportado (no texto)",
+              "type": "string"
+            },
+            {
+              "id": "nh",
+              "name": "needs_human",
+              "value": false,
+              "type": "boolean"
+            },
+            {
+              "id": "st",
+              "name": "status",
+              "value": "ok",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Non-Text Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        440,
+        200
+      ],
+      "id": "akibot-core-nontext"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ /*LOAD_SESSION_ID*/ }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "phone": "={{ $('When Executed by Another Workflow').first().json.phone }}",
+            "display_name": "={{ $('When Executed by Another Workflow').first().json.display_name }}",
+            "received_at": "={{ $('When Executed by Another Workflow').first().json.received_at }}"
+          }
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "name": "Load Session",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        440,
+        -100
+      ],
+      "id": "akibot-core-load"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ /*CLASSIFY_INTENT_ID*/ }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "message_text": "={{ $('When Executed by Another Workflow').first().json.message_text }}",
+            "short_memory": "={{ $json.short_memory }}",
+            "is_new_session": "={{ $json.is_new_session }}",
+            "is_stale_session": "={{ $json.is_stale_session }}"
+          }
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "name": "Classify Intent",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        660,
+        -100
+      ],
+      "id": "akibot-core-classify"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Merge session + intent + original input into one object for downstream routing\nconst original = $('When Executed by Another Workflow').first().json;\nconst session = $('Load Session').first().json;\nconst intent = $input.first().json;\n\nreturn [{\n  json: {\n    // Original input\n    phone: original.phone,\n    display_name: original.display_name || session.display_name,\n    message_text: original.message_text,\n    message_type: original.message_type,\n    received_at: original.received_at,\n    // Session data\n    session_status: session.session_status,\n    short_memory: session.short_memory,\n    last_intent: session.last_intent,\n    last_user_message: session.last_user_message,\n    last_bot_message: session.last_bot_message,\n    last_seen_at: session.last_seen_at,\n    message_count: session.message_count,\n    needs_human: session.needs_human,\n    is_new_session: session.is_new_session,\n    is_stale_session: session.is_stale_session,\n    // Intent data\n    intent: intent.intent,\n    confidence: intent.confidence,\n    intent_reason: intent.reason\n  }\n}];"
+      },
+      "name": "Merge Context",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        -100
+      ],
+      "id": "akibot-core-merge",
+      "notesInFlow": true,
+      "notes": "Combines original input, session state, and classified intent into single context object"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "outputKey": "human_handoff",
+              "conditions": {
+                "conditions": [
+                  {
+                    "value1": "={{ $json.intent }}",
+                    "value2": "human_handoff",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "outputKey": "greeting",
+              "conditions": {
+                "conditions": [
+                  {
+                    "value1": "={{ $json.intent }}",
+                    "value2": "greeting",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "outputKey": "kb_question",
+              "conditions": {
+                "conditions": [
+                  {
+                    "value1": "={{ $json.intent }}",
+                    "value2": "kb_question",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "outputKey": "follow_up",
+              "conditions": {
+                "conditions": [
+                  {
+                    "value1": "={{ $json.intent }}",
+                    "value2": "follow_up",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "outputKey": "unsupported",
+              "conditions": {
+                "conditions": [
+                  {
+                    "value1": "={{ $json.intent }}",
+                    "value2": "unsupported",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "name": "Route by Intent",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1100,
+        -100
+      ],
+      "id": "akibot-core-route"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ /*HUMAN_HANDOFF_ID*/ }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "phone": "={{ $json.phone }}",
+            "display_name": "={{ $json.display_name }}",
+            "last_user_message": "={{ $json.message_text }}"
+          }
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "name": "Human Handoff",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1320,
+        -400
+      ],
+      "id": "akibot-core-handoff"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ /*GENERATE_REPLY_ID*/ }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "message_text": "={{ $('Merge Context').first().json.message_text }}",
+            "short_memory": "={{ $('Merge Context').first().json.short_memory }}",
+            "is_new_session": "={{ $('Merge Context').first().json.is_new_session }}",
+            "is_stale_session": "={{ $('Merge Context').first().json.is_stale_session }}",
+            "intent": "={{ $('Merge Context').first().json.intent }}",
+            "kb_context": "",
+            "display_name": "={{ $('Merge Context').first().json.display_name }}"
+          }
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "name": "Generate Greeting Reply",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1320,
+        -240
+      ],
+      "id": "akibot-core-greeting"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ /*QUERY_KB_ID*/ }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "message_text": "={{ $json.message_text }}",
+            "short_memory": "={{ $json.short_memory }}"
+          }
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "name": "Query KB",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1320,
+        -80
+      ],
+      "id": "akibot-core-querykb"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ /*GENERATE_REPLY_ID*/ }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "message_text": "={{ $('Merge Context').first().json.message_text }}",
+            "short_memory": "={{ $('Merge Context').first().json.short_memory }}",
+            "is_new_session": "={{ $('Merge Context').first().json.is_new_session }}",
+            "is_stale_session": "={{ $('Merge Context').first().json.is_stale_session }}",
+            "intent": "={{ $('Merge Context').first().json.intent }}",
+            "kb_context": "={{ $json.kb_context }}",
+            "display_name": "={{ $('Merge Context').first().json.display_name }}"
+          }
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "name": "Generate KB Reply",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1540,
+        -80
+      ],
+      "id": "akibot-core-kbreply"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ /*QUERY_KB_ID*/ }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "message_text": "={{ $json.message_text }}",
+            "short_memory": "={{ $json.short_memory }}"
+          }
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "name": "Query KB Follow-up",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1320,
+        80
+      ],
+      "id": "akibot-core-querykb-fu"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ /*GENERATE_REPLY_ID*/ }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "message_text": "={{ $('Merge Context').first().json.message_text }}",
+            "short_memory": "={{ $('Merge Context').first().json.short_memory }}",
+            "is_new_session": "={{ $('Merge Context').first().json.is_new_session }}",
+            "is_stale_session": "={{ $('Merge Context').first().json.is_stale_session }}",
+            "intent": "={{ $('Merge Context').first().json.intent }}",
+            "kb_context": "={{ $json.kb_context }}",
+            "display_name": "={{ $('Merge Context').first().json.display_name }}"
+          }
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "name": "Generate Follow-up Reply",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1540,
+        80
+      ],
+      "id": "akibot-core-fureply"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "rt2",
+              "name": "response_text",
+              "value": "Por ahora solo puedo ayudarte con mensajes de texto.",
+              "type": "string"
+            },
+            {
+              "id": "kb2",
+              "name": "kb_hit",
+              "value": false,
+              "type": "boolean"
+            },
+            {
+              "id": "mem2",
+              "name": "updated_short_memory",
+              "value": "Mensaje no soportado (intent: unsupported)",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Unsupported Reply",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1320,
+        240
+      ],
+      "id": "akibot-core-unsupported"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "rt3",
+              "name": "response_text",
+              "value": "No estoy seguro de haber entendido bien. ¿Me lo puedes escribir con un poco más de detalle?",
+              "type": "string"
+            },
+            {
+              "id": "kb3",
+              "name": "kb_hit",
+              "value": false,
+              "type": "boolean"
+            },
+            {
+              "id": "mem3",
+              "name": "updated_short_memory",
+              "value": "Mensaje no claro (intent: unknown)",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Unknown Reply",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1320,
+        400
+      ],
+      "id": "akibot-core-unknown"
+    },
+    {
+      "parameters": {
+        "jsCode": "const original = $('Merge Context').item ? $('Merge Context').first().json : $('When Executed by Another Workflow').first().json;\nconst response = $input.first().json;\n\nconst intent = original.intent || response.intent || 'unknown';\nconst needs_human = intent === 'human_handoff' ? true : (original.needs_human || false);\n\n// Build save session payload\nconst savePayload = {\n  phone: original.phone,\n  display_name: original.display_name,\n  session_status: 'active',\n  short_memory: response.updated_short_memory || '',\n  last_intent: intent,\n  last_user_message: original.message_text,\n  last_bot_message: response.response_text,\n  needs_human: needs_human\n};\n\n// Build log payload\nconst logPayload = {\n  timestamp: new Date().toISOString(),\n  phone: original.phone,\n  display_name: original.display_name,\n  incoming_message: original.message_text,\n  intent: intent,\n  response_sent: response.response_text,\n  kb_hit: response.kb_hit || false,\n  failed: false,\n  failure_reason: ''\n};\n\n// Final output\nreturn [{\n  json: {\n    response_text: response.response_text,\n    intent: intent,\n    kb_hit: response.kb_hit || false,\n    updated_short_memory: response.updated_short_memory || '',\n    needs_human: needs_human,\n    status: 'ok',\n    phone: original.phone,\n    display_name: original.display_name,\n    message_text: original.message_text,\n    message_type: original.message_type || 'text',\n    received_at: original.received_at,\n    _save_payload: savePayload,\n    _log_payload: logPayload\n  }\n}];"
+      },
+      "name": "Build Final Output",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1980,
+        -100
+      ],
+      "id": "akibot-core-final",
+      "notesInFlow": true,
+      "notes": "Assembles final response, save-session payload, and log payload"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ /*SAVE_SESSION_ID*/ }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "phone": "={{ $json._save_payload.phone }}",
+            "display_name": "={{ $json._save_payload.display_name }}",
+            "session_status": "={{ $json._save_payload.session_status }}",
+            "short_memory": "={{ $json._save_payload.short_memory }}",
+            "last_intent": "={{ $json._save_payload.last_intent }}",
+            "last_user_message": "={{ $json._save_payload.last_user_message }}",
+            "last_bot_message": "={{ $json._save_payload.last_bot_message }}",
+            "needs_human": "={{ $json._save_payload.needs_human }}"
+          }
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "name": "Save Session",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        2200,
+        -200
+      ],
+      "id": "akibot-core-save"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ /*LOG_EVENT_ID*/ }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "timestamp": "={{ $json._log_payload.timestamp }}",
+            "phone": "={{ $json._log_payload.phone }}",
+            "display_name": "={{ $json._log_payload.display_name }}",
+            "incoming_message": "={{ $json._log_payload.incoming_message }}",
+            "intent": "={{ $json._log_payload.intent }}",
+            "response_sent": "={{ $json._log_payload.response_sent }}",
+            "kb_hit": "={{ $json._log_payload.kb_hit }}",
+            "failed": "={{ $json._log_payload.failed }}",
+            "failure_reason": "={{ $json._log_payload.failure_reason }}"
+          }
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "name": "Log Event",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        2200,
+        0
+      ],
+      "id": "akibot-core-log"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "r1",
+              "name": "response_text",
+              "value": "={{ $('Build Final Output').first().json.response_text }}",
+              "type": "string"
+            },
+            {
+              "id": "r2",
+              "name": "intent",
+              "value": "={{ $('Build Final Output').first().json.intent }}",
+              "type": "string"
+            },
+            {
+              "id": "r3",
+              "name": "kb_hit",
+              "value": "={{ $('Build Final Output').first().json.kb_hit }}",
+              "type": "boolean"
+            },
+            {
+              "id": "r4",
+              "name": "updated_short_memory",
+              "value": "={{ $('Build Final Output').first().json.updated_short_memory }}",
+              "type": "string"
+            },
+            {
+              "id": "r5",
+              "name": "needs_human",
+              "value": "={{ $('Build Final Output').first().json.needs_human }}",
+              "type": "boolean"
+            },
+            {
+              "id": "r6",
+              "name": "status",
+              "value": "ok",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Return Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2420,
+        -100
+      ],
+      "id": "akibot-core-return"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Non-text path: build log payload and return\nconst original = $('When Executed by Another Workflow').first().json;\nconst logPayload = {\n  timestamp: new Date().toISOString(),\n  phone: original.phone,\n  display_name: original.display_name,\n  incoming_message: '[non-text: ' + original.message_type + ']',\n  intent: 'unsupported',\n  response_sent: 'Por ahora solo puedo ayudarte con mensajes de texto.',\n  kb_hit: false,\n  failed: false,\n  failure_reason: ''\n};\n\nreturn [{\n  json: {\n    response_text: 'Por ahora solo puedo ayudarte con mensajes de texto.',\n    intent: 'unsupported',\n    kb_hit: false,\n    updated_short_memory: 'Envió contenido no soportado (no texto)',\n    needs_human: false,\n    status: 'ok',\n    _log_payload: logPayload\n  }\n}];"
+      },
+      "name": "Build Non-Text Output",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        200
+      ],
+      "id": "akibot-core-nontext-output"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ /*LOG_EVENT_ID*/ }}",
+          "mode": "id"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "timestamp": "={{ $json._log_payload.timestamp }}",
+            "phone": "={{ $json._log_payload.phone }}",
+            "display_name": "={{ $json._log_payload.display_name }}",
+            "incoming_message": "={{ $json._log_payload.incoming_message }}",
+            "intent": "={{ $json._log_payload.intent }}",
+            "response_sent": "={{ $json._log_payload.response_sent }}",
+            "kb_hit": "={{ $json._log_payload.kb_hit }}",
+            "failed": "={{ $json._log_payload.failed }}",
+            "failure_reason": "={{ $json._log_payload.failure_reason }}"
+          }
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "name": "Log Non-Text Event",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        880,
+        200
+      ],
+      "id": "akibot-core-nontext-log"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "nr1",
+              "name": "response_text",
+              "value": "Por ahora solo puedo ayudarte con mensajes de texto.",
+              "type": "string"
+            },
+            {
+              "id": "nr2",
+              "name": "intent",
+              "value": "unsupported",
+              "type": "string"
+            },
+            {
+              "id": "nr3",
+              "name": "kb_hit",
+              "value": false,
+              "type": "boolean"
+            },
+            {
+              "id": "nr4",
+              "name": "updated_short_memory",
+              "value": "Envió contenido no soportado (no texto)",
+              "type": "string"
+            },
+            {
+              "id": "nr5",
+              "name": "needs_human",
+              "value": false,
+              "type": "boolean"
+            },
+            {
+              "id": "nr6",
+              "name": "status",
+              "value": "ok",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Return Non-Text Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1100,
+        200
+      ],
+      "id": "akibot-core-nontext-return"
+    }
+  ],
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Message Type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message Type": {
+      "main": [
+        [
+          {
+            "node": "Load Session",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Build Non-Text Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Session": {
+      "main": [
+        [
+          {
+            "node": "Classify Intent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Classify Intent": {
+      "main": [
+        [
+          {
+            "node": "Merge Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Context": {
+      "main": [
+        [
+          {
+            "node": "Route by Intent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route by Intent": {
+      "main": [
+        [
+          {
+            "node": "Human Handoff",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Generate Greeting Reply",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Query KB",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Query KB Follow-up",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Unsupported Reply",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Unknown Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Human Handoff": {
+      "main": [
+        [
+          {
+            "node": "Build Final Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Greeting Reply": {
+      "main": [
+        [
+          {
+            "node": "Build Final Output",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Query KB": {
+      "main": [
+        [
+          {
+            "node": "Generate KB Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate KB Reply": {
+      "main": [
+        [
+          {
+            "node": "Build Final Output",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Query KB Follow-up": {
+      "main": [
+        [
+          {
+            "node": "Generate Follow-up Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Follow-up Reply": {
+      "main": [
+        [
+          {
+            "node": "Build Final Output",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Unsupported Reply": {
+      "main": [
+        [
+          {
+            "node": "Build Final Output",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "Unknown Reply": {
+      "main": [
+        [
+          {
+            "node": "Build Final Output",
+            "type": "main",
+            "index": 5
+          }
+        ]
+      ]
+    },
+    "Build Final Output": {
+      "main": [
+        [
+          {
+            "node": "Save Session",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Log Event",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Return Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Non-Text Output": {
+      "main": [
+        [
+          {
+            "node": "Log Non-Text Event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Non-Text Event": {
+      "main": [
+        [
+          {
+            "node": "Return Non-Text Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Session": {
+      "main": []
+    },
+    "Log Event": {
+      "main": []
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  }
+}

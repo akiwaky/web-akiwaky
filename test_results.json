@@ -1,0 +1,50 @@
+[
+  {
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "fixture": 0
+  },
+  {
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "fixture": 1
+  },
+  {
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "fixture": 2
+  },
+  {
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "fixture": 3
+  },
+  {
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "fixture": 4
+  },
+  {
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "fixture": 5
+  },
+  {
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "fixture": 6
+  },
+  {
+    "error": "HTTP Error 522: <none> | error code: 522",
+    "fixture": 7
+  },
+  {
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "fixture": 8
+  },
+  {
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "fixture": 9
+  },
+  {
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "fixture": 10
+  },
+  {
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "fixture": 11
+  }
+]

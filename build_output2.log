@@ -1,0 +1,22 @@
+
+> temp_app@0.1.0 build
+> next build
+
+▲ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 7.8s
+  Running TypeScript ...
+Failed to compile.
+
+./scripts/test-chaty.ts:94:42
+Type error: 'e' is of type 'unknown'.
+
+[0m [90m 92 |[39m       }
+ [90m 93 |[39m     } [36mcatch[39m (e) {
+[31m[1m>[22m[39m[90m 94 |[39m       console[33m.[39merror([32m`❌ Error fetching: ${e.message}`[39m)[33m;[39m
+ [90m    |[39m                                          [31m[1m^[22m[39m
+ [90m 95 |[39m     }
+ [90m 96 |[39m   }
+ [90m 97 |[39m   [0m
+Next.js build worker exited with code: 1 and signal: null

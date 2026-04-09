@@ -1,0 +1,195 @@
+{
+    "name": "AkiBot - Error Handler",
+    "nodes": [
+        {
+            "parameters": {},
+            "name": "Error Trigger",
+            "type": "n8n-nodes-base.errorTrigger",
+            "typeVersion": 1,
+            "position": [
+                0,
+                0
+            ],
+            "id": "akibot-error-trigger"
+        },
+        {
+            "parameters": {
+                "jsCode": "const error = $input.first().json;\n\n// Extract useful error details\nconst execution = error.execution || {};\nconst workflow = error.workflow || {};\nconst errorData = execution.error || error.error || {};\n\nconst timestamp = new Date().toISOString();\nconst workflowName = workflow.name || 'Unknown workflow';\nconst errorMessage = errorData.message || JSON.stringify(errorData).substring(0, 200);\nconst nodeName = errorData.node || 'Unknown node';\n\n// Try to extract phone/message from execution data if available\nlet phone = '';\nlet incoming_message = '';\ntry {\n  const lastData = execution.lastNodeExecuted || '';\n  // Best effort to get phone from execution context\n  if (execution.data) {\n    const resultData = execution.data.resultData;\n    if (resultData && resultData.runData) {\n      const firstNode = Object.keys(resultData.runData)[0];\n      if (firstNode && resultData.runData[firstNode][0]) {\n        const firstOutput = resultData.runData[firstNode][0].data?.main?.[0]?.[0]?.json;\n        if (firstOutput) {\n          phone = firstOutput.phone || firstOutput.waPhone || '';\n          incoming_message = firstOutput.message_text || firstOutput.messageBody || '';\n        }\n      }\n    }\n  }\n} catch(e) { /* best effort */ }\n\nreturn [{\n  json: {\n    timestamp,\n    phone,\n    display_name: '',\n    incoming_message,\n    intent: '',\n    response_sent: '',\n    kb_hit: false,\n    failed: true,\n    failure_reason: `[${workflowName}] Node: ${nodeName} \u2014 ${errorMessage}`\n  }\n}];"
+            },
+            "name": "Extract Error Details",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                220,
+                0
+            ],
+            "id": "akibot-error-extract",
+            "notesInFlow": true,
+            "notes": "Extracts workflow name, node, error message, and best-effort phone/message from error execution data"
+        },
+        {
+            "parameters": {
+                "operation": "append",
+                "documentId": {
+                    "__rl": true,
+                    "value": "1cbnDSwdxZlJe0s8J4FQSU_ccPZIIts-GhjxXrOEdYzg",
+                    "mode": "list"
+                },
+                "sheetName": {
+                    "__rl": true,
+                    "value": "log",
+                    "mode": "name"
+                },
+                "columns": {
+                    "mappingMode": "defineBelow",
+                    "value": {
+                        "timestamp": "={{ $json.timestamp }}",
+                        "phone": "={{ $json.phone }}",
+                        "display_name": "={{ $json.display_name }}",
+                        "incoming_message": "={{ $json.incoming_message }}",
+                        "intent": "={{ $json.intent }}",
+                        "response_sent": "={{ $json.response_sent }}",
+                        "kb_hit": "={{ $json.kb_hit }}",
+                        "failed": "={{ $json.failed }}",
+                        "failure_reason": "={{ $json.failure_reason }}"
+                    },
+                    "schema": [
+                        {
+                            "id": "timestamp",
+                            "displayName": "timestamp",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "canBeUsedToMatch": true,
+                            "removed": false
+                        },
+                        {
+                            "id": "phone",
+                            "displayName": "phone",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "canBeUsedToMatch": true,
+                            "removed": false
+                        },
+                        {
+                            "id": "display_name",
+                            "displayName": "display_name",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "canBeUsedToMatch": true,
+                            "removed": false
+                        },
+                        {
+                            "id": "incoming_message",
+                            "displayName": "incoming_message",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "canBeUsedToMatch": true,
+                            "removed": false
+                        },
+                        {
+                            "id": "intent",
+                            "displayName": "intent",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "canBeUsedToMatch": true,
+                            "removed": false
+                        },
+                        {
+                            "id": "response_sent",
+                            "displayName": "response_sent",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "canBeUsedToMatch": true,
+                            "removed": false
+                        },
+                        {
+                            "id": "kb_hit",
+                            "displayName": "kb_hit",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "canBeUsedToMatch": true,
+                            "removed": false
+                        },
+                        {
+                            "id": "failed",
+                            "displayName": "failed",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "canBeUsedToMatch": true,
+                            "removed": false
+                        },
+                        {
+                            "id": "failure_reason",
+                            "displayName": "failure_reason",
+                            "required": false,
+                            "defaultMatch": false,
+                            "display": true,
+                            "type": "string",
+                            "canBeUsedToMatch": true,
+                            "removed": false
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "name": "Log Error to Sheet",
+            "type": "n8n-nodes-base.googleSheets",
+            "typeVersion": 4.5,
+            "position": [
+                440,
+                0
+            ],
+            "id": "akibot-error-log",
+            "credentials": {
+                "googleSheetsOAuth2Api": {
+                    "id": "",
+                    "name": "Google Sheets account"
+                }
+            }
+        }
+    ],
+    "connections": {
+        "Error Trigger": {
+            "main": [
+                [
+                    {
+                        "node": "Extract Error Details",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Extract Error Details": {
+            "main": [
+                [
+                    {
+                        "node": "Log Error to Sheet",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {
+        "executionOrder": "v1",
+        "callerPolicy": "workflowsFromSameOwner"
+    }
+}

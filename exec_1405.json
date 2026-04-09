@@ -1,0 +1,307 @@
+{
+  "id": "1405",
+  "finished": true,
+  "mode": "integrated",
+  "retryOf": null,
+  "retrySuccessId": null,
+  "status": "success",
+  "createdAt": "2026-03-11T03:02:00.419Z",
+  "startedAt": "2026-03-11T03:02:00.436Z",
+  "stoppedAt": "2026-03-11T03:02:01.546Z",
+  "deletedAt": null,
+  "workflowId": "eoGvxHk5GmGIn8yY",
+  "waitTill": null,
+  "storedAt": "db",
+  "data": {
+    "version": 1,
+    "startData": {},
+    "resultData": {
+      "runData": {
+        "When Executed by Another Workflow": [
+          {
+            "startTime": 1773198120442,
+            "executionIndex": 0,
+            "source": [],
+            "hints": [],
+            "executionTime": 1,
+            "metadata": {
+              "parentExecution": {
+                "executionId": "1403",
+                "workflowId": "a5bg3l7kj0BDqVBV",
+                "shouldResume": true,
+                "executionContext": {
+                  "version": 1,
+                  "establishedAt": 1773198119998,
+                  "source": "integrated",
+                  "triggerNode": {
+                    "name": "Webhook Trigger",
+                    "type": "n8n-nodes-base.webhook"
+                  },
+                  "parentExecutionId": "1402"
+                }
+              }
+            },
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "phone": "+5215550000102",
+                      "display_name": "",
+                      "session_status": "active",
+                      "short_memory": "",
+                      "last_intent": "",
+                      "last_user_message": "",
+                      "last_bot_message": "",
+                      "last_seen_at": "",
+                      "message_count": 0,
+                      "needs_human": false,
+                      "is_new_session": true,
+                      "is_stale_session": false
+                    },
+                    "index": 0,
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "OpenAI Classify": [
+          {
+            "startTime": 1773198120443,
+            "executionIndex": 1,
+            "source": [
+              {
+                "previousNode": "When Executed by Another Workflow",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 1099,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "output": [
+                        {
+                          "id": "msg_03d36e78a364e7a90069b0db28e3808195aca577c1b8ddad46",
+                          "type": "message",
+                          "status": "completed",
+                          "content": [
+                            {
+                              "type": "output_text",
+                              "annotations": [],
+                              "logprobs": [],
+                              "text": "{\"intent\": \"unknown\", \"confidence\": 0.0, \"reason\": \"No hay un mensaje claro o \u00fatil para clasificar.\"}"
+                            }
+                          ],
+                          "role": "assistant"
+                        }
+                      ]
+                    },
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Parse & Validate Intent": [
+          {
+            "startTime": 1773198121542,
+            "executionIndex": 2,
+            "source": [
+              {
+                "previousNode": "OpenAI Classify",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 4,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "intent": "unknown",
+                      "confidence": 0,
+                      "reason": ""
+                    },
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "lastNodeExecuted": "Parse & Validate Intent"
+    },
+    "executionData": {
+      "contextData": {},
+      "nodeExecutionStack": [],
+      "metadata": {},
+      "waitingExecution": {},
+      "waitingExecutionSource": {},
+      "runtimeData": {
+        "version": 1,
+        "establishedAt": 1773198120440,
+        "source": "integrated",
+        "triggerNode": {
+          "name": "Webhook Trigger",
+          "type": "n8n-nodes-base.webhook"
+        },
+        "parentExecutionId": "1403"
+      }
+    },
+    "parentExecution": {
+      "executionId": "1403",
+      "workflowId": "a5bg3l7kj0BDqVBV",
+      "shouldResume": true,
+      "executionContext": {
+        "version": 1,
+        "establishedAt": 1773198119998,
+        "source": "integrated",
+        "triggerNode": {
+          "name": "Webhook Trigger",
+          "type": "n8n-nodes-base.webhook"
+        },
+        "parentExecutionId": "1402"
+      }
+    }
+  },
+  "workflowData": {
+    "id": "eoGvxHk5GmGIn8yY",
+    "name": "AkiBot - Classify Intent",
+    "active": true,
+    "activeVersionId": "7fe05aa8-a9e4-4475-afa4-70728547cfea",
+    "isArchived": false,
+    "createdAt": "2026-03-10T07:04:24.858Z",
+    "updatedAt": "2026-03-11T03:01:12.054Z",
+    "nodes": [
+      {
+        "parameters": {
+          "events": "worklfow_call",
+          "inputSource": "passthrough"
+        },
+        "name": "When Executed by Another Workflow",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          0,
+          0
+        ],
+        "id": "akibot-classify-trigger"
+      },
+      {
+        "parameters": {
+          "resource": "text",
+          "operation": "response",
+          "modelId": {
+            "__rl": true,
+            "value": "gpt-4o-mini",
+            "mode": "list",
+            "cachedResultName": "gpt-4o-mini"
+          },
+          "responses": {
+            "values": [
+              {
+                "type": "text",
+                "role": "system",
+                "content": "You are an intent classifier for a WhatsApp bot named AkiBot.\n\nYou must classify the message into exactly one of these categories:\n- greeting\n- kb_question\n- follow_up\n- human_handoff\n- unsupported\n- unknown\n\nMandatory rules:\n1. If the text contains \"#humano\", the final intent must be \"human_handoff\".\n2. If it is a simple greeting or clearly social opener (hola, hey, buenos d\u00edas, qu\u00e9 tal, etc.), return \"greeting\".\n3. If it clearly depends on previous context or references something previously discussed, return \"follow_up\".\n4. If it is a standard question answerable through the knowledge base, return \"kb_question\".\n5. If it is not useful text or does not fit, return \"unknown\".\n6. Do not invent new categories.\n\nReturn only valid JSON in this exact format:\n{\"intent\": \"greeting|kb_question|follow_up|human_handoff|unsupported|unknown\", \"confidence\": 0.0, \"reason\": \"brief explanation\"}"
+              },
+              {
+                "type": "text",
+                "role": "user",
+                "content": "=Mensaje del usuario: {{ $json.message_text }}\n\nContexto previo (memoria corta): {{ $json.short_memory || 'Sin contexto previo' }}\n\nSesi\u00f3n nueva: {{ $json.is_new_session }}\nSesi\u00f3n inactiva >3h: {{ $json.is_stale_session }}"
+              }
+            ]
+          },
+          "simplify": true,
+          "builtInTools": {},
+          "options": {
+            "maxTokens": 200,
+            "temperature": 0.1
+          }
+        },
+        "name": "OpenAI Classify",
+        "type": "@n8n/n8n-nodes-langchain.openAi",
+        "typeVersion": 2.1,
+        "position": [
+          220,
+          0
+        ],
+        "id": "akibot-classify-openai",
+        "credentials": {
+          "openAiApi": {
+            "id": "EJzHXeV1cCVAx4fw",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "const input = $('When Executed by Another Workflow').first().json;\nconst rawOutput = $input.first().json;\n\n// Try to extract the text from OpenAI response\nlet responseText = '';\nif (rawOutput.message && rawOutput.message.content) {\n  responseText = rawOutput.message.content;\n} else if (rawOutput.choices && rawOutput.choices[0]) {\n  responseText = rawOutput.choices[0].message.content;\n} else if (typeof rawOutput === 'string') {\n  responseText = rawOutput;\n} else {\n  responseText = JSON.stringify(rawOutput);\n}\n\n// Parse JSON from LLM response\nlet intent = 'unknown';\nlet confidence = 0;\nlet reason = 'parse_failed';\n\ntry {\n  // Extract JSON from possible markdown code fences\n  let jsonStr = responseText;\n  const jsonMatch = responseText.match(/```(?:json)?\\s*([\\s\\S]*?)```/);\n  if (jsonMatch) jsonStr = jsonMatch[1].trim();\n  \n  // Also try to find JSON object directly\n  const objMatch = jsonStr.match(/\\{[\\s\\S]*\\}/);\n  if (objMatch) jsonStr = objMatch[0];\n  \n  const parsed = JSON.parse(jsonStr);\n  intent = parsed.intent || 'unknown';\n  confidence = parsed.confidence || 0;\n  reason = parsed.reason || '';\n} catch (e) {\n  intent = 'unknown';\n  confidence = 0;\n  reason = 'LLM response was not valid JSON: ' + responseText.substring(0, 100);\n}\n\n// Hard override: #humano always -> human_handoff\nconst msgText = (input.message_text || '').toLowerCase();\nif (msgText.includes('#humano')) {\n  intent = 'human_handoff';\n  confidence = 1.0;\n  reason = 'Hard rule: message contains #humano';\n}\n\n// Validate intent is in allowed set\nconst allowed = ['greeting', 'kb_question', 'follow_up', 'human_handoff', 'unsupported', 'unknown'];\nif (!allowed.includes(intent)) {\n  intent = 'unknown';\n  reason = 'Invalid intent from LLM: ' + intent;\n}\n\nreturn [{ json: { intent, confidence, reason } }];",
+          "notice": ""
+        },
+        "name": "Parse & Validate Intent",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          440,
+          0
+        ],
+        "id": "akibot-classify-parse",
+        "notesInFlow": true,
+        "notes": "Parses LLM JSON, validates intent catalog, enforces #humano hard override"
+      }
+    ],
+    "connections": {
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "OpenAI Classify",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OpenAI Classify": {
+        "main": [
+          [
+            {
+              "node": "Parse & Validate Intent",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1",
+      "callerPolicy": "workflowsFromSameOwner",
+      "availableInMCP": false
+    },
+    "staticData": null,
+    "pinData": {}
+  },
+  "customData": {}
+}

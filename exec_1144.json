@@ -1,0 +1,2286 @@
+{
+  "id": "1144",
+  "finished": false,
+  "mode": "webhook",
+  "retryOf": null,
+  "retrySuccessId": null,
+  "status": "error",
+  "createdAt": "2026-03-11T00:44:22.395Z",
+  "startedAt": "2026-03-11T00:44:22.405Z",
+  "stoppedAt": "2026-03-11T00:44:22.420Z",
+  "deletedAt": null,
+  "workflowId": "nPOH8UqT0pCiEQan",
+  "waitTill": null,
+  "storedAt": "db",
+  "data": {
+    "version": 1,
+    "startData": {},
+    "resultData": {
+      "error": {
+        "level": "warning",
+        "tags": {},
+        "timestamp": 1773189862419,
+        "context": {},
+        "functionality": "regular",
+        "name": "NodeOperationError",
+        "node": {
+          "name": "Switch Fixture",
+          "type": "n8n-nodes-base.switch",
+          "typeVersion": 1,
+          "position": [
+            400,
+            0
+          ],
+          "id": "node-5",
+          "parameters": {
+            "mode": "rules",
+            "dataType": "string",
+            "value1": "={{ $json.fixture_name }}",
+            "rules": {
+              "rules": [
+                {
+                  "operation": "equal",
+                  "value2": "greeting_new_user",
+                  "output": 0
+                },
+                {
+                  "operation": "equal",
+                  "value2": "kb_question_found",
+                  "output": 1
+                },
+                {
+                  "operation": "equal",
+                  "value2": "kb_question_not_found",
+                  "output": 2
+                },
+                {
+                  "operation": "equal",
+                  "value2": "unknown_unclear",
+                  "output": 3
+                },
+                {
+                  "operation": "equal",
+                  "value2": "explicit_human_handoff",
+                  "output": 4
+                },
+                {
+                  "operation": "equal",
+                  "value2": "unsupported_non_text",
+                  "output": 5
+                },
+                {
+                  "operation": "equal",
+                  "value2": "greeting_stale_session",
+                  "output": 6
+                },
+                {
+                  "operation": "equal",
+                  "value2": "follow_up_contextual",
+                  "output": 7
+                },
+                {
+                  "operation": "equal",
+                  "value2": "prior_handoff_state",
+                  "output": 8
+                },
+                {
+                  "operation": "equal",
+                  "value2": "returning_active_user",
+                  "output": 9
+                },
+                {
+                  "operation": "equal",
+                  "value2": "kb_follow_up_debug",
+                  "output": 10
+                },
+                {
+                  "operation": "equal",
+                  "value2": "generic_returning_debug",
+                  "output": 11
+                }
+              ]
+            },
+            "fallbackOutput": -1
+          }
+        },
+        "messages": [],
+        "message": "The ouput 11 is not allowed. It has to be between 0 and 3!",
+        "stack": "NodeOperationError: The ouput 11 is not allowed. It has to be between 0 and 3!\n    at checkIndexRange (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Switch/V1/SwitchV1.node.ts:618:11)\n    at ExecuteContext.execute (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Switch/V1/SwitchV1.node.ts:667:8)\n    at WorkflowExecute.executeNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1039:31)\n    at WorkflowExecute.runNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1218:22)\n    at /usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1653:38\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:2296:11"
+      },
+      "runData": {
+        "Webhook Trigger": [
+          {
+            "startTime": 1773189862409,
+            "executionIndex": 0,
+            "source": [],
+            "hints": [],
+            "executionTime": 0,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "headers": {
+                        "host": "webhooks.akiwaky.cloud",
+                        "user-agent": "Mozilla/5.0",
+                        "accept-encoding": "gzip, br",
+                        "cdn-loop": "cloudflare; loops=1",
+                        "cf-connecting-ip": "187.190.203.186",
+                        "cf-ipcountry": "MX",
+                        "cf-ray": "9da687bfb8fd4548-ATL",
+                        "cf-visitor": "{\"scheme\":\"https\"}",
+                        "x-forwarded-for": "172.69.71.159",
+                        "x-forwarded-host": "webhooks.akiwaky.cloud",
+                        "x-forwarded-port": "443",
+                        "x-forwarded-proto": "https",
+                        "x-forwarded-server": "66b04ae8fceb",
+                        "x-real-ip": "172.69.71.159"
+                      },
+                      "params": {},
+                      "query": {
+                        "fixture": "11"
+                      },
+                      "body": {},
+                      "webhookUrl": "https://webhooks.akiwaky.cloud/webhook/akibot-test",
+                      "executionMode": "production"
+                    },
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Test Config": [
+          {
+            "startTime": 1773189862409,
+            "executionIndex": 1,
+            "source": [
+              {
+                "previousNode": "Webhook Trigger",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 9,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "fixture_name": "generic_returning_debug"
+                    },
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Switch Fixture": [
+          {
+            "startTime": 1773189862419,
+            "executionIndex": 2,
+            "source": [
+              {
+                "previousNode": "Test Config",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 1,
+            "executionStatus": "error",
+            "error": {
+              "level": "warning",
+              "tags": {},
+              "timestamp": 1773189862419,
+              "context": {},
+              "functionality": "regular",
+              "name": "NodeOperationError",
+              "node": {
+                "name": "Switch Fixture",
+                "type": "n8n-nodes-base.switch",
+                "typeVersion": 1,
+                "position": [
+                  400,
+                  0
+                ],
+                "id": "node-5",
+                "parameters": {
+                  "mode": "rules",
+                  "dataType": "string",
+                  "value1": "={{ $json.fixture_name }}",
+                  "rules": {
+                    "rules": [
+                      {
+                        "operation": "equal",
+                        "value2": "greeting_new_user",
+                        "output": 0
+                      },
+                      {
+                        "operation": "equal",
+                        "value2": "kb_question_found",
+                        "output": 1
+                      },
+                      {
+                        "operation": "equal",
+                        "value2": "kb_question_not_found",
+                        "output": 2
+                      },
+                      {
+                        "operation": "equal",
+                        "value2": "unknown_unclear",
+                        "output": 3
+                      },
+                      {
+                        "operation": "equal",
+                        "value2": "explicit_human_handoff",
+                        "output": 4
+                      },
+                      {
+                        "operation": "equal",
+                        "value2": "unsupported_non_text",
+                        "output": 5
+                      },
+                      {
+                        "operation": "equal",
+                        "value2": "greeting_stale_session",
+                        "output": 6
+                      },
+                      {
+                        "operation": "equal",
+                        "value2": "follow_up_contextual",
+                        "output": 7
+                      },
+                      {
+                        "operation": "equal",
+                        "value2": "prior_handoff_state",
+                        "output": 8
+                      },
+                      {
+                        "operation": "equal",
+                        "value2": "returning_active_user",
+                        "output": 9
+                      },
+                      {
+                        "operation": "equal",
+                        "value2": "kb_follow_up_debug",
+                        "output": 10
+                      },
+                      {
+                        "operation": "equal",
+                        "value2": "generic_returning_debug",
+                        "output": 11
+                      }
+                    ]
+                  },
+                  "fallbackOutput": -1
+                }
+              },
+              "messages": [],
+              "message": "The ouput 11 is not allowed. It has to be between 0 and 3!",
+              "stack": "NodeOperationError: The ouput 11 is not allowed. It has to be between 0 and 3!\n    at checkIndexRange (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Switch/V1/SwitchV1.node.ts:618:11)\n    at ExecuteContext.execute (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Switch/V1/SwitchV1.node.ts:667:8)\n    at WorkflowExecute.executeNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1039:31)\n    at WorkflowExecute.runNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1218:22)\n    at /usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1653:38\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:2296:11"
+            }
+          }
+        ]
+      },
+      "lastNodeExecuted": "Switch Fixture"
+    },
+    "executionData": {
+      "contextData": {},
+      "nodeExecutionStack": [
+        {
+          "node": {
+            "name": "Switch Fixture",
+            "type": "n8n-nodes-base.switch",
+            "typeVersion": 1,
+            "position": [
+              400,
+              0
+            ],
+            "id": "node-5",
+            "parameters": {
+              "mode": "rules",
+              "dataType": "string",
+              "value1": "={{ $json.fixture_name }}",
+              "rules": {
+                "rules": [
+                  {
+                    "operation": "equal",
+                    "value2": "greeting_new_user",
+                    "output": 0
+                  },
+                  {
+                    "operation": "equal",
+                    "value2": "kb_question_found",
+                    "output": 1
+                  },
+                  {
+                    "operation": "equal",
+                    "value2": "kb_question_not_found",
+                    "output": 2
+                  },
+                  {
+                    "operation": "equal",
+                    "value2": "unknown_unclear",
+                    "output": 3
+                  },
+                  {
+                    "operation": "equal",
+                    "value2": "explicit_human_handoff",
+                    "output": 4
+                  },
+                  {
+                    "operation": "equal",
+                    "value2": "unsupported_non_text",
+                    "output": 5
+                  },
+                  {
+                    "operation": "equal",
+                    "value2": "greeting_stale_session",
+                    "output": 6
+                  },
+                  {
+                    "operation": "equal",
+                    "value2": "follow_up_contextual",
+                    "output": 7
+                  },
+                  {
+                    "operation": "equal",
+                    "value2": "prior_handoff_state",
+                    "output": 8
+                  },
+                  {
+                    "operation": "equal",
+                    "value2": "returning_active_user",
+                    "output": 9
+                  },
+                  {
+                    "operation": "equal",
+                    "value2": "kb_follow_up_debug",
+                    "output": 10
+                  },
+                  {
+                    "operation": "equal",
+                    "value2": "generic_returning_debug",
+                    "output": 11
+                  }
+                ]
+              },
+              "fallbackOutput": -1
+            }
+          },
+          "data": {
+            "main": [
+              [
+                {
+                  "json": {
+                    "fixture_name": "generic_returning_debug"
+                  },
+                  "pairedItem": {
+                    "item": 0
+                  }
+                }
+              ]
+            ]
+          },
+          "source": {
+            "main": [
+              {
+                "previousNode": "Test Config",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ]
+          }
+        }
+      ],
+      "metadata": {},
+      "waitingExecution": {},
+      "waitingExecutionSource": {},
+      "runtimeData": {
+        "version": 1,
+        "establishedAt": 1773189862408,
+        "source": "webhook",
+        "triggerNode": {
+          "name": "Webhook Trigger",
+          "type": "n8n-nodes-base.webhook"
+        }
+      }
+    }
+  },
+  "workflowData": {
+    "id": "nPOH8UqT0pCiEQan",
+    "name": "AkiBot - Test Harness",
+    "active": true,
+    "activeVersionId": "705d9306-e596-410b-a173-951c07aaaa0d",
+    "isArchived": false,
+    "createdAt": "2026-03-10T07:04:32.460Z",
+    "updatedAt": "2026-03-11T00:43:47.392Z",
+    "nodes": [
+      {
+        "name": "Manual Trigger",
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          0,
+          0
+        ],
+        "id": "node-1",
+        "parameters": {
+          "notice": ""
+        }
+      },
+      {
+        "name": "Webhook Trigger",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [
+          0,
+          200
+        ],
+        "id": "node-2",
+        "webhookId": "akibot-test-harness",
+        "parameters": {
+          "multipleMethods": false,
+          "httpMethod": "GET",
+          "path": "akibot-test",
+          "authentication": "none",
+          "responseMode": "responseNode",
+          "webhookNotice": "",
+          "options": {}
+        }
+      },
+      {
+        "name": "Test Config",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          200,
+          0
+        ],
+        "id": "node-3",
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "\nconst fixtureKeys = Object.keys({\"greeting_new_user\":{\"phone\":\"+5215550000101\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola, te ayudar\u00e9 a encontrar info, \u00bfqu\u00e9 buscas?\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"kb_question_found\":{\"phone\":\"+5215550000102\",\"display_name\":\"Test\",\"message_text\":\"\u00bfCu\u00e1l es la clave?\",\"message_type\":\"text\",\"expected_intent\":\"kb_query\",\"expected_response_contains\":\"la espera\",\"expected_kb_hit\":true,\"expected_needs_human\":false},\"kb_question_not_found\":{\"phone\":\"+5215550000103\",\"display_name\":\"Test\",\"message_text\":\"\u00bfCu\u00e1l es el horario de apertura?\",\"message_type\":\"text\",\"expected_intent\":\"kb_query\",\"expected_response_exact\":\"No encontr\u00e9 esa informaci\u00f3n en mi base actual.\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"unknown_unclear\":{\"phone\":\"+5215550000104\",\"display_name\":\"Test\",\"message_text\":\"eso\",\"message_type\":\"text\",\"expected_intent\":\"unknown\",\"expected_response_exact\":\"No estoy seguro de haber entendido bien. \u00bfMe lo puedes escribir con un poco m\u00e1s de detalle?\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"explicit_human_handoff\":{\"phone\":\"+5215550000105\",\"display_name\":\"Test\",\"message_text\":\"#humano\",\"message_type\":\"text\",\"expected_intent\":\"human_handoff\",\"expected_response_exact\":\"Entendido. Lo paso con una persona.\",\"expected_kb_hit\":false,\"expected_needs_human\":true},\"unsupported_non_text\":{\"phone\":\"+5215550000106\",\"display_name\":\"Test\",\"message_text\":\"\",\"message_type\":\"image\",\"expected_intent\":\"unsupported\",\"expected_response_exact\":\"Por ahora solo puedo ayudarte con mensajes de texto.\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"greeting_stale_session\":{\"phone\":\"+5215550000201\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola, te ayudar\u00e9 a encontrar info, \u00bfqu\u00e9 buscas?\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"\",\"message_count\":5,\"last_seen_offset\":-14400000}},\"follow_up_contextual\":{\"phone\":\"+5215550000202\",\"display_name\":\"Test\",\"message_text\":\"\u00bfY cu\u00e1l era?\",\"message_type\":\"text\",\"expected_intent\":\"follow_up\",\"expected_response_contains\":\"la espera\",\"expected_kb_hit\":true,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"El usuario pregunt\u00f3 por la clave y se respondi\u00f3: la espera\",\"message_count\":2,\"last_seen_offset\":-600000}},\"prior_handoff_state\":{\"phone\":\"+5215550000203\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Un agente te atender\u00e1 pronto.\",\"expected_kb_hit\":false,\"expected_needs_human\":true,\"seed\":{\"session_status\":\"handoff\",\"short_memory\":\"\",\"needs_human\":true,\"message_count\":3,\"last_seen_offset\":-300000}},\"returning_active_user\":{\"phone\":\"+5215550000204\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola de nuevo. \u00bfEn qu\u00e9 te ayudo ahora?\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"\",\"message_count\":8,\"last_seen_offset\":-300000}},\"kb_follow_up_debug\":{\"phone\":\"+5215550000205\",\"display_name\":\"Test\",\"message_text\":\"\u00bfY los horarios?\",\"message_type\":\"text\",\"expected_intent\":\"follow_up\",\"expected_response_contains\":\"No encontr\u00e9\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"Usuario pregunt\u00f3 por servicios\",\"message_count\":1,\"last_seen_offset\":-120000}},\"generic_returning_debug\":{\"phone\":\"+5215550000206\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola de nuevo. \u00bfEn qu\u00e9 te ayudo ahora?\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"\",\"message_count\":12,\"last_seen_offset\":-120000}}});\nlet fixture_name = fixtureKeys[0];\n\nif ($('Webhook Trigger').item) {\n    const query = $('Webhook Trigger').first().json.query || {};\n    if (query.fixture) {\n        let idx = parseInt(query.fixture);\n        if (idx >= 0 && idx < fixtureKeys.length) {\n            fixture_name = fixtureKeys[idx];\n        } else if (fixtureKeys.includes(query.fixture)) {\n            fixture_name = query.fixture;\n        }\n    }\n} else if ($('Manual Trigger').item) {\n    // You can change this to test manually from UI\n    fixture_name = 'greeting_new_user';\n}\n\nreturn [{ json: { fixture_name } }];\n",
+          "notice": ""
+        }
+      },
+      {
+        "name": "Respond Webhook",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1.1,
+        "position": [
+          1800,
+          200
+        ],
+        "id": "node-4",
+        "parameters": {
+          "generalNotice": "",
+          "respondWith": "json",
+          "webhookNotice": "",
+          "responseBody": "={{ JSON.stringify($json) }}",
+          "options": {}
+        }
+      },
+      {
+        "name": "Switch Fixture",
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 1,
+        "position": [
+          400,
+          0
+        ],
+        "id": "node-5",
+        "parameters": {
+          "mode": "rules",
+          "dataType": "string",
+          "value1": "={{ $json.fixture_name }}",
+          "rules": {
+            "rules": [
+              {
+                "operation": "equal",
+                "value2": "greeting_new_user",
+                "output": 0
+              },
+              {
+                "operation": "equal",
+                "value2": "kb_question_found",
+                "output": 1
+              },
+              {
+                "operation": "equal",
+                "value2": "kb_question_not_found",
+                "output": 2
+              },
+              {
+                "operation": "equal",
+                "value2": "unknown_unclear",
+                "output": 3
+              },
+              {
+                "operation": "equal",
+                "value2": "explicit_human_handoff",
+                "output": 4
+              },
+              {
+                "operation": "equal",
+                "value2": "unsupported_non_text",
+                "output": 5
+              },
+              {
+                "operation": "equal",
+                "value2": "greeting_stale_session",
+                "output": 6
+              },
+              {
+                "operation": "equal",
+                "value2": "follow_up_contextual",
+                "output": 7
+              },
+              {
+                "operation": "equal",
+                "value2": "prior_handoff_state",
+                "output": 8
+              },
+              {
+                "operation": "equal",
+                "value2": "returning_active_user",
+                "output": 9
+              },
+              {
+                "operation": "equal",
+                "value2": "kb_follow_up_debug",
+                "output": 10
+              },
+              {
+                "operation": "equal",
+                "value2": "generic_returning_debug",
+                "output": 11
+              }
+            ]
+          },
+          "fallbackOutput": -1
+        }
+      },
+      {
+        "name": "Set greeting_new_user",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          700,
+          -1200
+        ],
+        "id": "node-6",
+        "parameters": {
+          "keepOnlySet": false,
+          "values": {
+            "string": [
+              {
+                "name": "fixture_name",
+                "value": "greeting_new_user"
+              },
+              {
+                "name": "phone",
+                "value": "+5215550000101"
+              },
+              {
+                "name": "display_name",
+                "value": "Test"
+              },
+              {
+                "name": "message_text",
+                "value": "Hola"
+              },
+              {
+                "name": "message_type",
+                "value": "text"
+              },
+              {
+                "name": "received_at",
+                "value": "={{ new Date().toISOString() }}"
+              },
+              {
+                "name": "expected_intent",
+                "value": "greeting"
+              },
+              {
+                "name": "expected_response_exact",
+                "value": "Hola, te ayudar\u00e9 a encontrar info, \u00bfqu\u00e9 buscas?"
+              },
+              {
+                "name": "expected_response_contains",
+                "value": ""
+              }
+            ],
+            "boolean": [
+              {
+                "name": "expected_kb_hit",
+                "value": false
+              },
+              {
+                "name": "expected_needs_human",
+                "value": false
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Set kb_question_found",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          700,
+          -1000
+        ],
+        "id": "node-7",
+        "parameters": {
+          "keepOnlySet": false,
+          "values": {
+            "string": [
+              {
+                "name": "fixture_name",
+                "value": "kb_question_found"
+              },
+              {
+                "name": "phone",
+                "value": "+5215550000102"
+              },
+              {
+                "name": "display_name",
+                "value": "Test"
+              },
+              {
+                "name": "message_text",
+                "value": "\u00bfCu\u00e1l es la clave?"
+              },
+              {
+                "name": "message_type",
+                "value": "text"
+              },
+              {
+                "name": "received_at",
+                "value": "={{ new Date().toISOString() }}"
+              },
+              {
+                "name": "expected_intent",
+                "value": "kb_query"
+              },
+              {
+                "name": "expected_response_exact",
+                "value": ""
+              },
+              {
+                "name": "expected_response_contains",
+                "value": "la espera"
+              }
+            ],
+            "boolean": [
+              {
+                "name": "expected_kb_hit",
+                "value": true
+              },
+              {
+                "name": "expected_needs_human",
+                "value": false
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Set kb_question_not_found",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          700,
+          -800
+        ],
+        "id": "node-8",
+        "parameters": {
+          "keepOnlySet": false,
+          "values": {
+            "string": [
+              {
+                "name": "fixture_name",
+                "value": "kb_question_not_found"
+              },
+              {
+                "name": "phone",
+                "value": "+5215550000103"
+              },
+              {
+                "name": "display_name",
+                "value": "Test"
+              },
+              {
+                "name": "message_text",
+                "value": "\u00bfCu\u00e1l es el horario de apertura?"
+              },
+              {
+                "name": "message_type",
+                "value": "text"
+              },
+              {
+                "name": "received_at",
+                "value": "={{ new Date().toISOString() }}"
+              },
+              {
+                "name": "expected_intent",
+                "value": "kb_query"
+              },
+              {
+                "name": "expected_response_exact",
+                "value": "No encontr\u00e9 esa informaci\u00f3n en mi base actual."
+              },
+              {
+                "name": "expected_response_contains",
+                "value": ""
+              }
+            ],
+            "boolean": [
+              {
+                "name": "expected_kb_hit",
+                "value": false
+              },
+              {
+                "name": "expected_needs_human",
+                "value": false
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Set unknown_unclear",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          700,
+          -600
+        ],
+        "id": "node-9",
+        "parameters": {
+          "keepOnlySet": false,
+          "values": {
+            "string": [
+              {
+                "name": "fixture_name",
+                "value": "unknown_unclear"
+              },
+              {
+                "name": "phone",
+                "value": "+5215550000104"
+              },
+              {
+                "name": "display_name",
+                "value": "Test"
+              },
+              {
+                "name": "message_text",
+                "value": "eso"
+              },
+              {
+                "name": "message_type",
+                "value": "text"
+              },
+              {
+                "name": "received_at",
+                "value": "={{ new Date().toISOString() }}"
+              },
+              {
+                "name": "expected_intent",
+                "value": "unknown"
+              },
+              {
+                "name": "expected_response_exact",
+                "value": "No estoy seguro de haber entendido bien. \u00bfMe lo puedes escribir con un poco m\u00e1s de detalle?"
+              },
+              {
+                "name": "expected_response_contains",
+                "value": ""
+              }
+            ],
+            "boolean": [
+              {
+                "name": "expected_kb_hit",
+                "value": false
+              },
+              {
+                "name": "expected_needs_human",
+                "value": false
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Set explicit_human_handoff",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          700,
+          -400
+        ],
+        "id": "node-10",
+        "parameters": {
+          "keepOnlySet": false,
+          "values": {
+            "string": [
+              {
+                "name": "fixture_name",
+                "value": "explicit_human_handoff"
+              },
+              {
+                "name": "phone",
+                "value": "+5215550000105"
+              },
+              {
+                "name": "display_name",
+                "value": "Test"
+              },
+              {
+                "name": "message_text",
+                "value": "#humano"
+              },
+              {
+                "name": "message_type",
+                "value": "text"
+              },
+              {
+                "name": "received_at",
+                "value": "={{ new Date().toISOString() }}"
+              },
+              {
+                "name": "expected_intent",
+                "value": "human_handoff"
+              },
+              {
+                "name": "expected_response_exact",
+                "value": "Entendido. Lo paso con una persona."
+              },
+              {
+                "name": "expected_response_contains",
+                "value": ""
+              }
+            ],
+            "boolean": [
+              {
+                "name": "expected_kb_hit",
+                "value": false
+              },
+              {
+                "name": "expected_needs_human",
+                "value": true
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Set unsupported_non_text",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          700,
+          -200
+        ],
+        "id": "node-11",
+        "parameters": {
+          "keepOnlySet": false,
+          "values": {
+            "string": [
+              {
+                "name": "fixture_name",
+                "value": "unsupported_non_text"
+              },
+              {
+                "name": "phone",
+                "value": "+5215550000106"
+              },
+              {
+                "name": "display_name",
+                "value": "Test"
+              },
+              {
+                "name": "message_text",
+                "value": ""
+              },
+              {
+                "name": "message_type",
+                "value": "image"
+              },
+              {
+                "name": "received_at",
+                "value": "={{ new Date().toISOString() }}"
+              },
+              {
+                "name": "expected_intent",
+                "value": "unsupported"
+              },
+              {
+                "name": "expected_response_exact",
+                "value": "Por ahora solo puedo ayudarte con mensajes de texto."
+              },
+              {
+                "name": "expected_response_contains",
+                "value": ""
+              }
+            ],
+            "boolean": [
+              {
+                "name": "expected_kb_hit",
+                "value": false
+              },
+              {
+                "name": "expected_needs_human",
+                "value": false
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Set greeting_stale_session",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          700,
+          0
+        ],
+        "id": "node-12",
+        "parameters": {
+          "keepOnlySet": false,
+          "values": {
+            "string": [
+              {
+                "name": "fixture_name",
+                "value": "greeting_stale_session"
+              },
+              {
+                "name": "phone",
+                "value": "+5215550000201"
+              },
+              {
+                "name": "display_name",
+                "value": "Test"
+              },
+              {
+                "name": "message_text",
+                "value": "Hola"
+              },
+              {
+                "name": "message_type",
+                "value": "text"
+              },
+              {
+                "name": "received_at",
+                "value": "={{ new Date().toISOString() }}"
+              },
+              {
+                "name": "expected_intent",
+                "value": "greeting"
+              },
+              {
+                "name": "expected_response_exact",
+                "value": "Hola, te ayudar\u00e9 a encontrar info, \u00bfqu\u00e9 buscas?"
+              },
+              {
+                "name": "expected_response_contains",
+                "value": ""
+              }
+            ],
+            "boolean": [
+              {
+                "name": "expected_kb_hit",
+                "value": false
+              },
+              {
+                "name": "expected_needs_human",
+                "value": false
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Set Seed greeting_stale_session",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          900,
+          0
+        ],
+        "id": "node-13",
+        "parameters": {
+          "keepOnlySet": false,
+          "values": {
+            "string": [
+              {
+                "name": "session_status",
+                "value": "active"
+              },
+              {
+                "name": "short_memory",
+                "value": ""
+              },
+              {
+                "name": "last_seen_at",
+                "value": "={{ new Date(new Date().getTime() + (-14400000)).toISOString() }}"
+              }
+            ],
+            "number": [
+              {
+                "name": "message_count",
+                "value": 5
+              }
+            ],
+            "boolean": [
+              {
+                "name": "needs_human",
+                "value": false
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Seed DB greeting_stale_session",
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.5,
+        "position": [
+          1100,
+          0
+        ],
+        "id": "node-14",
+        "parameters": {
+          "authentication": "oAuth2",
+          "resource": "sheet",
+          "operation": "update",
+          "documentId": {
+            "__rl": true,
+            "value": "1cbnDSwdxZlJe0s8J4FQSU_ccPZIIts-GhjxXrOEdYzg",
+            "mode": "list"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "sessions",
+            "mode": "name"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "phone": "={{ $json.phone }}",
+              "session_status": "={{ $json.session_status }}",
+              "short_memory": "={{ $json.short_memory }}",
+              "last_seen_at": "={{ $json.last_seen_at }}",
+              "message_count": "={{ $json.message_count }}",
+              "needs_human": "={{ $json.needs_human }}"
+            }
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Set follow_up_contextual",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          700,
+          200
+        ],
+        "id": "node-15",
+        "parameters": {
+          "keepOnlySet": false,
+          "values": {
+            "string": [
+              {
+                "name": "fixture_name",
+                "value": "follow_up_contextual"
+              },
+              {
+                "name": "phone",
+                "value": "+5215550000202"
+              },
+              {
+                "name": "display_name",
+                "value": "Test"
+              },
+              {
+                "name": "message_text",
+                "value": "\u00bfY cu\u00e1l era?"
+              },
+              {
+                "name": "message_type",
+                "value": "text"
+              },
+              {
+                "name": "received_at",
+                "value": "={{ new Date().toISOString() }}"
+              },
+              {
+                "name": "expected_intent",
+                "value": "follow_up"
+              },
+              {
+                "name": "expected_response_exact",
+                "value": ""
+              },
+              {
+                "name": "expected_response_contains",
+                "value": "la espera"
+              }
+            ],
+            "boolean": [
+              {
+                "name": "expected_kb_hit",
+                "value": true
+              },
+              {
+                "name": "expected_needs_human",
+                "value": false
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Set Seed follow_up_contextual",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          900,
+          200
+        ],
+        "id": "node-16",
+        "parameters": {
+          "keepOnlySet": false,
+          "values": {
+            "string": [
+              {
+                "name": "session_status",
+                "value": "active"
+              },
+              {
+                "name": "short_memory",
+                "value": "El usuario pregunt\u00f3 por la clave y se respondi\u00f3: la espera"
+              },
+              {
+                "name": "last_seen_at",
+                "value": "={{ new Date(new Date().getTime() + (-600000)).toISOString() }}"
+              }
+            ],
+            "number": [
+              {
+                "name": "message_count",
+                "value": 2
+              }
+            ],
+            "boolean": [
+              {
+                "name": "needs_human",
+                "value": false
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Seed DB follow_up_contextual",
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.5,
+        "position": [
+          1100,
+          200
+        ],
+        "id": "node-17",
+        "parameters": {
+          "authentication": "oAuth2",
+          "resource": "sheet",
+          "operation": "update",
+          "documentId": {
+            "__rl": true,
+            "value": "1cbnDSwdxZlJe0s8J4FQSU_ccPZIIts-GhjxXrOEdYzg",
+            "mode": "list"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "sessions",
+            "mode": "name"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "phone": "={{ $json.phone }}",
+              "session_status": "={{ $json.session_status }}",
+              "short_memory": "={{ $json.short_memory }}",
+              "last_seen_at": "={{ $json.last_seen_at }}",
+              "message_count": "={{ $json.message_count }}",
+              "needs_human": "={{ $json.needs_human }}"
+            }
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Set prior_handoff_state",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          700,
+          400
+        ],
+        "id": "node-18",
+        "parameters": {
+          "keepOnlySet": false,
+          "values": {
+            "string": [
+              {
+                "name": "fixture_name",
+                "value": "prior_handoff_state"
+              },
+              {
+                "name": "phone",
+                "value": "+5215550000203"
+              },
+              {
+                "name": "display_name",
+                "value": "Test"
+              },
+              {
+                "name": "message_text",
+                "value": "Hola"
+              },
+              {
+                "name": "message_type",
+                "value": "text"
+              },
+              {
+                "name": "received_at",
+                "value": "={{ new Date().toISOString() }}"
+              },
+              {
+                "name": "expected_intent",
+                "value": "greeting"
+              },
+              {
+                "name": "expected_response_exact",
+                "value": "Un agente te atender\u00e1 pronto."
+              },
+              {
+                "name": "expected_response_contains",
+                "value": ""
+              }
+            ],
+            "boolean": [
+              {
+                "name": "expected_kb_hit",
+                "value": false
+              },
+              {
+                "name": "expected_needs_human",
+                "value": true
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Set Seed prior_handoff_state",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          900,
+          400
+        ],
+        "id": "node-19",
+        "parameters": {
+          "keepOnlySet": false,
+          "values": {
+            "string": [
+              {
+                "name": "session_status",
+                "value": "handoff"
+              },
+              {
+                "name": "short_memory",
+                "value": ""
+              },
+              {
+                "name": "last_seen_at",
+                "value": "={{ new Date(new Date().getTime() + (-300000)).toISOString() }}"
+              }
+            ],
+            "number": [
+              {
+                "name": "message_count",
+                "value": 3
+              }
+            ],
+            "boolean": [
+              {
+                "name": "needs_human",
+                "value": true
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Seed DB prior_handoff_state",
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.5,
+        "position": [
+          1100,
+          400
+        ],
+        "id": "node-20",
+        "parameters": {
+          "authentication": "oAuth2",
+          "resource": "sheet",
+          "operation": "update",
+          "documentId": {
+            "__rl": true,
+            "value": "1cbnDSwdxZlJe0s8J4FQSU_ccPZIIts-GhjxXrOEdYzg",
+            "mode": "list"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "sessions",
+            "mode": "name"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "phone": "={{ $json.phone }}",
+              "session_status": "={{ $json.session_status }}",
+              "short_memory": "={{ $json.short_memory }}",
+              "last_seen_at": "={{ $json.last_seen_at }}",
+              "message_count": "={{ $json.message_count }}",
+              "needs_human": "={{ $json.needs_human }}"
+            }
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Set returning_active_user",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          700,
+          600
+        ],
+        "id": "node-21",
+        "parameters": {
+          "keepOnlySet": false,
+          "values": {
+            "string": [
+              {
+                "name": "fixture_name",
+                "value": "returning_active_user"
+              },
+              {
+                "name": "phone",
+                "value": "+5215550000204"
+              },
+              {
+                "name": "display_name",
+                "value": "Test"
+              },
+              {
+                "name": "message_text",
+                "value": "Hola"
+              },
+              {
+                "name": "message_type",
+                "value": "text"
+              },
+              {
+                "name": "received_at",
+                "value": "={{ new Date().toISOString() }}"
+              },
+              {
+                "name": "expected_intent",
+                "value": "greeting"
+              },
+              {
+                "name": "expected_response_exact",
+                "value": "Hola de nuevo. \u00bfEn qu\u00e9 te ayudo ahora?"
+              },
+              {
+                "name": "expected_response_contains",
+                "value": ""
+              }
+            ],
+            "boolean": [
+              {
+                "name": "expected_kb_hit",
+                "value": false
+              },
+              {
+                "name": "expected_needs_human",
+                "value": false
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Set Seed returning_active_user",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          900,
+          600
+        ],
+        "id": "node-22",
+        "parameters": {
+          "keepOnlySet": false,
+          "values": {
+            "string": [
+              {
+                "name": "session_status",
+                "value": "active"
+              },
+              {
+                "name": "short_memory",
+                "value": ""
+              },
+              {
+                "name": "last_seen_at",
+                "value": "={{ new Date(new Date().getTime() + (-300000)).toISOString() }}"
+              }
+            ],
+            "number": [
+              {
+                "name": "message_count",
+                "value": 8
+              }
+            ],
+            "boolean": [
+              {
+                "name": "needs_human",
+                "value": false
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Seed DB returning_active_user",
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.5,
+        "position": [
+          1100,
+          600
+        ],
+        "id": "node-23",
+        "parameters": {
+          "authentication": "oAuth2",
+          "resource": "sheet",
+          "operation": "update",
+          "documentId": {
+            "__rl": true,
+            "value": "1cbnDSwdxZlJe0s8J4FQSU_ccPZIIts-GhjxXrOEdYzg",
+            "mode": "list"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "sessions",
+            "mode": "name"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "phone": "={{ $json.phone }}",
+              "session_status": "={{ $json.session_status }}",
+              "short_memory": "={{ $json.short_memory }}",
+              "last_seen_at": "={{ $json.last_seen_at }}",
+              "message_count": "={{ $json.message_count }}",
+              "needs_human": "={{ $json.needs_human }}"
+            }
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Set kb_follow_up_debug",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          700,
+          800
+        ],
+        "id": "node-24",
+        "parameters": {
+          "keepOnlySet": false,
+          "values": {
+            "string": [
+              {
+                "name": "fixture_name",
+                "value": "kb_follow_up_debug"
+              },
+              {
+                "name": "phone",
+                "value": "+5215550000205"
+              },
+              {
+                "name": "display_name",
+                "value": "Test"
+              },
+              {
+                "name": "message_text",
+                "value": "\u00bfY los horarios?"
+              },
+              {
+                "name": "message_type",
+                "value": "text"
+              },
+              {
+                "name": "received_at",
+                "value": "={{ new Date().toISOString() }}"
+              },
+              {
+                "name": "expected_intent",
+                "value": "follow_up"
+              },
+              {
+                "name": "expected_response_exact",
+                "value": ""
+              },
+              {
+                "name": "expected_response_contains",
+                "value": "No encontr\u00e9"
+              }
+            ],
+            "boolean": [
+              {
+                "name": "expected_kb_hit",
+                "value": false
+              },
+              {
+                "name": "expected_needs_human",
+                "value": false
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Set Seed kb_follow_up_debug",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          900,
+          800
+        ],
+        "id": "node-25",
+        "parameters": {
+          "keepOnlySet": false,
+          "values": {
+            "string": [
+              {
+                "name": "session_status",
+                "value": "active"
+              },
+              {
+                "name": "short_memory",
+                "value": "Usuario pregunt\u00f3 por servicios"
+              },
+              {
+                "name": "last_seen_at",
+                "value": "={{ new Date(new Date().getTime() + (-120000)).toISOString() }}"
+              }
+            ],
+            "number": [
+              {
+                "name": "message_count",
+                "value": 1
+              }
+            ],
+            "boolean": [
+              {
+                "name": "needs_human",
+                "value": false
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Seed DB kb_follow_up_debug",
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.5,
+        "position": [
+          1100,
+          800
+        ],
+        "id": "node-26",
+        "parameters": {
+          "authentication": "oAuth2",
+          "resource": "sheet",
+          "operation": "update",
+          "documentId": {
+            "__rl": true,
+            "value": "1cbnDSwdxZlJe0s8J4FQSU_ccPZIIts-GhjxXrOEdYzg",
+            "mode": "list"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "sessions",
+            "mode": "name"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "phone": "={{ $json.phone }}",
+              "session_status": "={{ $json.session_status }}",
+              "short_memory": "={{ $json.short_memory }}",
+              "last_seen_at": "={{ $json.last_seen_at }}",
+              "message_count": "={{ $json.message_count }}",
+              "needs_human": "={{ $json.needs_human }}"
+            }
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Set generic_returning_debug",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          700,
+          1000
+        ],
+        "id": "node-27",
+        "parameters": {
+          "keepOnlySet": false,
+          "values": {
+            "string": [
+              {
+                "name": "fixture_name",
+                "value": "generic_returning_debug"
+              },
+              {
+                "name": "phone",
+                "value": "+5215550000206"
+              },
+              {
+                "name": "display_name",
+                "value": "Test"
+              },
+              {
+                "name": "message_text",
+                "value": "Hola"
+              },
+              {
+                "name": "message_type",
+                "value": "text"
+              },
+              {
+                "name": "received_at",
+                "value": "={{ new Date().toISOString() }}"
+              },
+              {
+                "name": "expected_intent",
+                "value": "greeting"
+              },
+              {
+                "name": "expected_response_exact",
+                "value": "Hola de nuevo. \u00bfEn qu\u00e9 te ayudo ahora?"
+              },
+              {
+                "name": "expected_response_contains",
+                "value": ""
+              }
+            ],
+            "boolean": [
+              {
+                "name": "expected_kb_hit",
+                "value": false
+              },
+              {
+                "name": "expected_needs_human",
+                "value": false
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Set Seed generic_returning_debug",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          900,
+          1000
+        ],
+        "id": "node-28",
+        "parameters": {
+          "keepOnlySet": false,
+          "values": {
+            "string": [
+              {
+                "name": "session_status",
+                "value": "active"
+              },
+              {
+                "name": "short_memory",
+                "value": ""
+              },
+              {
+                "name": "last_seen_at",
+                "value": "={{ new Date(new Date().getTime() + (-120000)).toISOString() }}"
+              }
+            ],
+            "number": [
+              {
+                "name": "message_count",
+                "value": 12
+              }
+            ],
+            "boolean": [
+              {
+                "name": "needs_human",
+                "value": false
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Seed DB generic_returning_debug",
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.5,
+        "position": [
+          1100,
+          1000
+        ],
+        "id": "node-29",
+        "parameters": {
+          "authentication": "oAuth2",
+          "resource": "sheet",
+          "operation": "update",
+          "documentId": {
+            "__rl": true,
+            "value": "1cbnDSwdxZlJe0s8J4FQSU_ccPZIIts-GhjxXrOEdYzg",
+            "mode": "list"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "sessions",
+            "mode": "name"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "phone": "={{ $json.phone }}",
+              "session_status": "={{ $json.session_status }}",
+              "short_memory": "={{ $json.short_memory }}",
+              "last_seen_at": "={{ $json.last_seen_at }}",
+              "message_count": "={{ $json.message_count }}",
+              "needs_human": "={{ $json.needs_human }}"
+            }
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Execute Main Core",
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          1400,
+          0
+        ],
+        "id": "node-30",
+        "parameters": {
+          "operation": "call_workflow",
+          "source": "database",
+          "workflowId": {
+            "__rl": true,
+            "value": "a5bg3l7kj0BDqVBV",
+            "mode": "id"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "phone": "={{ $json.phone }}",
+              "display_name": "={{ $json.display_name }}",
+              "message_text": "={{ $json.message_text }}",
+              "message_type": "={{ $json.message_type }}",
+              "received_at": "={{ $json.received_at }}",
+              "raw_input": "{}"
+            }
+          },
+          "mode": "once",
+          "options": {
+            "waitForSubWorkflow": true
+          }
+        }
+      },
+      {
+        "name": "Compare Output",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1600,
+          0
+        ],
+        "id": "node-31",
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "\nconst result = $input.first().json;\nconst phone = result.phone;\nconst fixtures = {\"greeting_new_user\":{\"phone\":\"+5215550000101\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola, te ayudar\u00e9 a encontrar info, \u00bfqu\u00e9 buscas?\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"kb_question_found\":{\"phone\":\"+5215550000102\",\"display_name\":\"Test\",\"message_text\":\"\u00bfCu\u00e1l es la clave?\",\"message_type\":\"text\",\"expected_intent\":\"kb_query\",\"expected_response_contains\":\"la espera\",\"expected_kb_hit\":true,\"expected_needs_human\":false},\"kb_question_not_found\":{\"phone\":\"+5215550000103\",\"display_name\":\"Test\",\"message_text\":\"\u00bfCu\u00e1l es el horario de apertura?\",\"message_type\":\"text\",\"expected_intent\":\"kb_query\",\"expected_response_exact\":\"No encontr\u00e9 esa informaci\u00f3n en mi base actual.\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"unknown_unclear\":{\"phone\":\"+5215550000104\",\"display_name\":\"Test\",\"message_text\":\"eso\",\"message_type\":\"text\",\"expected_intent\":\"unknown\",\"expected_response_exact\":\"No estoy seguro de haber entendido bien. \u00bfMe lo puedes escribir con un poco m\u00e1s de detalle?\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"explicit_human_handoff\":{\"phone\":\"+5215550000105\",\"display_name\":\"Test\",\"message_text\":\"#humano\",\"message_type\":\"text\",\"expected_intent\":\"human_handoff\",\"expected_response_exact\":\"Entendido. Lo paso con una persona.\",\"expected_kb_hit\":false,\"expected_needs_human\":true},\"unsupported_non_text\":{\"phone\":\"+5215550000106\",\"display_name\":\"Test\",\"message_text\":\"\",\"message_type\":\"image\",\"expected_intent\":\"unsupported\",\"expected_response_exact\":\"Por ahora solo puedo ayudarte con mensajes de texto.\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"greeting_stale_session\":{\"phone\":\"+5215550000201\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola, te ayudar\u00e9 a encontrar info, \u00bfqu\u00e9 buscas?\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"\",\"message_count\":5,\"last_seen_offset\":-14400000}},\"follow_up_contextual\":{\"phone\":\"+5215550000202\",\"display_name\":\"Test\",\"message_text\":\"\u00bfY cu\u00e1l era?\",\"message_type\":\"text\",\"expected_intent\":\"follow_up\",\"expected_response_contains\":\"la espera\",\"expected_kb_hit\":true,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"El usuario pregunt\u00f3 por la clave y se respondi\u00f3: la espera\",\"message_count\":2,\"last_seen_offset\":-600000}},\"prior_handoff_state\":{\"phone\":\"+5215550000203\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Un agente te atender\u00e1 pronto.\",\"expected_kb_hit\":false,\"expected_needs_human\":true,\"seed\":{\"session_status\":\"handoff\",\"short_memory\":\"\",\"needs_human\":true,\"message_count\":3,\"last_seen_offset\":-300000}},\"returning_active_user\":{\"phone\":\"+5215550000204\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola de nuevo. \u00bfEn qu\u00e9 te ayudo ahora?\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"\",\"message_count\":8,\"last_seen_offset\":-300000}},\"kb_follow_up_debug\":{\"phone\":\"+5215550000205\",\"display_name\":\"Test\",\"message_text\":\"\u00bfY los horarios?\",\"message_type\":\"text\",\"expected_intent\":\"follow_up\",\"expected_response_contains\":\"No encontr\u00e9\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"Usuario pregunt\u00f3 por servicios\",\"message_count\":1,\"last_seen_offset\":-120000}},\"generic_returning_debug\":{\"phone\":\"+5215550000206\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola de nuevo. \u00bfEn qu\u00e9 te ayudo ahora?\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"\",\"message_count\":12,\"last_seen_offset\":-120000}}};\nlet fix = null;\nlet fixture_name = 'unknown';\n\nfor(const k of Object.keys(fixtures)){\n    if(fixtures[k].phone === phone) {\n        fix = fixtures[k];\n        fixture_name = k;\n        break;\n    }\n}\n\nlet pass_intent = false;\nlet pass_response = false;\nlet pass_kb_hit = false;\nlet pass_needs_human = false;\n\nif(fix) {\n    pass_intent = (result.intent === fix.expected_intent);\n    if (fix.expected_response_exact) {\n        pass_response = (result.response_text === fix.expected_response_exact);\n    } else if (fix.expected_response_contains) {\n        pass_response = (result.response_text.includes(fix.expected_response_contains));\n    } else {\n        pass_response = true;\n    }\n    pass_kb_hit = (result.kb_hit === fix.expected_kb_hit);\n    pass_needs_human = (result.needs_human === fix.expected_needs_human);\n}\n\nreturn [{\n  json: {\n    fixture_name,\n    phone,\n    expected_intent: fix ? fix.expected_intent : '',\n    expected_response_exact: fix ? fix.expected_response_exact : '',\n    expected_response_contains: fix ? fix.expected_response_contains : '',\n    expected_kb_hit: fix ? fix.expected_kb_hit : false,\n    expected_needs_human: fix ? fix.expected_needs_human : false,\n    actual_intent: result.intent,\n    actual_response_text: result.response_text,\n    actual_kb_hit: result.kb_hit,\n    actual_needs_human: result.needs_human,\n    pass_intent,\n    pass_response,\n    pass_kb_hit,\n    pass_needs_human,\n    overall_pass: pass_intent && pass_response && pass_kb_hit && pass_needs_human\n  }\n}];\n",
+          "notice": ""
+        }
+      }
+    ],
+    "connections": {
+      "Manual Trigger": {
+        "main": [
+          [
+            {
+              "node": "Test Config",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Webhook Trigger": {
+        "main": [
+          [
+            {
+              "node": "Test Config",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Test Config": {
+        "main": [
+          [
+            {
+              "node": "Switch Fixture",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Switch Fixture": {
+        "main": [
+          [
+            {
+              "node": "Set greeting_new_user",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set kb_question_found",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set kb_question_not_found",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set unknown_unclear",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set explicit_human_handoff",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set unsupported_non_text",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set greeting_stale_session",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set follow_up_contextual",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set prior_handoff_state",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set returning_active_user",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set kb_follow_up_debug",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Set generic_returning_debug",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set greeting_new_user": {
+        "main": [
+          [
+            {
+              "node": "Execute Main Core",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set kb_question_found": {
+        "main": [
+          [
+            {
+              "node": "Execute Main Core",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set kb_question_not_found": {
+        "main": [
+          [
+            {
+              "node": "Execute Main Core",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set unknown_unclear": {
+        "main": [
+          [
+            {
+              "node": "Execute Main Core",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set explicit_human_handoff": {
+        "main": [
+          [
+            {
+              "node": "Execute Main Core",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set unsupported_non_text": {
+        "main": [
+          [
+            {
+              "node": "Execute Main Core",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set greeting_stale_session": {
+        "main": [
+          [
+            {
+              "node": "Set Seed greeting_stale_session",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set Seed greeting_stale_session": {
+        "main": [
+          [
+            {
+              "node": "Seed DB greeting_stale_session",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Seed DB greeting_stale_session": {
+        "main": [
+          [
+            {
+              "node": "Execute Main Core",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set follow_up_contextual": {
+        "main": [
+          [
+            {
+              "node": "Set Seed follow_up_contextual",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set Seed follow_up_contextual": {
+        "main": [
+          [
+            {
+              "node": "Seed DB follow_up_contextual",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Seed DB follow_up_contextual": {
+        "main": [
+          [
+            {
+              "node": "Execute Main Core",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set prior_handoff_state": {
+        "main": [
+          [
+            {
+              "node": "Set Seed prior_handoff_state",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set Seed prior_handoff_state": {
+        "main": [
+          [
+            {
+              "node": "Seed DB prior_handoff_state",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Seed DB prior_handoff_state": {
+        "main": [
+          [
+            {
+              "node": "Execute Main Core",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set returning_active_user": {
+        "main": [
+          [
+            {
+              "node": "Set Seed returning_active_user",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set Seed returning_active_user": {
+        "main": [
+          [
+            {
+              "node": "Seed DB returning_active_user",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Seed DB returning_active_user": {
+        "main": [
+          [
+            {
+              "node": "Execute Main Core",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set kb_follow_up_debug": {
+        "main": [
+          [
+            {
+              "node": "Set Seed kb_follow_up_debug",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set Seed kb_follow_up_debug": {
+        "main": [
+          [
+            {
+              "node": "Seed DB kb_follow_up_debug",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Seed DB kb_follow_up_debug": {
+        "main": [
+          [
+            {
+              "node": "Execute Main Core",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set generic_returning_debug": {
+        "main": [
+          [
+            {
+              "node": "Set Seed generic_returning_debug",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set Seed generic_returning_debug": {
+        "main": [
+          [
+            {
+              "node": "Seed DB generic_returning_debug",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Seed DB generic_returning_debug": {
+        "main": [
+          [
+            {
+              "node": "Execute Main Core",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Execute Main Core": {
+        "main": [
+          [
+            {
+              "node": "Compare Output",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Compare Output": {
+        "main": [
+          [
+            {
+              "node": "Respond Webhook",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1",
+      "callerPolicy": "workflowsFromSameOwner",
+      "availableInMCP": false
+    },
+    "staticData": {},
+    "pinData": null
+  },
+  "customData": {}
+}

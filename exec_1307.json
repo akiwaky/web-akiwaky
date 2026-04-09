@@ -1,0 +1,1815 @@
+{
+  "id": "1307",
+  "finished": false,
+  "mode": "integrated",
+  "retryOf": null,
+  "retrySuccessId": null,
+  "status": "error",
+  "createdAt": "2026-03-11T02:53:57.280Z",
+  "startedAt": "2026-03-11T02:53:57.288Z",
+  "stoppedAt": "2026-03-11T02:54:00.228Z",
+  "deletedAt": null,
+  "workflowId": "a5bg3l7kj0BDqVBV",
+  "waitTill": null,
+  "storedAt": "db",
+  "data": {
+    "version": 1,
+    "startData": {},
+    "resultData": {
+      "error": {
+        "level": "error",
+        "tags": {},
+        "cause": {
+          "__rl": true,
+          "value": "={{ /*SAVE_SESSION_ID*/ }}",
+          "mode": "id"
+        },
+        "message": "invalid syntax",
+        "stack": "Error: invalid syntax\n    at Expression.renderExpression (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-workflow@file+packages+workflow/node_modules/n8n-workflow/src/expression.ts:476:36)\n    at Expression.resolveSimpleParameterValue (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-workflow@file+packages+workflow/node_modules/n8n-workflow/src/expression.ts:453:28)\n    at resolveParameterValue (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-workflow@file+packages+workflow/node_modules/n8n-workflow/src/expression.ts:635:16)\n    at Expression.getParameterValue (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-workflow@file+packages+workflow/node_modules/n8n-workflow/src/expression.ts:692:22)\n    at ExecuteContext._getNodeParameter (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/node-execution-context/node-execution-context.ts:464:37)\n    at ExecuteContext.getNodeParameter (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/node-execution-context/execute-context.ts:134:9)\n    at ExecuteContext.getWorkflowInfo (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/ExecuteWorkflow/ExecuteWorkflow/GenericFunctions.ts:23:27)\n    at ExecuteContext.execute (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/ExecuteWorkflow/ExecuteWorkflow/ExecuteWorkflow.node.ts:412:48)\n    at WorkflowExecute.executeNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1039:31)\n    at WorkflowExecute.runNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1218:22)"
+      },
+      "runData": {
+        "When Executed by Another Workflow": [
+          {
+            "startTime": 1773197637291,
+            "executionIndex": 0,
+            "source": [],
+            "hints": [],
+            "executionTime": 1,
+            "metadata": {
+              "parentExecution": {
+                "executionId": "1306",
+                "workflowId": "nPOH8UqT0pCiEQan",
+                "shouldResume": true,
+                "executionContext": {
+                  "version": 1,
+                  "establishedAt": 1773197636482,
+                  "source": "webhook",
+                  "triggerNode": {
+                    "name": "Webhook Trigger",
+                    "type": "n8n-nodes-base.webhook"
+                  }
+                }
+              }
+            },
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "phone": "+5215550000206",
+                      "session_status": "active",
+                      "short_memory": "",
+                      "last_seen_at": "2026-03-11T02:51:56.493Z",
+                      "message_count": 12,
+                      "needs_human": false,
+                      "raw_input": "{}"
+                    },
+                    "index": 0,
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Message Type": [
+          {
+            "startTime": 1773197637292,
+            "executionIndex": 1,
+            "source": [
+              {
+                "previousNode": "When Executed by Another Workflow",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 0,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "phone": "+5215550000206",
+                      "session_status": "active",
+                      "short_memory": "",
+                      "last_seen_at": "2026-03-11T02:51:56.493Z",
+                      "message_count": 12,
+                      "needs_human": false,
+                      "raw_input": "{}"
+                    },
+                    "index": 0,
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ],
+                []
+              ]
+            }
+          }
+        ],
+        "Load Session": [
+          {
+            "startTime": 1773197637292,
+            "executionIndex": 2,
+            "source": [
+              {
+                "previousNode": "Message Type",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 424,
+            "metadata": {
+              "subExecution": {
+                "executionId": "1308",
+                "workflowId": "XPCLmNSQesXST5gU"
+              },
+              "subExecutionsCount": 1
+            },
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "phone": "+5215550000206",
+                      "display_name": "",
+                      "session_status": "active",
+                      "short_memory": "",
+                      "last_intent": "",
+                      "last_user_message": "",
+                      "last_bot_message": "",
+                      "last_seen_at": "",
+                      "message_count": 0,
+                      "needs_human": false,
+                      "is_new_session": true,
+                      "is_stale_session": false
+                    },
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Classify Intent": [
+          {
+            "startTime": 1773197637716,
+            "executionIndex": 3,
+            "source": [
+              {
+                "previousNode": "Load Session",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 1474,
+            "metadata": {
+              "subExecution": {
+                "executionId": "1309",
+                "workflowId": "eoGvxHk5GmGIn8yY"
+              },
+              "subExecutionsCount": 1
+            },
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "intent": "unknown",
+                      "confidence": 0,
+                      "reason": ""
+                    },
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Merge Context": [
+          {
+            "startTime": 1773197639190,
+            "executionIndex": 4,
+            "source": [
+              {
+                "previousNode": "Classify Intent",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 7,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "phone": "+5215550000206",
+                      "display_name": "",
+                      "session_status": "active",
+                      "short_memory": "",
+                      "last_intent": "",
+                      "last_user_message": "",
+                      "last_bot_message": "",
+                      "last_seen_at": "",
+                      "message_count": 0,
+                      "needs_human": false,
+                      "is_new_session": true,
+                      "is_stale_session": false,
+                      "intent": "unknown",
+                      "confidence": 0,
+                      "intent_reason": ""
+                    },
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Route by Intent": [
+          {
+            "startTime": 1773197639197,
+            "executionIndex": 5,
+            "source": [
+              {
+                "previousNode": "Merge Context",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 1,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "phone": "+5215550000206",
+                      "display_name": "",
+                      "session_status": "active",
+                      "short_memory": "",
+                      "last_intent": "",
+                      "last_user_message": "",
+                      "last_bot_message": "",
+                      "last_seen_at": "",
+                      "message_count": 0,
+                      "needs_human": false,
+                      "is_new_session": true,
+                      "is_stale_session": false,
+                      "intent": "unknown",
+                      "confidence": 0,
+                      "intent_reason": ""
+                    },
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ],
+                [],
+                [],
+                [],
+                [],
+                []
+              ]
+            }
+          }
+        ],
+        "Human Handoff": [
+          {
+            "startTime": 1773197639198,
+            "executionIndex": 6,
+            "source": [
+              {
+                "previousNode": "Route by Intent",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 1017,
+            "metadata": {
+              "subExecution": {
+                "executionId": "1310",
+                "workflowId": "84CvFle3GYikUaYl"
+              },
+              "subExecutionsCount": 1
+            },
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "response_text": "Entendido. Lo paso con una persona.",
+                      "kb_hit": false,
+                      "updated_short_memory": "Escalado a humano por #humano. \u00daltimo mensaje: undefined",
+                      "needs_human": true,
+                      "intent": "human_handoff"
+                    },
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Build Final Output": [
+          {
+            "startTime": 1773197640215,
+            "executionIndex": 7,
+            "source": [
+              {
+                "previousNode": "Human Handoff",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              },
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "hints": [],
+            "executionTime": 7,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "response_text": "Entendido. Lo paso con una persona.",
+                      "intent": "unknown",
+                      "kb_hit": false,
+                      "updated_short_memory": "Escalado a humano por #humano. \u00daltimo mensaje: undefined",
+                      "needs_human": false,
+                      "status": "ok",
+                      "phone": "+5215550000206",
+                      "display_name": "",
+                      "message_type": "text",
+                      "_save_payload": {
+                        "phone": "+5215550000206",
+                        "display_name": "",
+                        "session_status": "active",
+                        "short_memory": "Escalado a humano por #humano. \u00daltimo mensaje: undefined",
+                        "last_intent": "unknown",
+                        "last_bot_message": "Entendido. Lo paso con una persona.",
+                        "needs_human": false
+                      },
+                      "_log_payload": {
+                        "timestamp": "2026-03-11T02:54:00.221Z",
+                        "phone": "+5215550000206",
+                        "display_name": "",
+                        "intent": "unknown",
+                        "response_sent": "Entendido. Lo paso con una persona.",
+                        "kb_hit": false,
+                        "failed": false,
+                        "failure_reason": ""
+                      }
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Save Session": [
+          {
+            "startTime": 1773197640222,
+            "executionIndex": 8,
+            "source": [
+              {
+                "previousNode": "Build Final Output",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 6,
+            "executionStatus": "error",
+            "error": {
+              "level": "error",
+              "tags": {},
+              "cause": {
+                "__rl": true,
+                "value": "={{ /*SAVE_SESSION_ID*/ }}",
+                "mode": "id"
+              },
+              "message": "invalid syntax",
+              "stack": "Error: invalid syntax\n    at Expression.renderExpression (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-workflow@file+packages+workflow/node_modules/n8n-workflow/src/expression.ts:476:36)\n    at Expression.resolveSimpleParameterValue (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-workflow@file+packages+workflow/node_modules/n8n-workflow/src/expression.ts:453:28)\n    at resolveParameterValue (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-workflow@file+packages+workflow/node_modules/n8n-workflow/src/expression.ts:635:16)\n    at Expression.getParameterValue (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-workflow@file+packages+workflow/node_modules/n8n-workflow/src/expression.ts:692:22)\n    at ExecuteContext._getNodeParameter (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/node-execution-context/node-execution-context.ts:464:37)\n    at ExecuteContext.getNodeParameter (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/node-execution-context/execute-context.ts:134:9)\n    at ExecuteContext.getWorkflowInfo (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/ExecuteWorkflow/ExecuteWorkflow/GenericFunctions.ts:23:27)\n    at ExecuteContext.execute (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/ExecuteWorkflow/ExecuteWorkflow/ExecuteWorkflow.node.ts:412:48)\n    at WorkflowExecute.executeNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1039:31)\n    at WorkflowExecute.runNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1218:22)"
+            }
+          }
+        ]
+      },
+      "lastNodeExecuted": "Save Session"
+    },
+    "executionData": {
+      "contextData": {},
+      "nodeExecutionStack": [
+        {
+          "node": {
+            "parameters": {
+              "operation": "call_workflow",
+              "source": "database",
+              "workflowId": {
+                "__rl": true,
+                "value": "={{ /*SAVE_SESSION_ID*/ }}",
+                "mode": "id"
+              },
+              "workflowInputs": {
+                "mappingMode": "defineBelow",
+                "value": {
+                  "phone": "={{ $json._save_payload.phone }}",
+                  "display_name": "={{ $json._save_payload.display_name }}",
+                  "session_status": "={{ $json._save_payload.session_status }}",
+                  "short_memory": "={{ $json._save_payload.short_memory }}",
+                  "last_intent": "={{ $json._save_payload.last_intent }}",
+                  "last_user_message": "={{ $json._save_payload.last_user_message }}",
+                  "last_bot_message": "={{ $json._save_payload.last_bot_message }}",
+                  "needs_human": "={{ $json._save_payload.needs_human }}"
+                }
+              },
+              "mode": "once",
+              "options": {
+                "waitForSubWorkflow": true
+              }
+            },
+            "name": "Save Session",
+            "type": "n8n-nodes-base.executeWorkflow",
+            "typeVersion": 1.2,
+            "position": [
+              2200,
+              -200
+            ],
+            "id": "akibot-core-save"
+          },
+          "data": {
+            "main": [
+              [
+                {
+                  "json": {
+                    "response_text": "Entendido. Lo paso con una persona.",
+                    "intent": "unknown",
+                    "kb_hit": false,
+                    "updated_short_memory": "Escalado a humano por #humano. \u00daltimo mensaje: undefined",
+                    "needs_human": false,
+                    "status": "ok",
+                    "phone": "+5215550000206",
+                    "display_name": "",
+                    "message_type": "text",
+                    "_save_payload": {
+                      "phone": "+5215550000206",
+                      "display_name": "",
+                      "session_status": "active",
+                      "short_memory": "Escalado a humano por #humano. \u00daltimo mensaje: undefined",
+                      "last_intent": "unknown",
+                      "last_bot_message": "Entendido. Lo paso con una persona.",
+                      "needs_human": false
+                    },
+                    "_log_payload": {
+                      "timestamp": "2026-03-11T02:54:00.221Z",
+                      "phone": "+5215550000206",
+                      "display_name": "",
+                      "intent": "unknown",
+                      "response_sent": "Entendido. Lo paso con una persona.",
+                      "kb_hit": false,
+                      "failed": false,
+                      "failure_reason": ""
+                    }
+                  },
+                  "pairedItem": {
+                    "item": 0
+                  }
+                }
+              ]
+            ]
+          },
+          "source": {
+            "main": [
+              {
+                "previousNode": "Build Final Output",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ]
+          }
+        },
+        {
+          "node": {
+            "parameters": {
+              "mode": "manual",
+              "duplicateItem": false,
+              "assignments": {
+                "assignments": [
+                  {
+                    "id": "r1",
+                    "name": "response_text",
+                    "value": "={{ $('Build Final Output').first().json.response_text }}",
+                    "type": "string"
+                  },
+                  {
+                    "id": "r2",
+                    "name": "intent",
+                    "value": "={{ $('Build Final Output').first().json.intent }}",
+                    "type": "string"
+                  },
+                  {
+                    "id": "r3",
+                    "name": "kb_hit",
+                    "value": "={{ $('Build Final Output').first().json.kb_hit }}",
+                    "type": "boolean"
+                  },
+                  {
+                    "id": "r4",
+                    "name": "updated_short_memory",
+                    "value": "={{ $('Build Final Output').first().json.updated_short_memory }}",
+                    "type": "string"
+                  },
+                  {
+                    "id": "r5",
+                    "name": "needs_human",
+                    "value": "={{ $('Build Final Output').first().json.needs_human }}",
+                    "type": "boolean"
+                  },
+                  {
+                    "id": "r6",
+                    "name": "status",
+                    "value": "ok",
+                    "type": "string"
+                  }
+                ]
+              },
+              "includeOtherFields": false,
+              "options": {}
+            },
+            "name": "Return Response",
+            "type": "n8n-nodes-base.set",
+            "typeVersion": 3.4,
+            "position": [
+              2420,
+              -100
+            ],
+            "id": "akibot-core-return"
+          },
+          "data": {
+            "main": [
+              [
+                {
+                  "json": {
+                    "response_text": "Entendido. Lo paso con una persona.",
+                    "intent": "unknown",
+                    "kb_hit": false,
+                    "updated_short_memory": "Escalado a humano por #humano. \u00daltimo mensaje: undefined",
+                    "needs_human": false,
+                    "status": "ok",
+                    "phone": "+5215550000206",
+                    "display_name": "",
+                    "message_type": "text",
+                    "_save_payload": {
+                      "phone": "+5215550000206",
+                      "display_name": "",
+                      "session_status": "active",
+                      "short_memory": "Escalado a humano por #humano. \u00daltimo mensaje: undefined",
+                      "last_intent": "unknown",
+                      "last_bot_message": "Entendido. Lo paso con una persona.",
+                      "needs_human": false
+                    },
+                    "_log_payload": {
+                      "timestamp": "2026-03-11T02:54:00.221Z",
+                      "phone": "+5215550000206",
+                      "display_name": "",
+                      "intent": "unknown",
+                      "response_sent": "Entendido. Lo paso con una persona.",
+                      "kb_hit": false,
+                      "failed": false,
+                      "failure_reason": ""
+                    }
+                  }
+                }
+              ]
+            ]
+          },
+          "source": {
+            "main": [
+              {
+                "previousNode": "Build Final Output",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ]
+          }
+        },
+        {
+          "node": {
+            "parameters": {
+              "operation": "call_workflow",
+              "source": "database",
+              "workflowId": {
+                "__rl": true,
+                "value": "fmQHFCWceVZVbWa9",
+                "mode": "id"
+              },
+              "workflowInputs": {
+                "mappingMode": "defineBelow",
+                "value": {
+                  "timestamp": "={{ $json._log_payload.timestamp }}",
+                  "phone": "={{ $json._log_payload.phone }}",
+                  "display_name": "={{ $json._log_payload.display_name }}",
+                  "incoming_message": "={{ $json._log_payload.incoming_message }}",
+                  "intent": "={{ $json._log_payload.intent }}",
+                  "response_sent": "={{ $json._log_payload.response_sent }}",
+                  "kb_hit": "={{ $json._log_payload.kb_hit }}",
+                  "failed": "={{ $json._log_payload.failed }}",
+                  "failure_reason": "={{ $json._log_payload.failure_reason }}"
+                }
+              },
+              "mode": "once",
+              "options": {
+                "waitForSubWorkflow": true
+              }
+            },
+            "name": "Log Event",
+            "type": "n8n-nodes-base.executeWorkflow",
+            "typeVersion": 1.2,
+            "position": [
+              2200,
+              0
+            ],
+            "id": "akibot-core-log"
+          },
+          "data": {
+            "main": [
+              [
+                {
+                  "json": {
+                    "response_text": "Entendido. Lo paso con una persona.",
+                    "intent": "unknown",
+                    "kb_hit": false,
+                    "updated_short_memory": "Escalado a humano por #humano. \u00daltimo mensaje: undefined",
+                    "needs_human": false,
+                    "status": "ok",
+                    "phone": "+5215550000206",
+                    "display_name": "",
+                    "message_type": "text",
+                    "_save_payload": {
+                      "phone": "+5215550000206",
+                      "display_name": "",
+                      "session_status": "active",
+                      "short_memory": "Escalado a humano por #humano. \u00daltimo mensaje: undefined",
+                      "last_intent": "unknown",
+                      "last_bot_message": "Entendido. Lo paso con una persona.",
+                      "needs_human": false
+                    },
+                    "_log_payload": {
+                      "timestamp": "2026-03-11T02:54:00.221Z",
+                      "phone": "+5215550000206",
+                      "display_name": "",
+                      "intent": "unknown",
+                      "response_sent": "Entendido. Lo paso con una persona.",
+                      "kb_hit": false,
+                      "failed": false,
+                      "failure_reason": ""
+                    }
+                  }
+                }
+              ]
+            ]
+          },
+          "source": {
+            "main": [
+              {
+                "previousNode": "Build Final Output",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ]
+          }
+        }
+      ],
+      "metadata": {},
+      "waitingExecution": {},
+      "waitingExecutionSource": {},
+      "runtimeData": {
+        "version": 1,
+        "establishedAt": 1773197637291,
+        "source": "integrated",
+        "triggerNode": {
+          "name": "Webhook Trigger",
+          "type": "n8n-nodes-base.webhook"
+        },
+        "parentExecutionId": "1306"
+      }
+    },
+    "parentExecution": {
+      "executionId": "1306",
+      "workflowId": "nPOH8UqT0pCiEQan",
+      "shouldResume": true,
+      "executionContext": {
+        "version": 1,
+        "establishedAt": 1773197636482,
+        "source": "webhook",
+        "triggerNode": {
+          "name": "Webhook Trigger",
+          "type": "n8n-nodes-base.webhook"
+        }
+      }
+    }
+  },
+  "workflowData": {
+    "id": "a5bg3l7kj0BDqVBV",
+    "name": "AkiBot - Main Inbound Core",
+    "active": true,
+    "activeVersionId": "4226b090-b790-478e-adea-d481e6192789",
+    "isArchived": false,
+    "createdAt": "2026-03-10T07:04:29.987Z",
+    "updatedAt": "2026-03-11T02:52:36.841Z",
+    "nodes": [
+      {
+        "parameters": {
+          "events": "worklfow_call",
+          "inputSource": "passthrough"
+        },
+        "name": "When Executed by Another Workflow",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          0,
+          0
+        ],
+        "id": "akibot-core-trigger"
+      },
+      {
+        "parameters": {
+          "mode": "rules",
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "conditions": [
+                    {
+                      "value1": "={{ $json.message_type }}",
+                      "value2": "text",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      }
+                    }
+                  ]
+                },
+                "renameOutput": false
+              }
+            ]
+          },
+          "looseTypeValidation": false,
+          "options": {
+            "fallbackOutput": "extra"
+          }
+        },
+        "name": "Message Type",
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.2,
+        "position": [
+          220,
+          0
+        ],
+        "id": "akibot-core-msgtype"
+      },
+      {
+        "parameters": {
+          "mode": "manual",
+          "duplicateItem": false,
+          "assignments": {
+            "assignments": [
+              {
+                "id": "rt",
+                "name": "response_text",
+                "value": "Por ahora solo puedo ayudarte con mensajes de texto.",
+                "type": "string"
+              },
+              {
+                "id": "int",
+                "name": "intent",
+                "value": "unsupported",
+                "type": "string"
+              },
+              {
+                "id": "kb",
+                "name": "kb_hit",
+                "value": false,
+                "type": "boolean"
+              },
+              {
+                "id": "mem",
+                "name": "updated_short_memory",
+                "value": "Envi\u00f3 contenido no soportado (no texto)",
+                "type": "string"
+              },
+              {
+                "id": "nh",
+                "name": "needs_human",
+                "value": false,
+                "type": "boolean"
+              },
+              {
+                "id": "st",
+                "name": "status",
+                "value": "ok",
+                "type": "string"
+              }
+            ]
+          },
+          "includeOtherFields": false,
+          "options": {}
+        },
+        "name": "Non-Text Response",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          440,
+          200
+        ],
+        "id": "akibot-core-nontext"
+      },
+      {
+        "parameters": {
+          "operation": "call_workflow",
+          "source": "database",
+          "workflowId": {
+            "__rl": true,
+            "value": "XPCLmNSQesXST5gU",
+            "mode": "id"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "phone": "={{ $('When Executed by Another Workflow').first().json.phone }}",
+              "display_name": "={{ $('When Executed by Another Workflow').first().json.display_name }}",
+              "received_at": "={{ $('When Executed by Another Workflow').first().json.received_at }}"
+            }
+          },
+          "mode": "once",
+          "options": {
+            "waitForSubWorkflow": true
+          }
+        },
+        "name": "Load Session",
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          440,
+          -100
+        ],
+        "id": "akibot-core-load"
+      },
+      {
+        "parameters": {
+          "operation": "call_workflow",
+          "source": "database",
+          "workflowId": {
+            "__rl": true,
+            "value": "eoGvxHk5GmGIn8yY",
+            "mode": "id"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "message_text": "={{ $('When Executed by Another Workflow').first().json.message_text }}",
+              "short_memory": "={{ $json.short_memory }}",
+              "is_new_session": "={{ $json.is_new_session }}",
+              "is_stale_session": "={{ $json.is_stale_session }}"
+            }
+          },
+          "mode": "once",
+          "options": {
+            "waitForSubWorkflow": true
+          }
+        },
+        "name": "Classify Intent",
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          660,
+          -100
+        ],
+        "id": "akibot-core-classify"
+      },
+      {
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "// Merge session + intent + original input into one object for downstream routing\nconst original = $('When Executed by Another Workflow').first().json;\nconst session = $('Load Session').first().json;\nconst intent = $input.first().json;\n\nreturn [{\n  json: {\n    // Original input\n    phone: original.phone,\n    display_name: original.display_name || session.display_name,\n    message_text: original.message_text,\n    message_type: original.message_type,\n    received_at: original.received_at,\n    // Session data\n    session_status: session.session_status,\n    short_memory: session.short_memory,\n    last_intent: session.last_intent,\n    last_user_message: session.last_user_message,\n    last_bot_message: session.last_bot_message,\n    last_seen_at: session.last_seen_at,\n    message_count: session.message_count,\n    needs_human: session.needs_human,\n    is_new_session: session.is_new_session,\n    is_stale_session: session.is_stale_session,\n    // Intent data\n    intent: intent.intent,\n    confidence: intent.confidence,\n    intent_reason: intent.reason\n  }\n}];",
+          "notice": ""
+        },
+        "name": "Merge Context",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          880,
+          -100
+        ],
+        "id": "akibot-core-merge",
+        "notesInFlow": true,
+        "notes": "Combines original input, session state, and classified intent into single context object"
+      },
+      {
+        "parameters": {
+          "mode": "rules",
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "conditions": [
+                    {
+                      "value1": "={{ $json.intent }}",
+                      "value2": "human_handoff",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      }
+                    }
+                  ]
+                },
+                "renameOutput": false
+              },
+              {
+                "conditions": {
+                  "conditions": [
+                    {
+                      "value1": "={{ $json.intent }}",
+                      "value2": "greeting",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      }
+                    }
+                  ]
+                },
+                "renameOutput": false
+              },
+              {
+                "conditions": {
+                  "conditions": [
+                    {
+                      "value1": "={{ $json.intent }}",
+                      "value2": "kb_question",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      }
+                    }
+                  ]
+                },
+                "renameOutput": false
+              },
+              {
+                "conditions": {
+                  "conditions": [
+                    {
+                      "value1": "={{ $json.intent }}",
+                      "value2": "follow_up",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      }
+                    }
+                  ]
+                },
+                "renameOutput": false
+              },
+              {
+                "conditions": {
+                  "conditions": [
+                    {
+                      "value1": "={{ $json.intent }}",
+                      "value2": "unsupported",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      }
+                    }
+                  ]
+                },
+                "renameOutput": false
+              }
+            ]
+          },
+          "looseTypeValidation": false,
+          "options": {
+            "fallbackOutput": "extra"
+          }
+        },
+        "name": "Route by Intent",
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.2,
+        "position": [
+          1100,
+          -100
+        ],
+        "id": "akibot-core-route"
+      },
+      {
+        "parameters": {
+          "operation": "call_workflow",
+          "source": "database",
+          "workflowId": {
+            "__rl": true,
+            "value": "84CvFle3GYikUaYl",
+            "mode": "id"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "phone": "={{ $json.phone }}",
+              "display_name": "={{ $json.display_name }}",
+              "last_user_message": "={{ $json.message_text }}"
+            }
+          },
+          "mode": "once",
+          "options": {
+            "waitForSubWorkflow": true
+          }
+        },
+        "name": "Human Handoff",
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          1320,
+          -400
+        ],
+        "id": "akibot-core-handoff"
+      },
+      {
+        "parameters": {
+          "operation": "call_workflow",
+          "source": "database",
+          "workflowId": {
+            "__rl": true,
+            "value": "hSX52DPbX770OHF3",
+            "mode": "id"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "message_text": "={{ $('Merge Context').first().json.message_text }}",
+              "short_memory": "={{ $('Merge Context').first().json.short_memory }}",
+              "is_new_session": "={{ $('Merge Context').first().json.is_new_session }}",
+              "is_stale_session": "={{ $('Merge Context').first().json.is_stale_session }}",
+              "intent": "={{ $('Merge Context').first().json.intent }}",
+              "kb_context": "",
+              "display_name": "={{ $('Merge Context').first().json.display_name }}"
+            }
+          },
+          "mode": "once",
+          "options": {
+            "waitForSubWorkflow": true
+          }
+        },
+        "name": "Generate Greeting Reply",
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          1320,
+          -240
+        ],
+        "id": "akibot-core-greeting"
+      },
+      {
+        "parameters": {
+          "operation": "call_workflow",
+          "source": "database",
+          "workflowId": {
+            "__rl": true,
+            "value": "M7lcvxrXEX7fAzcc",
+            "mode": "id"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "message_text": "={{ $json.message_text }}",
+              "short_memory": "={{ $json.short_memory }}"
+            }
+          },
+          "mode": "once",
+          "options": {
+            "waitForSubWorkflow": true
+          }
+        },
+        "name": "Query KB",
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          1320,
+          -80
+        ],
+        "id": "akibot-core-querykb"
+      },
+      {
+        "parameters": {
+          "operation": "call_workflow",
+          "source": "database",
+          "workflowId": {
+            "__rl": true,
+            "value": "hSX52DPbX770OHF3",
+            "mode": "id"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "message_text": "={{ $('Merge Context').first().json.message_text }}",
+              "short_memory": "={{ $('Merge Context').first().json.short_memory }}",
+              "is_new_session": "={{ $('Merge Context').first().json.is_new_session }}",
+              "is_stale_session": "={{ $('Merge Context').first().json.is_stale_session }}",
+              "intent": "={{ $('Merge Context').first().json.intent }}",
+              "kb_context": "={{ $json.kb_context }}",
+              "display_name": "={{ $('Merge Context').first().json.display_name }}"
+            }
+          },
+          "mode": "once",
+          "options": {
+            "waitForSubWorkflow": true
+          }
+        },
+        "name": "Generate KB Reply",
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          1540,
+          -80
+        ],
+        "id": "akibot-core-kbreply"
+      },
+      {
+        "parameters": {
+          "operation": "call_workflow",
+          "source": "database",
+          "workflowId": {
+            "__rl": true,
+            "value": "M7lcvxrXEX7fAzcc",
+            "mode": "id"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "message_text": "={{ $json.message_text }}",
+              "short_memory": "={{ $json.short_memory }}"
+            }
+          },
+          "mode": "once",
+          "options": {
+            "waitForSubWorkflow": true
+          }
+        },
+        "name": "Query KB Follow-up",
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          1320,
+          80
+        ],
+        "id": "akibot-core-querykb-fu"
+      },
+      {
+        "parameters": {
+          "operation": "call_workflow",
+          "source": "database",
+          "workflowId": {
+            "__rl": true,
+            "value": "hSX52DPbX770OHF3",
+            "mode": "id"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "message_text": "={{ $('Merge Context').first().json.message_text }}",
+              "short_memory": "={{ $('Merge Context').first().json.short_memory }}",
+              "is_new_session": "={{ $('Merge Context').first().json.is_new_session }}",
+              "is_stale_session": "={{ $('Merge Context').first().json.is_stale_session }}",
+              "intent": "={{ $('Merge Context').first().json.intent }}",
+              "kb_context": "={{ $json.kb_context }}",
+              "display_name": "={{ $('Merge Context').first().json.display_name }}"
+            }
+          },
+          "mode": "once",
+          "options": {
+            "waitForSubWorkflow": true
+          }
+        },
+        "name": "Generate Follow-up Reply",
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          1540,
+          80
+        ],
+        "id": "akibot-core-fureply"
+      },
+      {
+        "parameters": {
+          "mode": "manual",
+          "duplicateItem": false,
+          "assignments": {
+            "assignments": [
+              {
+                "id": "rt2",
+                "name": "response_text",
+                "value": "Por ahora solo puedo ayudarte con mensajes de texto.",
+                "type": "string"
+              },
+              {
+                "id": "kb2",
+                "name": "kb_hit",
+                "value": false,
+                "type": "boolean"
+              },
+              {
+                "id": "mem2",
+                "name": "updated_short_memory",
+                "value": "Mensaje no soportado (intent: unsupported)",
+                "type": "string"
+              }
+            ]
+          },
+          "includeOtherFields": false,
+          "options": {}
+        },
+        "name": "Unsupported Reply",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1320,
+          240
+        ],
+        "id": "akibot-core-unsupported"
+      },
+      {
+        "parameters": {
+          "mode": "manual",
+          "duplicateItem": false,
+          "assignments": {
+            "assignments": [
+              {
+                "id": "rt3",
+                "name": "response_text",
+                "value": "No estoy seguro de haber entendido bien. \u00bfMe lo puedes escribir con un poco m\u00e1s de detalle?",
+                "type": "string"
+              },
+              {
+                "id": "kb3",
+                "name": "kb_hit",
+                "value": false,
+                "type": "boolean"
+              },
+              {
+                "id": "mem3",
+                "name": "updated_short_memory",
+                "value": "Mensaje no claro (intent: unknown)",
+                "type": "string"
+              }
+            ]
+          },
+          "includeOtherFields": false,
+          "options": {}
+        },
+        "name": "Unknown Reply",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1320,
+          400
+        ],
+        "id": "akibot-core-unknown"
+      },
+      {
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "const original = $('Merge Context').item ? $('Merge Context').first().json : $('When Executed by Another Workflow').first().json;\nconst response = $input.first().json;\n\nconst intent = original.intent || response.intent || 'unknown';\nconst needs_human = intent === 'human_handoff' ? true : (original.needs_human || false);\n\n// Build save session payload\nconst savePayload = {\n  phone: original.phone,\n  display_name: original.display_name,\n  session_status: 'active',\n  short_memory: response.updated_short_memory || '',\n  last_intent: intent,\n  last_user_message: original.message_text,\n  last_bot_message: response.response_text,\n  needs_human: needs_human\n};\n\n// Build log payload\nconst logPayload = {\n  timestamp: new Date().toISOString(),\n  phone: original.phone,\n  display_name: original.display_name,\n  incoming_message: original.message_text,\n  intent: intent,\n  response_sent: response.response_text,\n  kb_hit: response.kb_hit || false,\n  failed: false,\n  failure_reason: ''\n};\n\n// Final output\nreturn [{\n  json: {\n    response_text: response.response_text,\n    intent: intent,\n    kb_hit: response.kb_hit || false,\n    updated_short_memory: response.updated_short_memory || '',\n    needs_human: needs_human,\n    status: 'ok',\n    phone: original.phone,\n    display_name: original.display_name,\n    message_text: original.message_text,\n    message_type: original.message_type || 'text',\n    received_at: original.received_at,\n    _save_payload: savePayload,\n    _log_payload: logPayload\n  }\n}];",
+          "notice": ""
+        },
+        "name": "Build Final Output",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1980,
+          -100
+        ],
+        "id": "akibot-core-final",
+        "notesInFlow": true,
+        "notes": "Assembles final response, save-session payload, and log payload"
+      },
+      {
+        "parameters": {
+          "operation": "call_workflow",
+          "source": "database",
+          "workflowId": {
+            "__rl": true,
+            "value": "={{ /*SAVE_SESSION_ID*/ }}",
+            "mode": "id"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "phone": "={{ $json._save_payload.phone }}",
+              "display_name": "={{ $json._save_payload.display_name }}",
+              "session_status": "={{ $json._save_payload.session_status }}",
+              "short_memory": "={{ $json._save_payload.short_memory }}",
+              "last_intent": "={{ $json._save_payload.last_intent }}",
+              "last_user_message": "={{ $json._save_payload.last_user_message }}",
+              "last_bot_message": "={{ $json._save_payload.last_bot_message }}",
+              "needs_human": "={{ $json._save_payload.needs_human }}"
+            }
+          },
+          "mode": "once",
+          "options": {
+            "waitForSubWorkflow": true
+          }
+        },
+        "name": "Save Session",
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          2200,
+          -200
+        ],
+        "id": "akibot-core-save"
+      },
+      {
+        "parameters": {
+          "operation": "call_workflow",
+          "source": "database",
+          "workflowId": {
+            "__rl": true,
+            "value": "fmQHFCWceVZVbWa9",
+            "mode": "id"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "timestamp": "={{ $json._log_payload.timestamp }}",
+              "phone": "={{ $json._log_payload.phone }}",
+              "display_name": "={{ $json._log_payload.display_name }}",
+              "incoming_message": "={{ $json._log_payload.incoming_message }}",
+              "intent": "={{ $json._log_payload.intent }}",
+              "response_sent": "={{ $json._log_payload.response_sent }}",
+              "kb_hit": "={{ $json._log_payload.kb_hit }}",
+              "failed": "={{ $json._log_payload.failed }}",
+              "failure_reason": "={{ $json._log_payload.failure_reason }}"
+            }
+          },
+          "mode": "once",
+          "options": {
+            "waitForSubWorkflow": true
+          }
+        },
+        "name": "Log Event",
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          2200,
+          0
+        ],
+        "id": "akibot-core-log"
+      },
+      {
+        "parameters": {
+          "mode": "manual",
+          "duplicateItem": false,
+          "assignments": {
+            "assignments": [
+              {
+                "id": "r1",
+                "name": "response_text",
+                "value": "={{ $('Build Final Output').first().json.response_text }}",
+                "type": "string"
+              },
+              {
+                "id": "r2",
+                "name": "intent",
+                "value": "={{ $('Build Final Output').first().json.intent }}",
+                "type": "string"
+              },
+              {
+                "id": "r3",
+                "name": "kb_hit",
+                "value": "={{ $('Build Final Output').first().json.kb_hit }}",
+                "type": "boolean"
+              },
+              {
+                "id": "r4",
+                "name": "updated_short_memory",
+                "value": "={{ $('Build Final Output').first().json.updated_short_memory }}",
+                "type": "string"
+              },
+              {
+                "id": "r5",
+                "name": "needs_human",
+                "value": "={{ $('Build Final Output').first().json.needs_human }}",
+                "type": "boolean"
+              },
+              {
+                "id": "r6",
+                "name": "status",
+                "value": "ok",
+                "type": "string"
+              }
+            ]
+          },
+          "includeOtherFields": false,
+          "options": {}
+        },
+        "name": "Return Response",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          2420,
+          -100
+        ],
+        "id": "akibot-core-return"
+      },
+      {
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "// Non-text path: build log payload and return\nconst original = $('When Executed by Another Workflow').first().json;\nconst logPayload = {\n  timestamp: new Date().toISOString(),\n  phone: original.phone,\n  display_name: original.display_name,\n  incoming_message: '[non-text: ' + original.message_type + ']',\n  intent: 'unsupported',\n  response_sent: 'Por ahora solo puedo ayudarte con mensajes de texto.',\n  kb_hit: false,\n  failed: false,\n  failure_reason: ''\n};\n\nreturn [{\n  json: {\n    response_text: 'Por ahora solo puedo ayudarte con mensajes de texto.',\n    intent: 'unsupported',\n    kb_hit: false,\n    updated_short_memory: 'Envi\u00f3 contenido no soportado (no texto)',\n    needs_human: false,\n    status: 'ok',\n    _log_payload: logPayload\n  }\n}];",
+          "notice": ""
+        },
+        "name": "Build Non-Text Output",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          660,
+          200
+        ],
+        "id": "akibot-core-nontext-output"
+      },
+      {
+        "parameters": {
+          "operation": "call_workflow",
+          "source": "database",
+          "workflowId": {
+            "__rl": true,
+            "value": "fmQHFCWceVZVbWa9",
+            "mode": "id"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "timestamp": "={{ $json._log_payload.timestamp }}",
+              "phone": "={{ $json._log_payload.phone }}",
+              "display_name": "={{ $json._log_payload.display_name }}",
+              "incoming_message": "={{ $json._log_payload.incoming_message }}",
+              "intent": "={{ $json._log_payload.intent }}",
+              "response_sent": "={{ $json._log_payload.response_sent }}",
+              "kb_hit": "={{ $json._log_payload.kb_hit }}",
+              "failed": "={{ $json._log_payload.failed }}",
+              "failure_reason": "={{ $json._log_payload.failure_reason }}"
+            }
+          },
+          "mode": "once",
+          "options": {
+            "waitForSubWorkflow": false
+          }
+        },
+        "name": "Log Non-Text Event",
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          880,
+          200
+        ],
+        "id": "akibot-core-nontext-log"
+      },
+      {
+        "parameters": {
+          "mode": "manual",
+          "duplicateItem": false,
+          "assignments": {
+            "assignments": [
+              {
+                "id": "nr1",
+                "name": "response_text",
+                "value": "Por ahora solo puedo ayudarte con mensajes de texto.",
+                "type": "string"
+              },
+              {
+                "id": "nr2",
+                "name": "intent",
+                "value": "unsupported",
+                "type": "string"
+              },
+              {
+                "id": "nr3",
+                "name": "kb_hit",
+                "value": false,
+                "type": "boolean"
+              },
+              {
+                "id": "nr4",
+                "name": "updated_short_memory",
+                "value": "Envi\u00f3 contenido no soportado (no texto)",
+                "type": "string"
+              },
+              {
+                "id": "nr5",
+                "name": "needs_human",
+                "value": false,
+                "type": "boolean"
+              },
+              {
+                "id": "nr6",
+                "name": "status",
+                "value": "ok",
+                "type": "string"
+              }
+            ]
+          },
+          "includeOtherFields": false,
+          "options": {}
+        },
+        "name": "Return Non-Text Response",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1100,
+          200
+        ],
+        "id": "akibot-core-nontext-return"
+      }
+    ],
+    "connections": {
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "Message Type",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Message Type": {
+        "main": [
+          [
+            {
+              "node": "Load Session",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Build Non-Text Output",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Load Session": {
+        "main": [
+          [
+            {
+              "node": "Classify Intent",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Classify Intent": {
+        "main": [
+          [
+            {
+              "node": "Merge Context",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Merge Context": {
+        "main": [
+          [
+            {
+              "node": "Route by Intent",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Route by Intent": {
+        "main": [
+          [
+            {
+              "node": "Human Handoff",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Generate Greeting Reply",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Query KB",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Query KB Follow-up",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Unsupported Reply",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Unknown Reply",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Human Handoff": {
+        "main": [
+          [
+            {
+              "node": "Build Final Output",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Generate Greeting Reply": {
+        "main": [
+          [
+            {
+              "node": "Build Final Output",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Query KB": {
+        "main": [
+          [
+            {
+              "node": "Generate KB Reply",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Generate KB Reply": {
+        "main": [
+          [
+            {
+              "node": "Build Final Output",
+              "type": "main",
+              "index": 2
+            }
+          ]
+        ]
+      },
+      "Query KB Follow-up": {
+        "main": [
+          [
+            {
+              "node": "Generate Follow-up Reply",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Generate Follow-up Reply": {
+        "main": [
+          [
+            {
+              "node": "Build Final Output",
+              "type": "main",
+              "index": 3
+            }
+          ]
+        ]
+      },
+      "Unsupported Reply": {
+        "main": [
+          [
+            {
+              "node": "Build Final Output",
+              "type": "main",
+              "index": 4
+            }
+          ]
+        ]
+      },
+      "Unknown Reply": {
+        "main": [
+          [
+            {
+              "node": "Build Final Output",
+              "type": "main",
+              "index": 5
+            }
+          ]
+        ]
+      },
+      "Build Final Output": {
+        "main": [
+          [
+            {
+              "node": "Save Session",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Log Event",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Return Response",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Build Non-Text Output": {
+        "main": [
+          [
+            {
+              "node": "Log Non-Text Event",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Log Non-Text Event": {
+        "main": [
+          [
+            {
+              "node": "Return Non-Text Response",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Save Session": {
+        "main": []
+      },
+      "Log Event": {
+        "main": []
+      }
+    },
+    "settings": {
+      "executionOrder": "v1",
+      "callerPolicy": "workflowsFromSameOwner",
+      "availableInMCP": false
+    },
+    "staticData": null,
+    "pinData": {}
+  },
+  "customData": {}
+}

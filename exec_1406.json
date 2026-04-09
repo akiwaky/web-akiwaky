@@ -1,0 +1,391 @@
+{
+  "id": "1406",
+  "finished": true,
+  "mode": "integrated",
+  "retryOf": null,
+  "retrySuccessId": null,
+  "status": "success",
+  "createdAt": "2026-03-11T03:02:01.564Z",
+  "startedAt": "2026-03-11T03:02:01.570Z",
+  "stoppedAt": "2026-03-11T03:02:02.508Z",
+  "deletedAt": null,
+  "workflowId": "84CvFle3GYikUaYl",
+  "waitTill": null,
+  "storedAt": "db",
+  "data": {
+    "version": 1,
+    "startData": {},
+    "resultData": {
+      "runData": {
+        "When Executed by Another Workflow": [
+          {
+            "startTime": 1773198121572,
+            "executionIndex": 0,
+            "source": [],
+            "hints": [],
+            "executionTime": 0,
+            "metadata": {
+              "parentExecution": {
+                "executionId": "1403",
+                "workflowId": "a5bg3l7kj0BDqVBV",
+                "shouldResume": true,
+                "executionContext": {
+                  "version": 1,
+                  "establishedAt": 1773198119998,
+                  "source": "integrated",
+                  "triggerNode": {
+                    "name": "Webhook Trigger",
+                    "type": "n8n-nodes-base.webhook"
+                  },
+                  "parentExecutionId": "1402"
+                }
+              }
+            },
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "phone": "+5215550000102",
+                      "display_name": "",
+                      "session_status": "active",
+                      "short_memory": "",
+                      "last_intent": "",
+                      "last_bot_message": "",
+                      "last_seen_at": "",
+                      "message_count": 0,
+                      "needs_human": false,
+                      "is_new_session": true,
+                      "is_stale_session": false,
+                      "intent": "unknown",
+                      "confidence": 0,
+                      "intent_reason": ""
+                    },
+                    "index": 0,
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Append Handoff Row": [
+          {
+            "startTime": 1773198121572,
+            "executionIndex": 1,
+            "source": [
+              {
+                "previousNode": "When Executed by Another Workflow",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 935,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "created_at": "2026-03-10T21:02:01.923-06:00",
+                      "phone": "+5215550000102",
+                      "display_name": "",
+                      "reason": "#humano",
+                      "status": "open"
+                    },
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Build Handoff Response": [
+          {
+            "startTime": 1773198122508,
+            "executionIndex": 2,
+            "source": [
+              {
+                "previousNode": "Append Handoff Row",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 0,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "response_text": "Entendido. Lo paso con una persona.",
+                      "kb_hit": false,
+                      "updated_short_memory": "Escalado a humano por #humano. \u00daltimo mensaje: undefined",
+                      "needs_human": true,
+                      "intent": "human_handoff"
+                    },
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "lastNodeExecuted": "Build Handoff Response"
+    },
+    "executionData": {
+      "contextData": {},
+      "nodeExecutionStack": [],
+      "metadata": {},
+      "waitingExecution": {},
+      "waitingExecutionSource": {},
+      "runtimeData": {
+        "version": 1,
+        "establishedAt": 1773198121572,
+        "source": "integrated",
+        "triggerNode": {
+          "name": "Webhook Trigger",
+          "type": "n8n-nodes-base.webhook"
+        },
+        "parentExecutionId": "1403"
+      }
+    },
+    "parentExecution": {
+      "executionId": "1403",
+      "workflowId": "a5bg3l7kj0BDqVBV",
+      "shouldResume": true,
+      "executionContext": {
+        "version": 1,
+        "establishedAt": 1773198119998,
+        "source": "integrated",
+        "triggerNode": {
+          "name": "Webhook Trigger",
+          "type": "n8n-nodes-base.webhook"
+        },
+        "parentExecutionId": "1402"
+      }
+    }
+  },
+  "workflowData": {
+    "id": "84CvFle3GYikUaYl",
+    "name": "AkiBot - Human Handoff",
+    "active": true,
+    "activeVersionId": "83a23e6c-79b6-4076-9903-6bdd71cf8c79",
+    "isArchived": false,
+    "createdAt": "2026-03-10T07:04:21.157Z",
+    "updatedAt": "2026-03-11T03:01:07.291Z",
+    "nodes": [
+      {
+        "parameters": {
+          "events": "worklfow_call",
+          "inputSource": "passthrough"
+        },
+        "name": "When Executed by Another Workflow",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          0,
+          0
+        ],
+        "id": "akibot-handoff-trigger"
+      },
+      {
+        "parameters": {
+          "authentication": "oAuth2",
+          "resource": "sheet",
+          "operation": "append",
+          "documentId": {
+            "__rl": true,
+            "value": "1cbnDSwdxZlJe0s8J4FQSU_ccPZIIts-GhjxXrOEdYzg",
+            "mode": "list"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "handoff",
+            "mode": "name"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "created_at": "={{ $now.toISO() }}",
+              "phone": "={{ $json.phone }}",
+              "display_name": "={{ $json.display_name }}",
+              "last_user_message": "={{ $json.last_user_message }}",
+              "reason": "#humano",
+              "status": "open"
+            },
+            "schema": [
+              {
+                "id": "created_at",
+                "displayName": "created_at",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "phone",
+                "displayName": "phone",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "display_name",
+                "displayName": "display_name",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "last_user_message",
+                "displayName": "last_user_message",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "reason",
+                "displayName": "reason",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ]
+          },
+          "options": {}
+        },
+        "name": "Append Handoff Row",
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.5,
+        "position": [
+          220,
+          0
+        ],
+        "id": "akibot-handoff-append",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "d0W0zJQCpRSpQaZN",
+            "name": "Google Sheets account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "mode": "manual",
+          "duplicateItem": false,
+          "assignments": {
+            "assignments": [
+              {
+                "id": "resp",
+                "name": "response_text",
+                "value": "Entendido. Lo paso con una persona.",
+                "type": "string"
+              },
+              {
+                "id": "kb",
+                "name": "kb_hit",
+                "value": false,
+                "type": "boolean"
+              },
+              {
+                "id": "mem",
+                "name": "updated_short_memory",
+                "value": "={{ 'Escalado a humano por #humano. \u00daltimo mensaje: ' + $json.last_user_message }}",
+                "type": "string"
+              },
+              {
+                "id": "nh",
+                "name": "needs_human",
+                "value": true,
+                "type": "boolean"
+              },
+              {
+                "id": "int",
+                "name": "intent",
+                "value": "human_handoff",
+                "type": "string"
+              }
+            ]
+          },
+          "includeOtherFields": false,
+          "options": {}
+        },
+        "name": "Build Handoff Response",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          440,
+          0
+        ],
+        "id": "akibot-handoff-response"
+      }
+    ],
+    "connections": {
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "Append Handoff Row",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Append Handoff Row": {
+        "main": [
+          [
+            {
+              "node": "Build Handoff Response",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1",
+      "callerPolicy": "workflowsFromSameOwner",
+      "availableInMCP": false
+    },
+    "staticData": null,
+    "pinData": null
+  },
+  "customData": {}
+}

@@ -1,0 +1,565 @@
+{
+  "id": "1180",
+  "finished": true,
+  "mode": "webhook",
+  "retryOf": null,
+  "retrySuccessId": null,
+  "status": "success",
+  "createdAt": "2026-03-11T00:53:18.647Z",
+  "startedAt": "2026-03-11T00:53:18.658Z",
+  "stoppedAt": "2026-03-11T00:53:18.961Z",
+  "deletedAt": null,
+  "workflowId": "nPOH8UqT0pCiEQan",
+  "waitTill": null,
+  "storedAt": "db",
+  "data": {
+    "version": 1,
+    "startData": {},
+    "resultData": {
+      "runData": {
+        "Webhook Trigger": [
+          {
+            "startTime": 1773190398661,
+            "executionIndex": 0,
+            "source": [],
+            "hints": [],
+            "executionTime": 0,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "headers": {
+                        "host": "webhooks.akiwaky.cloud",
+                        "user-agent": "Mozilla/5.0",
+                        "accept-encoding": "gzip, br",
+                        "cdn-loop": "cloudflare; loops=1",
+                        "cf-connecting-ip": "187.190.203.186",
+                        "cf-ipcountry": "MX",
+                        "cf-ray": "9da694d75d498857-ATL",
+                        "cf-visitor": "{\"scheme\":\"https\"}",
+                        "x-forwarded-for": "104.23.245.204",
+                        "x-forwarded-host": "webhooks.akiwaky.cloud",
+                        "x-forwarded-port": "443",
+                        "x-forwarded-proto": "https",
+                        "x-forwarded-server": "66b04ae8fceb",
+                        "x-real-ip": "104.23.245.204"
+                      },
+                      "params": {},
+                      "query": {
+                        "fixture": "11"
+                      },
+                      "body": {},
+                      "webhookUrl": "https://webhooks.akiwaky.cloud/webhook/akibot-test",
+                      "executionMode": "production"
+                    },
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Test Config": [
+          {
+            "startTime": 1773190398661,
+            "executionIndex": 1,
+            "source": [
+              {
+                "previousNode": "Webhook Trigger",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 5,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "fixture_name": "generic_returning_debug"
+                    },
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Set Fixture Data": [
+          {
+            "startTime": 1773190398666,
+            "executionIndex": 2,
+            "source": [
+              {
+                "previousNode": "Test Config",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 12,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "fixture_name": "generic_returning_debug",
+                      "phone": "+5215550000206",
+                      "display_name": "Test",
+                      "message_text": "Hola",
+                      "message_type": "text",
+                      "received_at": "2026-03-11T00:53:18.677Z",
+                      "expected_intent": "greeting",
+                      "expected_response_exact": "Hola de nuevo. \u00bfEn qu\u00e9 te ayudo ahora?",
+                      "expected_response_contains": "",
+                      "expected_kb_hit": false,
+                      "expected_needs_human": false,
+                      "has_seed": true,
+                      "session_status": "active",
+                      "short_memory": "",
+                      "last_seen_at": "2026-03-11T00:51:18.677Z",
+                      "message_count": 12,
+                      "needs_human": false
+                    },
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Has Seed Data?": [
+          {
+            "startTime": 1773190398678,
+            "executionIndex": 3,
+            "source": [
+              {
+                "previousNode": "Set Fixture Data",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 1,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "fixture_name": "generic_returning_debug",
+                      "phone": "+5215550000206",
+                      "display_name": "Test",
+                      "message_text": "Hola",
+                      "message_type": "text",
+                      "received_at": "2026-03-11T00:53:18.677Z",
+                      "expected_intent": "greeting",
+                      "expected_response_exact": "Hola de nuevo. \u00bfEn qu\u00e9 te ayudo ahora?",
+                      "expected_response_contains": "",
+                      "expected_kb_hit": false,
+                      "expected_needs_human": false,
+                      "has_seed": true,
+                      "session_status": "active",
+                      "short_memory": "",
+                      "last_seen_at": "2026-03-11T00:51:18.677Z",
+                      "message_count": 12,
+                      "needs_human": false
+                    },
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ],
+                []
+              ]
+            }
+          }
+        ],
+        "Seed DB for Fixture": [
+          {
+            "startTime": 1773190398679,
+            "executionIndex": 4,
+            "source": [
+              {
+                "previousNode": "Has Seed Data?",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 282,
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                []
+              ]
+            }
+          }
+        ]
+      },
+      "lastNodeExecuted": "Seed DB for Fixture"
+    },
+    "executionData": {
+      "contextData": {},
+      "nodeExecutionStack": [],
+      "metadata": {},
+      "waitingExecution": {},
+      "waitingExecutionSource": {},
+      "runtimeData": {
+        "version": 1,
+        "establishedAt": 1773190398660,
+        "source": "webhook",
+        "triggerNode": {
+          "name": "Webhook Trigger",
+          "type": "n8n-nodes-base.webhook"
+        }
+      }
+    }
+  },
+  "workflowData": {
+    "id": "nPOH8UqT0pCiEQan",
+    "name": "AkiBot - Test Harness",
+    "active": true,
+    "activeVersionId": "96815a7a-f405-473e-ba17-5a019345aa7f",
+    "isArchived": false,
+    "createdAt": "2026-03-10T07:04:32.460Z",
+    "updatedAt": "2026-03-11T00:52:57.645Z",
+    "nodes": [
+      {
+        "name": "Manual Trigger",
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          0,
+          0
+        ],
+        "id": "node-1",
+        "parameters": {
+          "notice": ""
+        }
+      },
+      {
+        "name": "Webhook Trigger",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [
+          0,
+          200
+        ],
+        "id": "node-2",
+        "webhookId": "akibot-test-harness",
+        "parameters": {
+          "multipleMethods": false,
+          "httpMethod": "GET",
+          "path": "akibot-test",
+          "authentication": "none",
+          "responseMode": "responseNode",
+          "webhookNotice": "",
+          "options": {}
+        }
+      },
+      {
+        "name": "Test Config",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          200,
+          0
+        ],
+        "id": "node-3",
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "\nconst fixtureKeys = Object.keys({\"greeting_new_user\":{\"phone\":\"+5215550000101\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola, te ayudar\u00e9 a encontrar info, \u00bfqu\u00e9 buscas?\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"kb_question_found\":{\"phone\":\"+5215550000102\",\"display_name\":\"Test\",\"message_text\":\"\u00bfCu\u00e1l es la clave?\",\"message_type\":\"text\",\"expected_intent\":\"kb_query\",\"expected_response_contains\":\"la espera\",\"expected_kb_hit\":true,\"expected_needs_human\":false},\"kb_question_not_found\":{\"phone\":\"+5215550000103\",\"display_name\":\"Test\",\"message_text\":\"\u00bfCu\u00e1l es el horario de apertura?\",\"message_type\":\"text\",\"expected_intent\":\"kb_query\",\"expected_response_exact\":\"No encontr\u00e9 esa informaci\u00f3n en mi base actual.\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"unknown_unclear\":{\"phone\":\"+5215550000104\",\"display_name\":\"Test\",\"message_text\":\"eso\",\"message_type\":\"text\",\"expected_intent\":\"unknown\",\"expected_response_exact\":\"No estoy seguro de haber entendido bien. \u00bfMe lo puedes escribir con un poco m\u00e1s de detalle?\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"explicit_human_handoff\":{\"phone\":\"+5215550000105\",\"display_name\":\"Test\",\"message_text\":\"#humano\",\"message_type\":\"text\",\"expected_intent\":\"human_handoff\",\"expected_response_exact\":\"Entendido. Lo paso con una persona.\",\"expected_kb_hit\":false,\"expected_needs_human\":true},\"unsupported_non_text\":{\"phone\":\"+5215550000106\",\"display_name\":\"Test\",\"message_text\":\"\",\"message_type\":\"image\",\"expected_intent\":\"unsupported\",\"expected_response_exact\":\"Por ahora solo puedo ayudarte con mensajes de texto.\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"greeting_stale_session\":{\"phone\":\"+5215550000201\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola, te ayudar\u00e9 a encontrar info, \u00bfqu\u00e9 buscas?\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"\",\"message_count\":5,\"last_seen_offset\":-14400000}},\"follow_up_contextual\":{\"phone\":\"+5215550000202\",\"display_name\":\"Test\",\"message_text\":\"\u00bfY cu\u00e1l era?\",\"message_type\":\"text\",\"expected_intent\":\"follow_up\",\"expected_response_contains\":\"la espera\",\"expected_kb_hit\":true,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"El usuario pregunt\u00f3 por la clave y se respondi\u00f3: la espera\",\"message_count\":2,\"last_seen_offset\":-600000}},\"prior_handoff_state\":{\"phone\":\"+5215550000203\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Un agente te atender\u00e1 pronto.\",\"expected_kb_hit\":false,\"expected_needs_human\":true,\"seed\":{\"session_status\":\"handoff\",\"short_memory\":\"\",\"needs_human\":true,\"message_count\":3,\"last_seen_offset\":-300000}},\"returning_active_user\":{\"phone\":\"+5215550000204\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola de nuevo. \u00bfEn qu\u00e9 te ayudo ahora?\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"\",\"message_count\":8,\"last_seen_offset\":-300000}},\"kb_follow_up_debug\":{\"phone\":\"+5215550000205\",\"display_name\":\"Test\",\"message_text\":\"\u00bfY los horarios?\",\"message_type\":\"text\",\"expected_intent\":\"follow_up\",\"expected_response_contains\":\"No encontr\u00e9\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"Usuario pregunt\u00f3 por servicios\",\"message_count\":1,\"last_seen_offset\":-120000}},\"generic_returning_debug\":{\"phone\":\"+5215550000206\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola de nuevo. \u00bfEn qu\u00e9 te ayudo ahora?\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"\",\"message_count\":12,\"last_seen_offset\":-120000}}});\nlet fixture_name = fixtureKeys[0];\n\nif ($('Webhook Trigger').item) {\n    const query = $('Webhook Trigger').first().json.query || {};\n    if (query.fixture) {\n        let idx = parseInt(query.fixture);\n        if (idx >= 0 && idx < fixtureKeys.length) {\n            fixture_name = fixtureKeys[idx];\n        } else if (fixtureKeys.includes(query.fixture)) {\n            fixture_name = query.fixture;\n        }\n    }\n} else if ($('Manual Trigger').item) {\n    // You can change this to test manually from UI\n    fixture_name = 'greeting_new_user';\n}\n\nreturn [{ json: { fixture_name } }];\n",
+          "notice": ""
+        }
+      },
+      {
+        "name": "Respond Webhook",
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1.1,
+        "position": [
+          1800,
+          200
+        ],
+        "id": "node-4",
+        "parameters": {
+          "generalNotice": "",
+          "respondWith": "json",
+          "webhookNotice": "",
+          "responseBody": "={{ JSON.stringify($json) }}",
+          "options": {}
+        }
+      },
+      {
+        "name": "Set Fixture Data",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          400,
+          0
+        ],
+        "id": "node-5",
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "\nconst fixName = $input.first().json.fixture_name;\nconst fixtures = {\"greeting_new_user\":{\"phone\":\"+5215550000101\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola, te ayudar\u00e9 a encontrar info, \u00bfqu\u00e9 buscas?\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"kb_question_found\":{\"phone\":\"+5215550000102\",\"display_name\":\"Test\",\"message_text\":\"\u00bfCu\u00e1l es la clave?\",\"message_type\":\"text\",\"expected_intent\":\"kb_query\",\"expected_response_contains\":\"la espera\",\"expected_kb_hit\":true,\"expected_needs_human\":false},\"kb_question_not_found\":{\"phone\":\"+5215550000103\",\"display_name\":\"Test\",\"message_text\":\"\u00bfCu\u00e1l es el horario de apertura?\",\"message_type\":\"text\",\"expected_intent\":\"kb_query\",\"expected_response_exact\":\"No encontr\u00e9 esa informaci\u00f3n en mi base actual.\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"unknown_unclear\":{\"phone\":\"+5215550000104\",\"display_name\":\"Test\",\"message_text\":\"eso\",\"message_type\":\"text\",\"expected_intent\":\"unknown\",\"expected_response_exact\":\"No estoy seguro de haber entendido bien. \u00bfMe lo puedes escribir con un poco m\u00e1s de detalle?\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"explicit_human_handoff\":{\"phone\":\"+5215550000105\",\"display_name\":\"Test\",\"message_text\":\"#humano\",\"message_type\":\"text\",\"expected_intent\":\"human_handoff\",\"expected_response_exact\":\"Entendido. Lo paso con una persona.\",\"expected_kb_hit\":false,\"expected_needs_human\":true},\"unsupported_non_text\":{\"phone\":\"+5215550000106\",\"display_name\":\"Test\",\"message_text\":\"\",\"message_type\":\"image\",\"expected_intent\":\"unsupported\",\"expected_response_exact\":\"Por ahora solo puedo ayudarte con mensajes de texto.\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"greeting_stale_session\":{\"phone\":\"+5215550000201\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola, te ayudar\u00e9 a encontrar info, \u00bfqu\u00e9 buscas?\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"\",\"message_count\":5,\"last_seen_offset\":-14400000}},\"follow_up_contextual\":{\"phone\":\"+5215550000202\",\"display_name\":\"Test\",\"message_text\":\"\u00bfY cu\u00e1l era?\",\"message_type\":\"text\",\"expected_intent\":\"follow_up\",\"expected_response_contains\":\"la espera\",\"expected_kb_hit\":true,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"El usuario pregunt\u00f3 por la clave y se respondi\u00f3: la espera\",\"message_count\":2,\"last_seen_offset\":-600000}},\"prior_handoff_state\":{\"phone\":\"+5215550000203\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Un agente te atender\u00e1 pronto.\",\"expected_kb_hit\":false,\"expected_needs_human\":true,\"seed\":{\"session_status\":\"handoff\",\"short_memory\":\"\",\"needs_human\":true,\"message_count\":3,\"last_seen_offset\":-300000}},\"returning_active_user\":{\"phone\":\"+5215550000204\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola de nuevo. \u00bfEn qu\u00e9 te ayudo ahora?\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"\",\"message_count\":8,\"last_seen_offset\":-300000}},\"kb_follow_up_debug\":{\"phone\":\"+5215550000205\",\"display_name\":\"Test\",\"message_text\":\"\u00bfY los horarios?\",\"message_type\":\"text\",\"expected_intent\":\"follow_up\",\"expected_response_contains\":\"No encontr\u00e9\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"Usuario pregunt\u00f3 por servicios\",\"message_count\":1,\"last_seen_offset\":-120000}},\"generic_returning_debug\":{\"phone\":\"+5215550000206\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola de nuevo. \u00bfEn qu\u00e9 te ayudo ahora?\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"\",\"message_count\":12,\"last_seen_offset\":-120000}}};\nconst fix = fixtures[fixName];\n\nif (!fix) {\n  throw new Error('Fixture not found: ' + fixName);\n}\n\nconst out = {\n  fixture_name: fixName,\n  phone: fix.phone,\n  display_name: fix.display_name,\n  message_text: fix.message_text,\n  message_type: fix.message_type,\n  received_at: new Date().toISOString(),\n  expected_intent: fix.expected_intent,\n  expected_response_exact: fix.expected_response_exact || '',\n  expected_response_contains: fix.expected_response_contains || '',\n  expected_kb_hit: fix.expected_kb_hit,\n  expected_needs_human: fix.expected_needs_human\n};\n\nif (fix.seed) {\n  out.has_seed = true;\n  out.session_status = fix.seed.session_status;\n  out.short_memory = fix.seed.short_memory;\n  out.last_seen_at = new Date(new Date().getTime() + (fix.seed.last_seen_offset || 0)).toISOString();\n  out.message_count = fix.seed.message_count;\n  out.needs_human = fix.seed.needs_human || false;\n} else {\n  out.has_seed = false;\n}\n\nreturn [{ json: out }];\n",
+          "notice": ""
+        }
+      },
+      {
+        "name": "Has Seed Data?",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2,
+        "position": [
+          600,
+          0
+        ],
+        "id": "node-6",
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": false
+            },
+            "conditions": [
+              {
+                "id": "has-seed",
+                "leftValue": "={{ $json.has_seed }}",
+                "rightValue": true,
+                "operator": {
+                  "type": "boolean",
+                  "operation": "equals"
+                }
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Seed DB for Fixture",
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.5,
+        "position": [
+          800,
+          -200
+        ],
+        "id": "node-7",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "d0W0zJQCpRSpQaZN",
+            "name": "Google Sheets account"
+          }
+        },
+        "parameters": {
+          "authentication": "oAuth2",
+          "resource": "sheet",
+          "operation": "update",
+          "documentId": {
+            "__rl": true,
+            "value": "1cbnDSwdxZlJe0s8J4FQSU_ccPZIIts-GhjxXrOEdYzg",
+            "mode": "list"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "sessions",
+            "mode": "name"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "phone": "={{ $json.phone }}",
+              "session_status": "={{ $json.session_status }}",
+              "short_memory": "={{ $json.short_memory }}",
+              "last_seen_at": "={{ $json.last_seen_at }}",
+              "message_count": "={{ $json.message_count }}",
+              "needs_human": "={{ $json.needs_human }}"
+            },
+            "matchingColumns": [
+              "phone"
+            ],
+            "schema": [
+              {
+                "id": "phone",
+                "displayName": "phone",
+                "required": false,
+                "defaultMatch": true,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ]
+          },
+          "options": {}
+        }
+      },
+      {
+        "name": "Execute Main Core",
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          1400,
+          0
+        ],
+        "id": "node-8",
+        "parameters": {
+          "operation": "call_workflow",
+          "source": "database",
+          "workflowId": {
+            "__rl": true,
+            "value": "a5bg3l7kj0BDqVBV",
+            "mode": "id"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "phone": "={{ $json.phone }}",
+              "display_name": "={{ $json.display_name }}",
+              "message_text": "={{ $json.message_text }}",
+              "message_type": "={{ $json.message_type }}",
+              "received_at": "={{ $json.received_at }}",
+              "raw_input": "{}"
+            }
+          },
+          "mode": "once",
+          "options": {
+            "waitForSubWorkflow": true
+          }
+        }
+      },
+      {
+        "name": "Compare Output",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1600,
+          0
+        ],
+        "id": "node-9",
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "\nconst result = $input.first().json;\nconst phone = result.phone;\nconst fixtures = {\"greeting_new_user\":{\"phone\":\"+5215550000101\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola, te ayudar\u00e9 a encontrar info, \u00bfqu\u00e9 buscas?\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"kb_question_found\":{\"phone\":\"+5215550000102\",\"display_name\":\"Test\",\"message_text\":\"\u00bfCu\u00e1l es la clave?\",\"message_type\":\"text\",\"expected_intent\":\"kb_query\",\"expected_response_contains\":\"la espera\",\"expected_kb_hit\":true,\"expected_needs_human\":false},\"kb_question_not_found\":{\"phone\":\"+5215550000103\",\"display_name\":\"Test\",\"message_text\":\"\u00bfCu\u00e1l es el horario de apertura?\",\"message_type\":\"text\",\"expected_intent\":\"kb_query\",\"expected_response_exact\":\"No encontr\u00e9 esa informaci\u00f3n en mi base actual.\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"unknown_unclear\":{\"phone\":\"+5215550000104\",\"display_name\":\"Test\",\"message_text\":\"eso\",\"message_type\":\"text\",\"expected_intent\":\"unknown\",\"expected_response_exact\":\"No estoy seguro de haber entendido bien. \u00bfMe lo puedes escribir con un poco m\u00e1s de detalle?\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"explicit_human_handoff\":{\"phone\":\"+5215550000105\",\"display_name\":\"Test\",\"message_text\":\"#humano\",\"message_type\":\"text\",\"expected_intent\":\"human_handoff\",\"expected_response_exact\":\"Entendido. Lo paso con una persona.\",\"expected_kb_hit\":false,\"expected_needs_human\":true},\"unsupported_non_text\":{\"phone\":\"+5215550000106\",\"display_name\":\"Test\",\"message_text\":\"\",\"message_type\":\"image\",\"expected_intent\":\"unsupported\",\"expected_response_exact\":\"Por ahora solo puedo ayudarte con mensajes de texto.\",\"expected_kb_hit\":false,\"expected_needs_human\":false},\"greeting_stale_session\":{\"phone\":\"+5215550000201\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola, te ayudar\u00e9 a encontrar info, \u00bfqu\u00e9 buscas?\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"\",\"message_count\":5,\"last_seen_offset\":-14400000}},\"follow_up_contextual\":{\"phone\":\"+5215550000202\",\"display_name\":\"Test\",\"message_text\":\"\u00bfY cu\u00e1l era?\",\"message_type\":\"text\",\"expected_intent\":\"follow_up\",\"expected_response_contains\":\"la espera\",\"expected_kb_hit\":true,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"El usuario pregunt\u00f3 por la clave y se respondi\u00f3: la espera\",\"message_count\":2,\"last_seen_offset\":-600000}},\"prior_handoff_state\":{\"phone\":\"+5215550000203\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Un agente te atender\u00e1 pronto.\",\"expected_kb_hit\":false,\"expected_needs_human\":true,\"seed\":{\"session_status\":\"handoff\",\"short_memory\":\"\",\"needs_human\":true,\"message_count\":3,\"last_seen_offset\":-300000}},\"returning_active_user\":{\"phone\":\"+5215550000204\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola de nuevo. \u00bfEn qu\u00e9 te ayudo ahora?\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"\",\"message_count\":8,\"last_seen_offset\":-300000}},\"kb_follow_up_debug\":{\"phone\":\"+5215550000205\",\"display_name\":\"Test\",\"message_text\":\"\u00bfY los horarios?\",\"message_type\":\"text\",\"expected_intent\":\"follow_up\",\"expected_response_contains\":\"No encontr\u00e9\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"Usuario pregunt\u00f3 por servicios\",\"message_count\":1,\"last_seen_offset\":-120000}},\"generic_returning_debug\":{\"phone\":\"+5215550000206\",\"display_name\":\"Test\",\"message_text\":\"Hola\",\"message_type\":\"text\",\"expected_intent\":\"greeting\",\"expected_response_exact\":\"Hola de nuevo. \u00bfEn qu\u00e9 te ayudo ahora?\",\"expected_kb_hit\":false,\"expected_needs_human\":false,\"seed\":{\"session_status\":\"active\",\"short_memory\":\"\",\"message_count\":12,\"last_seen_offset\":-120000}}};\nlet fix = null;\nlet fixture_name = 'unknown';\n\nfor(const k of Object.keys(fixtures)){\n    if(fixtures[k].phone === phone) {\n        fix = fixtures[k];\n        fixture_name = k;\n        break;\n    }\n}\n\nlet pass_intent = false;\nlet pass_response = false;\nlet pass_kb_hit = false;\nlet pass_needs_human = false;\n\nif(fix) {\n    pass_intent = (result.intent === fix.expected_intent);\n    if (fix.expected_response_exact) {\n        pass_response = (result.response_text === fix.expected_response_exact);\n    } else if (fix.expected_response_contains) {\n        pass_response = (result.response_text.includes(fix.expected_response_contains));\n    } else {\n        pass_response = true;\n    }\n    pass_kb_hit = (result.kb_hit === fix.expected_kb_hit);\n    pass_needs_human = (result.needs_human === fix.expected_needs_human);\n}\n\nreturn [{\n  json: {\n    fixture_name,\n    phone,\n    expected_intent: fix ? fix.expected_intent : '',\n    expected_response_exact: fix ? fix.expected_response_exact : '',\n    expected_response_contains: fix ? fix.expected_response_contains : '',\n    expected_kb_hit: fix ? fix.expected_kb_hit : false,\n    expected_needs_human: fix ? fix.expected_needs_human : false,\n    actual_intent: result.intent,\n    actual_response_text: result.response_text,\n    actual_kb_hit: result.kb_hit,\n    actual_needs_human: result.needs_human,\n    pass_intent,\n    pass_response,\n    pass_kb_hit,\n    pass_needs_human,\n    overall_pass: pass_intent && pass_response && pass_kb_hit && pass_needs_human\n  }\n}];\n",
+          "notice": ""
+        }
+      }
+    ],
+    "connections": {
+      "Manual Trigger": {
+        "main": [
+          [
+            {
+              "node": "Test Config",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Webhook Trigger": {
+        "main": [
+          [
+            {
+              "node": "Test Config",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Test Config": {
+        "main": [
+          [
+            {
+              "node": "Set Fixture Data",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set Fixture Data": {
+        "main": [
+          [
+            {
+              "node": "Has Seed Data?",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Has Seed Data?": {
+        "main": [
+          [
+            {
+              "node": "Seed DB for Fixture",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Execute Main Core",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Seed DB for Fixture": {
+        "main": [
+          [
+            {
+              "node": "Execute Main Core",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Execute Main Core": {
+        "main": [
+          [
+            {
+              "node": "Compare Output",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Compare Output": {
+        "main": [
+          [
+            {
+              "node": "Respond Webhook",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1",
+      "callerPolicy": "workflowsFromSameOwner",
+      "availableInMCP": false
+    },
+    "staticData": {},
+    "pinData": null
+  },
+  "customData": {}
+}

@@ -1,0 +1,386 @@
+{
+  "id": "894",
+  "finished": false,
+  "mode": "integrated",
+  "retryOf": null,
+  "retrySuccessId": null,
+  "status": "error",
+  "createdAt": "2026-03-10T14:41:16.941Z",
+  "startedAt": "2026-03-10T14:41:16.948Z",
+  "stoppedAt": "2026-03-10T14:41:17.429Z",
+  "deletedAt": null,
+  "workflowId": "84CvFle3GYikUaYl",
+  "waitTill": null,
+  "storedAt": "db",
+  "data": {
+    "version": 1,
+    "startData": {},
+    "resultData": {
+      "error": {
+        "level": "error",
+        "tags": {},
+        "extra": {
+          "parameterName": "columns.schema"
+        },
+        "message": "Could not get parameter",
+        "stack": "Error: Could not get parameter\n    at ExecuteContext._getNodeParameter (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/node-execution-context/node-execution-context.ts:451:10)\n    at ExecuteContext.getNodeParameter (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/node-execution-context/execute-context.ts:134:9)\n    at ExecuteContext.execute (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Google/Sheet/v2/actions/sheet/append.operation.ts:245:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at ExecuteContext.router (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Google/Sheet/v2/actions/router.ts:64:14)\n    at ExecuteContext.execute (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Google/Sheet/v2/GoogleSheetsV2.node.ts:30:10)\n    at WorkflowExecute.executeNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1039:8)\n    at WorkflowExecute.runNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1218:11)\n    at /usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1653:27\n    at /usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:2296:11"
+      },
+      "runData": {
+        "When Executed by Another Workflow": [
+          {
+            "startTime": 1773153676951,
+            "executionIndex": 0,
+            "source": [],
+            "hints": [],
+            "executionTime": 1,
+            "metadata": {
+              "parentExecution": {
+                "executionId": "891",
+                "workflowId": "a5bg3l7kj0BDqVBV",
+                "shouldResume": true,
+                "executionContext": {
+                  "version": 1,
+                  "establishedAt": 1773153675347,
+                  "source": "integrated",
+                  "triggerNode": {
+                    "name": "Webhook Trigger",
+                    "type": "n8n-nodes-base.webhook"
+                  },
+                  "parentExecutionId": "890"
+                }
+              }
+            },
+            "executionStatus": "success",
+            "data": {
+              "main": [
+                [
+                  {
+                    "json": {
+                      "phone": "+5215555555508",
+                      "display_name": "Fernanda Unclear",
+                      "message_text": "asdfghjkl 123",
+                      "message_type": "text",
+                      "received_at": "2026-03-10T14:41:15.328Z",
+                      "session_status": "active",
+                      "short_memory": "",
+                      "last_intent": "",
+                      "last_user_message": "asdfghjkl 123",
+                      "last_bot_message": "",
+                      "last_seen_at": "",
+                      "message_count": 0,
+                      "needs_human": false,
+                      "is_new_session": true,
+                      "is_stale_session": false,
+                      "intent": "unknown",
+                      "confidence": 0,
+                      "intent_reason": ""
+                    },
+                    "index": 0,
+                    "pairedItem": {
+                      "item": 0
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        ],
+        "Append Handoff Row": [
+          {
+            "startTime": 1773153676952,
+            "executionIndex": 1,
+            "source": [
+              {
+                "previousNode": "When Executed by Another Workflow",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ],
+            "hints": [],
+            "executionTime": 477,
+            "executionStatus": "error",
+            "error": {
+              "level": "error",
+              "tags": {},
+              "extra": {
+                "parameterName": "columns.schema"
+              },
+              "message": "Could not get parameter",
+              "stack": "Error: Could not get parameter\n    at ExecuteContext._getNodeParameter (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/node-execution-context/node-execution-context.ts:451:10)\n    at ExecuteContext.getNodeParameter (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/node-execution-context/execute-context.ts:134:9)\n    at ExecuteContext.execute (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Google/Sheet/v2/actions/sheet/append.operation.ts:245:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at ExecuteContext.router (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Google/Sheet/v2/actions/router.ts:64:14)\n    at ExecuteContext.execute (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Google/Sheet/v2/GoogleSheetsV2.node.ts:30:10)\n    at WorkflowExecute.executeNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1039:8)\n    at WorkflowExecute.runNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1218:11)\n    at /usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1653:27\n    at /usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:2296:11"
+            }
+          }
+        ]
+      },
+      "lastNodeExecuted": "Append Handoff Row"
+    },
+    "executionData": {
+      "contextData": {},
+      "nodeExecutionStack": [
+        {
+          "node": {
+            "parameters": {
+              "authentication": "oAuth2",
+              "resource": "sheet",
+              "operation": "append",
+              "documentId": {
+                "__rl": true,
+                "value": "1cbnDSwdxZlJe0s8J4FQSU_ccPZIIts-GhjxXrOEdYzg",
+                "mode": "list"
+              },
+              "sheetName": {
+                "__rl": true,
+                "value": "handoff",
+                "mode": "name"
+              },
+              "columns": {
+                "mappingMode": "defineBelow",
+                "value": {
+                  "created_at": "={{ $now.toISO() }}",
+                  "phone": "={{ $json.phone }}",
+                  "display_name": "={{ $json.display_name }}",
+                  "last_user_message": "={{ $json.last_user_message }}",
+                  "reason": "#humano",
+                  "status": "open"
+                }
+              },
+              "options": {}
+            },
+            "name": "Append Handoff Row",
+            "type": "n8n-nodes-base.googleSheets",
+            "typeVersion": 4.5,
+            "position": [
+              220,
+              0
+            ],
+            "id": "akibot-handoff-append",
+            "credentials": {
+              "googleSheetsOAuth2Api": {
+                "id": "d0W0zJQCpRSpQaZN",
+                "name": "Google Sheets account"
+              }
+            }
+          },
+          "data": {
+            "main": [
+              [
+                {
+                  "json": {
+                    "phone": "+5215555555508",
+                    "display_name": "Fernanda Unclear",
+                    "message_text": "asdfghjkl 123",
+                    "message_type": "text",
+                    "received_at": "2026-03-10T14:41:15.328Z",
+                    "session_status": "active",
+                    "short_memory": "",
+                    "last_intent": "",
+                    "last_user_message": "asdfghjkl 123",
+                    "last_bot_message": "",
+                    "last_seen_at": "",
+                    "message_count": 0,
+                    "needs_human": false,
+                    "is_new_session": true,
+                    "is_stale_session": false,
+                    "intent": "unknown",
+                    "confidence": 0,
+                    "intent_reason": ""
+                  },
+                  "index": 0,
+                  "pairedItem": {
+                    "item": 0
+                  }
+                }
+              ]
+            ]
+          },
+          "source": {
+            "main": [
+              {
+                "previousNode": "When Executed by Another Workflow",
+                "previousNodeOutput": 0,
+                "previousNodeRun": 0
+              }
+            ]
+          }
+        }
+      ],
+      "metadata": {},
+      "waitingExecution": {},
+      "waitingExecutionSource": {},
+      "runtimeData": {
+        "version": 1,
+        "establishedAt": 1773153676951,
+        "source": "integrated",
+        "triggerNode": {
+          "name": "Webhook Trigger",
+          "type": "n8n-nodes-base.webhook"
+        },
+        "parentExecutionId": "891"
+      }
+    },
+    "parentExecution": {
+      "executionId": "891",
+      "workflowId": "a5bg3l7kj0BDqVBV",
+      "shouldResume": true,
+      "executionContext": {
+        "version": 1,
+        "establishedAt": 1773153675347,
+        "source": "integrated",
+        "triggerNode": {
+          "name": "Webhook Trigger",
+          "type": "n8n-nodes-base.webhook"
+        },
+        "parentExecutionId": "890"
+      }
+    }
+  },
+  "workflowData": {
+    "id": "84CvFle3GYikUaYl",
+    "name": "AkiBot - Human Handoff",
+    "active": true,
+    "activeVersionId": "e61f9dc9-afd0-4e82-ae7b-13b1d34460cc",
+    "isArchived": false,
+    "createdAt": "2026-03-10T07:04:21.157Z",
+    "updatedAt": "2026-03-10T14:02:05.990Z",
+    "nodes": [
+      {
+        "parameters": {
+          "events": "worklfow_call",
+          "inputSource": "passthrough"
+        },
+        "name": "When Executed by Another Workflow",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          0,
+          0
+        ],
+        "id": "akibot-handoff-trigger"
+      },
+      {
+        "parameters": {
+          "authentication": "oAuth2",
+          "resource": "sheet",
+          "operation": "append",
+          "documentId": {
+            "__rl": true,
+            "value": "1cbnDSwdxZlJe0s8J4FQSU_ccPZIIts-GhjxXrOEdYzg",
+            "mode": "list"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "handoff",
+            "mode": "name"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "created_at": "={{ $now.toISO() }}",
+              "phone": "={{ $json.phone }}",
+              "display_name": "={{ $json.display_name }}",
+              "last_user_message": "={{ $json.last_user_message }}",
+              "reason": "#humano",
+              "status": "open"
+            }
+          },
+          "options": {}
+        },
+        "name": "Append Handoff Row",
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.5,
+        "position": [
+          220,
+          0
+        ],
+        "id": "akibot-handoff-append",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "d0W0zJQCpRSpQaZN",
+            "name": "Google Sheets account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "mode": "manual",
+          "duplicateItem": false,
+          "assignments": {
+            "assignments": [
+              {
+                "id": "resp",
+                "name": "response_text",
+                "value": "Entendido. Lo paso con una persona.",
+                "type": "string"
+              },
+              {
+                "id": "kb",
+                "name": "kb_hit",
+                "value": false,
+                "type": "boolean"
+              },
+              {
+                "id": "mem",
+                "name": "updated_short_memory",
+                "value": "={{ 'Escalado a humano por #humano. \u00daltimo mensaje: ' + $json.last_user_message }}",
+                "type": "string"
+              },
+              {
+                "id": "nh",
+                "name": "needs_human",
+                "value": true,
+                "type": "boolean"
+              },
+              {
+                "id": "int",
+                "name": "intent",
+                "value": "human_handoff",
+                "type": "string"
+              }
+            ]
+          },
+          "includeOtherFields": false,
+          "options": {}
+        },
+        "name": "Build Handoff Response",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          440,
+          0
+        ],
+        "id": "akibot-handoff-response"
+      }
+    ],
+    "connections": {
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "Append Handoff Row",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Append Handoff Row": {
+        "main": [
+          [
+            {
+              "node": "Build Handoff Response",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1",
+      "callerPolicy": "workflowsFromSameOwner",
+      "availableInMCP": false
+    },
+    "staticData": null,
+    "pinData": null
+  },
+  "customData": {}
+}
