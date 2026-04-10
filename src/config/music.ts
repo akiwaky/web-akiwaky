@@ -1,7 +1,7 @@
 export const MUSIC_CONFIG = {
     // WhatsApp click-to-chat setup
     contact: {
-        whatsappNumber: "52XXXXXXXXXX", // [TBD] Arlet's number
+        whatsappNumber: "5215620202727",
         defaultMessage: "Me contacto desde la página web, me gustaría información sobre:",
     },
 

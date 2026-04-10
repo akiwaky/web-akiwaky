@@ -11,7 +11,7 @@ export function SubsiteHeader() {
                 >
                     ← akiwaky.cloud
                 </Link>
-                <WhatsAppButton variant="secondary">WhatsApp</WhatsAppButton>
+                <WhatsAppButton variant="whatsapp">WhatsApp</WhatsAppButton>
             </div>
         </header>
     );

@@ -63,7 +63,7 @@ const MODALIDADES = [
     {
         title: "Clase Regular",
         duration: "Por confirmar",
-        desc: "Sesiones semanales con técnica, lectura de partitura, historia del arte y exploración creativa.",
+        desc: "Sesiones semanales con técnica, lectura de partitura, historia de la música y exploración creativa.",
         price: "Consultar"
     },
     {
@@ -85,7 +85,7 @@ const POLICIES_SNAPSHOT = [
 const FAQS = [
     {
         q: "¿Qué incluyen las clases?",
-        a: "Técnica pianística, lectura de partitura paso a paso, historia del arte musical, y exploración de distintas formas de hacer música — desde lo tradicional hasta lo experimental. Es una formación integral."
+        a: "Técnica pianística, lectura de partitura paso a paso, historia de la música, y exploración de distintas formas de hacer música — desde lo tradicional hasta lo experimental. Es una formación integral."
     },
     {
         q: "¿Cómo es el pago?",
@@ -172,7 +172,11 @@ function LeadForm() {
                     <label htmlFor="zone" className="block text-sm font-medium text-foreground/80 mb-1">Zona</label>
                     <select required id="zone" name="zone" className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:border-accent outline-none font-sans">
                         <option value="">Selecciona tu zona...</option>
-                        <option value="Por confirmar">Zona por confirmar</option>
+                        <option value="Tecamachalco">Tecamachalco</option>
+                        <option value="La Herradura">La Herradura</option>
+                        <option value="Bosques">Bosques</option>
+                        <option value="Interlomas">Interlomas</option>
+                        <option value="Santa Fe">Santa Fe</option>
                         <option value="Otra">Otra (escribir abajo)</option>
                     </select>
                 </div>
@@ -315,13 +319,13 @@ export default function MusicPage() {
                         <div className="order-2 md:order-1">
                             <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight">Enseñanza consciente.<br /><span className="text-primary font-serif italic font-light">Música completa.</span></h2>
                             <p className="text-lg text-background/70 mb-12 leading-relaxed font-light font-sans">
-                                Exploraremos historia del arte, comprenderemos el contexto de cada obra y cultivaremos una mirada más amplia y sensible.
+                                Exploraremos historia de la música, comprenderemos el contexto de cada obra y cultivaremos una mirada más amplia y sensible.
                                 Leeremos partituras paso a paso, hasta que te sientas con la fluidez y seguridad de quien realmente entiende lo que interpreta.
                             </p>
 
                             <ul className="space-y-10">
                                 {[
-                                    { icon: BookOpen, title: "Historia del Arte Musical", desc: "Contextualizamos cada pieza: su época, su compositor, su significado. Entender la música es parte de tocarla." },
+                                    { icon: BookOpen, title: "Historia de la Música", desc: "Contextualizamos cada pieza: su época, su compositor, su significado. Entender la música es parte de tocarla." },
                                     { icon: ScrollText, title: "Lectura de Partitura", desc: "Paso a paso hasta lograr fluidez. La partitura es tu mapa: aprenderás a leerlo con claridad y confianza." },
                                     { icon: Palette, title: "Tu Lenguaje Musical", desc: "Desde lo tradicional hasta lo experimental, construyes tu propia voz musical con bases sólidas y libertad creativa." },
                                 ].map((item, i) => (
@@ -438,14 +442,14 @@ export default function MusicPage() {
                                 comenzó en la {MUSIC_CONFIG.teacher.school}, donde desarrollé una base sólida en interpretación y teoría.
                             </p>
                             <p>
-                                A lo largo de mi trayectoria he tomado múltiples cursos de pedagogía, historia del arte y
+                                A lo largo de mi trayectoria he tomado múltiples cursos de pedagogía, historia de la música y
                                 especializaciones musicales que enriquecen cada clase. Creo en una enseñanza consciente,
                                 bien estructurada y llena de sentido.
                             </p>
                         </div>
                         <ul className="mt-8 space-y-3 font-medium text-foreground font-sans text-sm">
                             <li className="flex gap-2 items-center"><CheckCircle className="w-5 h-5 text-accent" /> Formada en la {MUSIC_CONFIG.teacher.school}</li>
-                            <li className="flex gap-2 items-center"><CheckCircle className="w-5 h-5 text-accent" /> Especialista en pedagogía e historia del arte</li>
+                            <li className="flex gap-2 items-center"><CheckCircle className="w-5 h-5 text-accent" /> Especialista en pedagogía e historia de la música</li>
                             <li className="flex gap-2 items-center"><CheckCircle className="w-5 h-5 text-accent" /> {MUSIC_CONFIG.teacher.yearsExperience} años de experiencia en enseñanza musical</li>
                         </ul>
                     </div>
