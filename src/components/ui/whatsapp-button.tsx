@@ -9,7 +9,7 @@ export function WhatsAppButton({
     prefillMessage = MUSIC_CONFIG.contact.defaultMessage,
 }: {
     children: React.ReactNode
-    variant?: "primary" | "secondary" | "outline" | "ghost" | "accent"
+    variant?: "primary" | "secondary" | "outline" | "ghost" | "accent" | "whatsapp"
     className?: string
     prefillMessage?: string
 }) {
@@ -24,6 +24,7 @@ export function WhatsAppButton({
         secondary: "bg-foreground text-background shadow-lg hover:bg-foreground/90 hover:-translate-y-0.5",
         outline: "border border-border bg-background text-foreground hover:bg-accent hover:text-accent-foreground",
         ghost: "bg-transparent text-foreground hover:bg-accent/50",
+        whatsapp: "bg-[#25D366] text-white shadow-lg shadow-[#25D366]/25 hover:bg-[#22c35e] hover:-translate-y-0.5",
     }
 
     return (
