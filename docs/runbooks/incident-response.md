@@ -1,7 +1,7 @@
 # Runbook: Incident Response Playbook
 
 ## P0: Entire Site is Down (5xx Errors)
-**Symptoms:** Subsites (`/music` etc.) throw 500 or 502 Bad Gateway errors.
+**Symptoms:** Subsites (`/chaty` etc.) throw 500 or 502 Bad Gateway errors.
 **Triage Steps:**
 1. Check **Vercel Dashboard**. Is the `main` deployment failing? (Fix: Rollback Vercel to previous commit).
 2. If Vercel is green, check **Cloudflare Dashboard**. Is the domain routing properly? (Fix: Verify DNS records pointing to Vercel).

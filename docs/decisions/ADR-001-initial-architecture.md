@@ -4,7 +4,7 @@
 **Date:** 2024-03-08
 
 ## Context
-The project required a scalable way to launch multiple isolated landing pages and utilities (Music, Pal Norte, Chaty) under a single domain ecosystem without maintaining a complex, monolithic backend.
+The project required a scalable way to launch multiple isolated landing pages and WhatsApp-driven utilities (Pal Norte, Chaty hub) under a single domain ecosystem without maintaining a complex, monolithic backend.
 
 ## Decision
 We adopted a purely headless architecture defined by strict boundaries:

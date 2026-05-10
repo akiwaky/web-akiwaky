@@ -45,7 +45,13 @@ All hardcoded tokens replaced with `$env:CF_ACCESS_TOKEN` and `$env:N8N_API_KEY`
 
 ### HIGH — Unsanitized HTML injection via `dangerouslySetInnerHTML`
 
-**Status: Open**
+**Status: Resolved (page deleted)**
+
+The `/daily` subsite that contained the `dangerouslySetInnerHTML` was deleted
+during subsite consolidation. No remaining page in this repo injects HTML
+returned from a webhook.
+
+(Original finding, kept for audit history below.)
 
 **File:** `src/app/(subsites)/daily/page.tsx:193`
 
@@ -53,7 +59,7 @@ All hardcoded tokens replaced with `$env:CF_ACCESS_TOKEN` and `$env:N8N_API_KEY`
 dangerouslySetInnerHTML={{ __html: briefingHtml }}
 ```
 
-**Source:** `src/integrations/n8n/webhooks.ts` — fetches raw HTML from n8n webhook and returns it as a string. The string is injected directly into the DOM.
+**Source:** Daily page used a frontend wrapper that fetched raw HTML from an n8n webhook and returned it as a string. The string was injected directly into the DOM.
 
 **Risk:** If the n8n server is compromised or the response is intercepted (MITM), arbitrary JavaScript executes in the user's browser (stored/reflected XSS).
 
@@ -72,19 +78,13 @@ dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(briefingHtml) }}
 
 ### MEDIUM — Hardcoded webhook URLs in frontend config
 
-**Status: Open**
+**Status: Resolved (subsites removed)**
 
-**Files:**
-- `src/config/daily.ts` — `n8nWebhookUrl: 'https://webhooks.akiwaky.cloud/webhook/daily-briefing'`
-- `src/config/music.ts` — `n8nWebhookUrl: "https://n8n.akiwaky.cloud/webhook-test/music/test-lead"`
-
-**Risk:** Webhook endpoints are visible in the built JS bundle. Attackers can send arbitrary payloads to these endpoints. The test URL (`webhook-test`) suggests a development endpoint may be publicly reachable.
-
-**Recommended fix:**
-```ts
-// src/config/daily.ts
-n8nWebhookUrl: process.env.NEXT_PUBLIC_N8N_WEBHOOK_DAILY ?? 'https://webhooks.akiwaky.cloud/webhook/daily-briefing',
-```
+The previously affected configs (`src/config/daily.ts`, `src/config/music.ts`)
+are no longer in this repo. `/daily` and `/norte` were consolidated into
+`/chaty`; the `/music` subsite was extracted into the standalone
+`web-MusicArlet` repository where the webhook URL is now read strictly from
+`NEXT_PUBLIC_N8N_WEBHOOK_MUSIC` (no hardcoded fallback).
 
 ---
 
@@ -125,7 +125,7 @@ Referrer-Policy: strict-origin-when-cross-origin
 
 **Status: Acceptable / Monitor**
 
-Phone numbers in `src/config/music.ts` and `src/config/norte.ts` are intentional (they drive WhatsApp click-to-chat links). The number `525500000000` appears to be a placeholder. Verify production numbers before go-live.
+The WhatsApp number in `src/config/chaty.ts` is intentional (it drives WhatsApp click-to-chat links). Verify the production number before go-live.
 
 ---
 

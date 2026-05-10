@@ -12,10 +12,10 @@ This architecture prioritizes:
 
 ## Target Audience
 The system serves distinct audiences based on the subsite:
-- **`/music`**: Parents and adult students seeking high-end piano instruction in CDMX (High conversion, luxury aesthetic).
-- **`/norte`**: Festival attendees at Pal Norte needing low-bandwidth, text-based utility information (High utility, mobile-first, zero-asset design).
-- **`/chaty`**: Locals and tourists in CDMX looking for curated place recommendations via WhatsApp (Discovery, lifestyle).
-- **`/daily`**: Personal use; an automated daily briefing aggregation.
+- **`/chaty`**: WhatsApp users — locals/tourists in CDMX (Aki-Chaty), admin users (#Minerva), and Pal Norte festival attendees (#Norte / CompaBot) — all sharing one WhatsApp number with hashtag routing.
+
+> The Arlet piano-teaching landing (formerly `/music`) was migrated to its own
+> repo `web-MusicArlet` and is deployed independently to `music.akiwaky.cloud`.
 
 ## System Topology Summary
 - **Frontend**: `akiwaky.cloud` (Vercel / Next.js)

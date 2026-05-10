@@ -8,13 +8,6 @@ test.describe('Smoke tests for essential routes', () => {
         await expect(page).toHaveTitle(/Alejandro AG/i, { timeout: 10000 }).catch(() => null);
     });
 
-    test('Music landing page loads correctly', async ({ page }) => {
-        const response = await page.goto('/music');
-        expect(response?.ok()).toBeTruthy();
-        // Validate Hero text
-        await expect(page.locator('text=Clases de piano')).toBeVisible();
-    });
-
     test('Chaty hub page loads correctly', async ({ page }) => {
         const response = await page.goto('/chaty');
         expect(response?.ok()).toBeTruthy();

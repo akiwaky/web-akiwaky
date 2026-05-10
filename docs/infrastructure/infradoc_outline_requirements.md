@@ -156,7 +156,7 @@ IP restrictions are a layer of defense-in-depth. Documenting them prevents accid
 | Endpoint | Method | Auth | Workflow |
 |---|---|---|---|
 | `/webhook/daily-briefing` | GET | CORS whitelist | daily-briefing |
-| `/webhook-test/music/test-lead` | POST | None (test) | music-leads |
+| `/webhook/chaty-router` | POST | None (Cloudflare edge filter) | chaty-router |
 
 ### Why this matters
 Webhooks are the primary attack surface for the backend. Undocumented endpoints create shadow API risk.
