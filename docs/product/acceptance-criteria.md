@@ -1,12 +1,5 @@
 # Acceptance Criteria & Definitions of Done
 
-## Epic: Piano Lessons Landing Page (`/music`)
-- [ ] **Story:** As a prospective student, I want to see the pricing and syllabus clearly.
-  - **AC:** Pricing variables are driven by `src/config/music.ts` so they can be modified without changing React code.
-- [ ] **Story:** As a prospective student, I want to contact the instructor instantly.
-  - **AC:** Primary CTA must open WhatsApp natively on mobile devices.
-  - **AC:** Secondary CTA (Lead Form) must successfully log a 200 OK from the n8n webhook and clear the form visually upon success.
-
 ## Epic: Conversational AI (`/chaty`)
 - [ ] **Story:** As a user, I want natural, conversational responses.
   - **AC:** The n8n workflow must complete the entire WhatsApp -> Notion -> OpenAI -> WhatsApp loop in under 5 seconds.

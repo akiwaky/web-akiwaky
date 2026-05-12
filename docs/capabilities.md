@@ -7,12 +7,8 @@ This document catalogs the specific capabilities of the web ecosystem, broken do
 - **Capability:** Central hub routing traffic to specialized subsites.
 - **Capability:** Presentation of the Alejandro AG professional identity.
 
-## Piano Instruction Landing (`/music`)
-*Status: Live*
-- **Capability:** High-end, luxury aesthetic landing page for piano lessons.
-- **Capability:** Config-driven pricing anchor display (`src/config/music.ts`).
-- **Capability:** Primary Conversion: Direct-to-WhatsApp click-to-chat with pre-filled context.
-- **Capability:** Secondary Conversion: Fallback lead capture form submitting to n8n webhook (`webhooks.ts`).
+> The Arlet piano-teaching landing (formerly `/music`) is now an independent
+> project — see the `web-MusicArlet` repo.
 
 ## Pal Norte Buddy Bot (`/norte`)
 *Status: Live (Seasonal)*

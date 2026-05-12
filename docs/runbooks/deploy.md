@@ -11,8 +11,8 @@ The Vercel pipeline is fully automated and triggered by GitHub webhooks.
 3. Vercel will automatically build and deploy `akiwaky.cloud` within 60 seconds.
 
 ### Preview Branches
-1. Push any feature branch (e.g., `feat/new-music-pricing`) to GitHub.
-2. Vercel will generate an isolated preview URL (e.g., `web-akiwaky-git-feat-new-music.vercel.app`) for testing.
+1. Push any feature branch (e.g., `feat/chaty-tweaks`) to GitHub.
+2. Vercel will generate an isolated preview URL (e.g., `web-akiwaky-git-feat-chaty-tweaks.vercel.app`) for testing.
 
 ## 2. Backend (n8n on VPS)
 Logic changes in n8n do not require a Next.js deployment. They are instant.

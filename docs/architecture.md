@@ -35,23 +35,16 @@ The backend is a purely detached, headless automation layer powered by n8n.
 
 ## Subsite Architectures & Data Flows
 
-### A. Music Landing Page (`/music`)
-Specifically engineered as a conversion-first MVP (Minimum Viable Product).
-- **Data Flow:** User views page → Config loaded statically from `src/config/music.ts` → User clicks "Book Class" or fills form → `fetch` triggers `submitMusicLead()` in `webhooks.ts` → n8n webhook receives POST payload.
-
-### B. Pal Norte WhatsApp Bot (`/norte`)
-Engineered as a lightweight, low-bandwidth text companion connected directly to WhatsApp via n8n and Notion.
-- **Data Flow:** Landing Page (`/norte`) loads config from `src/config/norte.ts`. User clicks WhatsApp link. All further interaction is handled via WhatsApp → n8n Webhook → Notion Read (for event metadata) → WhatsApp response.
-
-### C. WhatsApp AI Hub (`/chaty`)
+### WhatsApp AI Hub (`/chaty`)
 A multi-assistant WhatsApp gateway powered by the **MyWAtest** n8n workflow (ID: `Qx5heVRqQ0n2aAxU`).
 - **Landing Page (`/chaty`)**: Dark-themed hub showcasing three hashtag-routed assistants on one WhatsApp number.
 - **Assistants**:
   - **Aki-Chaty** (default) — CDMX place guide, curated KB via Notion.
-  - **#Minerva** — Music admin assistant (lesson scheduling, student inquiries).
+  - **#Minerva** — Admin assistant for scheduling and inquiries.
   - **#Norte / CompaBot** — Pal Norte festival companion (meetups, VIP benefits, lost & found).
 - **Architecture**: All routing, intent classification, and KB queries are handled server-side by n8n. The frontend is a pure landing page with WhatsApp deep links — no fetch calls.
 
-### D. Daily Briefing (`/daily`)
-An internal aggregation tool.
-- **Data Flow:** Client requests `/daily` → `getDailyBriefing()` GETs the n8n webhook → n8n executes workflow (fetches weather, sports) → returns pure HTML payload to Next.js → Next.js dangerously sets HTML for user view.
+> Previously this repo also hosted `/music` (Arlet piano-teaching landing),
+> `/norte` (Pal Norte standalone), and `/daily` (private briefing). They have
+> been removed: `/music` was extracted to the standalone `web-MusicArlet`
+> repository; `/norte` and `/daily` were consolidated into `/chaty`.

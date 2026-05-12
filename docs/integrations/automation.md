@@ -9,7 +9,7 @@ n8n is the operational core of the application. It acts as the API gateway, micr
 - **Type:** Docker-based, multi-container (n8n + PostgreSQL for n8n's internal memory/execution logs).
 
 ## Key Workflow Patterns
-1. **Webhook Catch-Alls:** Webhook nodes are set to `POST`, capturing JSON body data sent from `fetch` calls in `src/integrations/n8n/webhooks.ts`. They are secured via CORS origins (allowing only `akiwaky.cloud` and `localhost:3000`).
+1. **Webhook Catch-Alls:** Webhook nodes are set to `POST`, capturing JSON body data sent from frontend integration wrappers (e.g., dedicated modules under `src/integrations/`). They are secured via CORS origins (allowing only `akiwaky.cloud` and `localhost:3000`).
 2. **Cron Triggers:** The Daily Briefing workflow triggers every morning at 07:00 AM CDMX time based on the n8n Cron node, bypassing any external network requests entirely.
 3. **LLM Orchestration:** "Basic LLM" nodes are used to abstract OpenAI/Anthropic API calls, parsing system messages and chaining output formats dynamically.
 

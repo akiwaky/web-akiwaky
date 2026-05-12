@@ -13,7 +13,6 @@ The system uses the official **Notion API** via the n8n Native Notion Node.
 - **Full Dump + Filter:** For databases under 50 items (like Pal Norte VIP benefits), fetch the entire database in one API call and use the n8n "Filter/Code" nodes to find the right item. This reduces sequential API calls to Notion.
 
 ## Schema Map (Primary Databases)
-- **CRM (Music):** `Name (Title)`, `Email (Email)`, `Goal (Select)`, `Date Added (Created Time)`.
 - **Places (Chaty):** `Name (Title)`, `Type (Multi-select)`, `Neighborhood (Select)`, `Price (Select)`, `Notes (Text)`.
 - **Unanswered (Chaty):** `Query (Title)`, `User_WaId (Text)`.
 

@@ -5,7 +5,7 @@ This repository relies on `.agent/skills/` and `.antigravity/` workflows to assi
 ## Project Directory & Architectural Boundaries
 1. **Never commit secrets:** Double-check `.gitignore` before creating automation scripts. Pay special attention to protecting `N8N_API_KEY` and Cloudflare bypass tokens. Do not commit `.mcp.json` or scripts containing these secrets.
 2. **Isolate external calls:** Do not put `fetch` logic directly in UI React components. All external API calls and logic must be isolated in `src/integrations/` wrappers.
-3. **Write tests alongside config changes:** `src/config/music.ts` (and similar config files) dictates core business logic (e.g., pricing, WhatsApp numbers). Whenever modifying them, update corresponding tests immediately to prevent lead capture failures or silent regressions.
+3. **Write tests alongside config changes:** Files in `src/config/` dictate core business logic (e.g., WhatsApp numbers, Notion DB IDs). Whenever modifying them, update corresponding tests immediately to prevent silent regressions.
 4. **Follow the Architectural Boundaries:** 
    - Pure UI components go in `src/components/`.
    - Business data variables and environment configurations go in `src/config/`.

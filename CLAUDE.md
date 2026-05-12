@@ -25,14 +25,9 @@ src/
   app/
     (main)/          # Root portfolio site "/"
     (subsites)/
-      music/         # Piano teaching landing page "/music"
-      norte/         # Pal Norte WhatsApp bot landing "/norte"
-      daily/         # Daily briefing dashboard "/daily"
-      chaty/         # Chaty WhatsApp bot page "/chaty"
+      chaty/         # Chaty WhatsApp Hub "/chaty"
   components/        # Pure UI — no fetch() or business logic here
-  config/            # Business data: pricing, phone numbers, webhook URLs
-  data/              # Static mock/seed data
-  integrations/      # All external API calls (n8n webhooks, etc.)
+  config/            # Business data: phone numbers, Notion DB IDs
   lib/               # Shared utilities (cn, etc.)
 
 tools/
@@ -40,7 +35,6 @@ tools/
 
 docs/
   architecture.md    # Frontend vs n8n/Notion boundary rules
-  daily.md           # Daily briefing backend setup
   security-audit.md  # Security findings and remediation status
 ```
 
@@ -48,11 +42,11 @@ docs/
 
 ## Architectural Rules (summary — full rules in AGENTS.md)
 
-1. **No `fetch()` in components.** All external calls go in `src/integrations/`.
+1. **No `fetch()` in components.** External calls belong in dedicated integration wrappers.
 2. **Config lives in `src/config/`** — never inline business data in components.
 3. **Secrets via environment variables only.** Never hardcode tokens, JWTs, or API keys.
 4. **Run `lint` + `build` before any structural move.**
-5. **Tests alongside config changes** — especially `src/config/music.ts`.
+5. **Tests alongside config changes** — update tests when modifying `src/config/*.ts`.
 
 ---
 
@@ -90,17 +84,17 @@ Use `mcp__Claude_Preview__*` or `mcp__Claude_in_Chrome__*` to:
 Create `.env.local` (never commit) with:
 
 ```bash
-# n8n webhook URLs (frontend-facing, NEXT_PUBLIC_ prefix makes them browser-accessible)
-NEXT_PUBLIC_N8N_WEBHOOK_DAILY=https://webhooks.akiwaky.cloud/webhook/daily-briefing
-NEXT_PUBLIC_N8N_WEBHOOK_MUSIC=https://n8n.akiwaky.cloud/webhook/music/lead
+# Notion DB IDs for the Chaty hub (browser-accessible, NEXT_PUBLIC_ prefix)
+NEXT_PUBLIC_CHATY_NOTION_PLACES_DB_ID=...
+NEXT_PUBLIC_CHATY_NOTION_LOG_DB_ID=...
 
 # Ops scripts only (not Next.js — set in shell session or PowerShell profile)
 # $env:N8N_API_KEY = "<your-key>"
 # $env:CF_ACCESS_TOKEN = "<your-cf-jwt>"
 ```
 
-> The current config files (`src/config/daily.ts`, `src/config/music.ts`) hardcode
-> webhook URLs directly. Migrating them to env vars is tracked in `docs/security-audit.md`.
+> Notion DB IDs in `src/config/chaty.ts` are still hardcoded as fallback.
+> Migrating them fully to env vars is tracked in `docs/security-audit.md`.
 
 ---
 
@@ -110,16 +104,11 @@ Each subsite under `src/app/(subsites)/` is an independent conversion-focused pa
 
 | Route | Config | Integrations | Backend |
 |---|---|---|---|
-| `/music` | `src/config/music.ts` | `src/integrations/n8n/webhooks.ts` | n8n webhook → Notion |
-| `/norte` | `src/config/norte.ts` | WhatsApp click-to-chat | n8n WA Router |
-| `/daily` | `src/config/daily.ts` | `src/integrations/n8n/webhooks.ts` | n8n daily briefing workflow |
 | `/chaty` | `src/config/chaty.ts` | WhatsApp click-to-chat | n8n + Notion |
 
-### Upcoming: Subsite Consolidation
-The next cleanup phase will consolidate subsites. Keep in mind:
-- Each subsite config file must be updated if routes change.
-- WhatsApp numbers and Notion DB IDs are in `src/config/*.ts`.
-- The n8n workflows referencing webhook paths must be updated in parallel.
+> The Arlet piano-teaching landing previously lived at `/music` here; it was
+> extracted into the standalone `web-MusicArlet` repo and is deployed to
+> `music.akiwaky.cloud` (staging) / final domain TBD (production).
 
 ---
 

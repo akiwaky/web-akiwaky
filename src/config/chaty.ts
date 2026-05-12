@@ -48,7 +48,7 @@ export const chatyConfig = {
                 { label: "Schedule a lesson", text: "#Minerva Quiero agendar una clase de prueba" },
                 { label: "Check availability", text: "#Minerva ¿Hay disponibilidad esta semana?" },
             ],
-            image: "/music-assets/hands-on-keys.png",
+            image: null,
         },
         {
             id: "norte",

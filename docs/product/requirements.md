@@ -5,7 +5,7 @@ The Alejandro AG Web Ecosystem provides an instant-loading, beautifully designed
 
 ## 2. Business Requirements
 - **Maintenance Free:** The system must not require database migrations, ORM updates, or custom backend server patching.
-- **Conversion Optimized:** Each subsite (`/music`) must load visibly in under 500ms and drive the user to a singular call-to-action (WhatsApp or a minimal web form).
+- **Conversion Optimized:** Each subsite must load visibly in under 500ms and drive the user to a singular call-to-action (WhatsApp click-to-chat).
 - **Scale to Zero:** The infrastructure must be extremely cheap to run. Vercel free tier + small VPS.
 
 ## 3. Core Functional Requirements

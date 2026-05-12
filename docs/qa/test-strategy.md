@@ -11,7 +11,7 @@ Because the backend logic is completely separated from the git repository (livin
 ## 2. End-to-End Visual testing (Playwright)
 - **Framework:** `playwright`.
 - **Scope:** Verify that the primary conversion flows render completely and button clicks operate.
-- **Example Scenario:** "User navigates to `/music`, clicks WhatsApp button, verifies the `href` matches `wa.me/XXXXXXXXX?text=...`."
+- **Example Scenario:** "User navigates to `/chaty`, clicks the WhatsApp button for an assistant, verifies the `href` matches `wa.me/XXXXXXXXX?text=...` with the right hashtag pre-filled."
 
 ## 3. Webhook Integration Testing
 - **Scope:** We must test that changes to the Next.js payload structure don't break the n8n receiving nodes.
@@ -19,4 +19,4 @@ Because the backend logic is completely separated from the git repository (livin
 - **Methodology (Automated - Future):** Use Playwright to intercept the `fetch` call locally and assert the payload structure strictly matches a JSON schema contract.
 
 ## 4. n8n Isolated Testing
-- **Testing Logic:** Inside n8n, duplicate the production workflow you are editing and append `"-dev"` to the webhook URL (e.g., `/webhook/music-lead-dev`). Test logic changes on the `-dev` endpoint using Postman or cURL before replacing the production workflow nodes.
+- **Testing Logic:** Inside n8n, duplicate the production workflow you are editing and append `"-dev"` to the webhook URL (e.g., `/webhook/chaty-router-dev`). Test logic changes on the `-dev` endpoint using Postman or cURL before replacing the production workflow nodes.

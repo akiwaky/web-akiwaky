@@ -2,8 +2,7 @@
 
 ## 1. Local Environment Configuration
 The project uses a configuration-driven approach. Most business logic variables are stored natively in TypeScript objects:
-- `src/config/music.ts`: Contains WhatsApp numbers, regular price anchors, n8n webhook URLs, and other settings.
-- `src/config/chaty.ts`: Multi-assistant WhatsApp hub config (Aki-Chaty, Minerva, CompaBot).
+- `src/config/chaty.ts`: Multi-assistant WhatsApp hub config (Aki-Chaty, Minerva, CompaBot) — WhatsApp number, Notion DB IDs, FAQs, etc.
 
 The Next.js application is designed to run almost entirely without local environment variables.
 However, API keys or analytics tokens for client-side tracking should be placed in `.env.local`.
