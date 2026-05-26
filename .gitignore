@@ -1,17 +1,7 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 /.pnp
 .pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
-
-# testing
-/coverage
 
 # next.js
 /.next/
@@ -20,9 +10,13 @@
 # production
 /build
 
+# testing
+/coverage
+
 # misc
 .DS_Store
 *.pem
+*.log
 
 # debug
 npm-debug.log*
@@ -30,30 +24,29 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files (NEVER commit secrets)
 .env*
-
-# vercel
-.vercel
+!.env.example
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
 
-# local AI/MCP
-mcp.json
+# vercel / deploy
+.vercel
+
+# local AI/MCP configs (may carry tokens)
 .mcp.json
 .agent/mcp.json
-deploy_n8n.py
 
-# Claude Code worktrees and local session data — never commit
+# Claude Code session + worktree data
 .claude/
 
-# Sensitive debug/API output files — NEVER commit these
-tools/scripts/*.txt
-tools/scripts/*.json
-tools/scripts/debug/
-# ops scripts — local credential overrides must never be committed
-tools/scripts/*.local.ps1
-tools/scripts/.env
-tools/scripts/secrets.*
+# Editor / OS
+.idea/
+.vscode/
+Thumbs.db
+
+# Legacy / scratch (kept out of git intentionally)
+/-todelete/
+/archive/
